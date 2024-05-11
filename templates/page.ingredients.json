@@ -1,0 +1,344 @@
+{
+  "sections": {
+    "section_h1_tag_Xzei8H": {
+      "type": "section-h1-tag",
+      "settings": {
+        "h1_title": "LEVEL UP YOUR SODA"
+      }
+    },
+    "banner_with_title_4mFKyQ": {
+      "type": "banner-with-title",
+      "settings": {
+        "section_anchor_id": "Banner with title",
+        "bg": "#000000",
+        "text_color": "#ffffff",
+        "title": "LEVEL UP YOUR SODA",
+        "image": "shopify:\/\/shop_images\/about-desk.webp",
+        "image_mob": "shopify:\/\/shop_images\/about-mob.webp",
+        "image_size": "large",
+        "pt_mob": 20,
+        "pb_mob": 0,
+        "pt_tab": 30,
+        "pb_tab": 0,
+        "pt_desk": 30,
+        "pb_desk": 0
+      }
+    },
+    "wave_divider_Vc7nEA": {
+      "type": "wave-divider",
+      "settings": {
+        "section_anchor_id": "Divider",
+        "c-bg-primary": "#ffffff",
+        "wave_1": "#9de0fb",
+        "wave_2": "#6accf5",
+        "wave_3": "#fff6ef",
+        "divider_type": "waves",
+        "float_element": "whirlpool",
+        "overflow_full": true,
+        "margin_mob": 0,
+        "margin_tab": 0,
+        "margin": 0
+      }
+    },
+    "image_blocks_xfqQci": {
+      "type": "image-blocks",
+      "blocks": {
+        "faq_F4nhxB": {
+          "type": "faq",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Prebiotics_Icon_5fe8bd70-0ce2-450f-b842-b60ae769bcc6.svg",
+            "title": "Prebiotics",
+            "subtitle": "",
+            "text": "<p>LEVO makes your gut happy! 5g of natural prebiotics from maltodextrin soluble dietary fiber keeps your gut healthy, gives you glowing skin, and boosts your immune system!<\/p>"
+          }
+        },
+        "faq_4qAFym": {
+          "type": "faq",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/5g_Fiber_Icon_1.svg",
+            "title": "5g Cane Sugar",
+            "subtitle": "",
+            "text": "<p>We tantalize your taste buds without using excessive amounts of sugar. In fact, LEVO only uses 5g of natural cane sugar to flame the flavor.<\/p>"
+          }
+        },
+        "faq_DVfkYU": {
+          "type": "faq",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/30.svg",
+            "title": "30 Calories",
+            "subtitle": "",
+            "text": "<p>LEVO is a mere 30 calories or less. You might burn more calories by taking the can out of the fridge and popping the top.<\/p>"
+          }
+        },
+        "faq_UC9Ehw": {
+          "type": "faq",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/No_BS_Icon2.svg",
+            "title": "No Fake Ingredients",
+            "subtitle": "",
+            "text": "<p>We never use artificial stuff. Levo only uses natural ingredients like Stevia, a naturally occurring sweetener found in Stevia rebaudiana (Bertoni) plant, an herbal shrub native to South America. On our product label, you’ll find it listed in the ingredients as “Steviol Glycosides”<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_F4nhxB",
+        "faq_4qAFym",
+        "faq_DVfkYU",
+        "faq_UC9Ehw"
+      ],
+      "settings": {
+        "section_anchor_id": "Image blocks",
+        "c-bg-primary": "#fff6ef",
+        "c-title": "#231f20",
+        "c-body-primary": "#3a3a3b",
+        "title": "KEEPING IT REAL",
+        "img_color": "#f3c6d8",
+        "image": "shopify:\/\/shop_images\/cotton-candy-ls1.jpg",
+        "image_size": "medium",
+        "pt_mob": 45,
+        "pb_mob": 0,
+        "pt_tab": 60,
+        "pb_tab": 0,
+        "pt_desk": 70,
+        "pb_desk": 0
+      }
+    },
+    "flavors_slider_JPHqHy": {
+      "type": "flavors-slider",
+      "blocks": {
+        "block_hfDqA6": {
+          "type": "block",
+          "settings": {
+            "title": "COTTON CANDY",
+            "float": "shopify:\/\/shop_images\/flavor-1-icon-inf.svg",
+            "color": "#ed3293",
+            "text": "<p>Ingredients: Carbonated water, maltodextrin soluble dietary fiber, cane sugar, natural flavor, citric acid, and steviol glycosides.<\/p>",
+            "image": "shopify:\/\/shop_images\/cc_nfp.svg",
+            "ben_title_1": "",
+            "ben_title_2": "",
+            "ben_title_3": "",
+            "ben_title_4": "",
+            "ben_title_5": "",
+            "ben_title_6": ""
+          }
+        },
+        "block_4QPa3x": {
+          "type": "block",
+          "settings": {
+            "title": "ROOT BEER FLOAT",
+            "float": "shopify:\/\/shop_images\/flavor-2-icon-inf.svg",
+            "color": "#a45825",
+            "text": "<p>Ingredients: Carbonated water, maltodextrin soluble dietary fiber, cane sugar, natural flavor, citric acid, and steviol glycosides.<\/p>",
+            "image": "shopify:\/\/shop_images\/rbf_nfp.svg",
+            "ben_title_1": "",
+            "ben_title_2": "",
+            "ben_title_3": "",
+            "ben_title_4": "",
+            "ben_title_5": "",
+            "ben_title_6": ""
+          }
+        },
+        "block_HywazE": {
+          "type": "block",
+          "settings": {
+            "title": "COSMIC PUNCH",
+            "float": "shopify:\/\/shop_images\/planet.svg",
+            "color": "#22beff",
+            "text": "<p>Ingredients: Carbonated water, maltodextrin soluble dietary fiber, cane sugar, natural flavor, citric acid, steviol glycosides, and sodium citrate.<\/p>",
+            "image": "shopify:\/\/shop_images\/nfp_664a7dc1-3127-4926-9f63-7466c6e131ad.svg",
+            "ben_title_1": "",
+            "ben_title_2": "",
+            "ben_title_3": "",
+            "ben_title_4": "",
+            "ben_title_5": "",
+            "ben_title_6": ""
+          }
+        },
+        "block_FhRdxV": {
+          "type": "block",
+          "settings": {
+            "title": "ORANGE CREAMSICLE",
+            "float": "shopify:\/\/shop_images\/Creamsicle_Icon_a615f977-fc76-4879-a2c2-61ef0b10881b.svg",
+            "color": "#df6336",
+            "text": "<p>Ingredients: Carbonated water, maltodextrin soluble dietary fiber, cane sugar, natural flavor, citric acid, steviol glycosides, and sodium citrate.<\/p>",
+            "image": "shopify:\/\/shop_images\/orange_nfp.svg",
+            "ben_title_1": "",
+            "ben_title_2": "",
+            "ben_title_3": "",
+            "ben_title_4": "",
+            "ben_title_5": "",
+            "ben_title_6": ""
+          }
+        },
+        "block_JKyhdq": {
+          "type": "block",
+          "settings": {
+            "title": "VOODOO COLA",
+            "float": "shopify:\/\/shop_images\/Voodoo_Cola_Logo_Icon_eadd1c66-383f-4dfe-a516-182755a32131.svg",
+            "color": "#000000",
+            "text": "<p>Ingredients: Carbonated water, maltodextrin soluble dietary fiber, cane sugar, natural flavor, caramel color, citric acid, and steviol glycosides.<\/p>",
+            "image": "shopify:\/\/shop_images\/nfp_black.svg",
+            "ben_title_1": "",
+            "ben_title_2": "",
+            "ben_title_3": "",
+            "ben_title_4": "",
+            "ben_title_5": "",
+            "ben_title_6": ""
+          }
+        },
+        "block_qzWGdf": {
+          "type": "block",
+          "settings": {
+            "title": "SPLICE LIME",
+            "float": "shopify:\/\/shop_images\/Splice_Logo_Icon_68cc4f52-24cc-40e3-8cb9-b82845521804.svg",
+            "color": "#81bc56",
+            "text": "<p>Ingredients: Carbonated water, maltodextrin soluble dietary fiber, cane sugar, natural flavor, citric acid, and steviol glycosides.<\/p>",
+            "image": "shopify:\/\/shop_images\/splice_nfp.svg",
+            "ben_title_1": "",
+            "ben_title_2": "",
+            "ben_title_3": "",
+            "ben_title_4": "",
+            "ben_title_5": "",
+            "ben_title_6": ""
+          }
+        }
+      },
+      "block_order": [
+        "block_hfDqA6",
+        "block_4QPa3x",
+        "block_HywazE",
+        "block_FhRdxV",
+        "block_JKyhdq",
+        "block_qzWGdf"
+      ],
+      "settings": {
+        "section_anchor_id": "Flavors slider",
+        "c-bg-primary": "#fff6ef",
+        "c-title": "#231f20",
+        "c-body-primary": "#3a3a3b",
+        "pt_mob": 30,
+        "pb_mob": 0,
+        "pt_tab": 45,
+        "pb_tab": 0,
+        "pt_desk": 100,
+        "pb_desk": 80
+      }
+    },
+    "float_element_RQE3Vy": {
+      "type": "float-element",
+      "settings": {
+        "section_anchor_id": "Float element",
+        "image": "shopify:\/\/shop_images\/fl5.svg",
+        "image_width": 215,
+        "container": 1740,
+        "container_wide": 1740,
+        "container_top": 150,
+        "container_bot": 500,
+        "image_position": "left",
+        "x": 100,
+        "y": -100
+      }
+    },
+    "faq_default_WCzeQB": {
+      "type": "faq-default",
+      "blocks": {
+        "faq_RzdLnd": {
+          "type": "faq",
+          "settings": {
+            "question": "What is LEVO Soda?",
+            "answer": "<p>LEVO is a prebiotic soda that tastes great with indulgent flavors and elevates your wellness with dietary fiber for better gut health. <\/p>"
+          }
+        },
+        "faq_HdhxNb": {
+          "type": "faq",
+          "settings": {
+            "question": "Why is LEVO good for gut health?",
+            "answer": "<p>LEVO contains 5g natural prebiotics from maltodextrin soluble dietary fiber - an excellent source of dietary fiber - to keep your gut happy, give you glowing skin, and boost your immune system! <\/p>"
+          }
+        },
+        "faq_Pcbtfj": {
+          "type": "faq",
+          "settings": {
+            "question": "What’s in LEVO Soda?",
+            "answer": "<p>LEVO uses the highest quality ingredients to deliver on function, without sacrificing taste or your health. For a full list of ingredients, check out our <a href=\"\/pages\/why-levo\" target=\"_blank\" title=\"LEVEL UP YOUR SODA\">ingredient page<\/a>.<\/p>"
+          }
+        },
+        "faq_gmqGA4": {
+          "type": "faq",
+          "settings": {
+            "question": "How much sugar is in LEVO Soda?",
+            "answer": "<p>LEVO contains only 5 grams of natural cane sugar.<\/p>"
+          }
+        },
+        "faq_Nt6Adj": {
+          "type": "faq",
+          "settings": {
+            "question": "How many calories are in LEVO Soda?",
+            "answer": "<p>LEVO soda is a mere 30 calories.<\/p>"
+          }
+        },
+        "faq_3aEwPQ": {
+          "type": "faq",
+          "settings": {
+            "question": "Does LEVO Soda contain any artificial ingredients?",
+            "answer": "<p>Never. LEVO uses Stevia, a naturally occurring sweetener found in Stevia rebaudiana (Bertoni) plant, an herbal shrub native to South America. On our product label, you’ll find it listed in the ingredients as “Steviol Glycosides”.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_RzdLnd",
+        "faq_HdhxNb",
+        "faq_Pcbtfj",
+        "faq_gmqGA4",
+        "faq_Nt6Adj",
+        "faq_3aEwPQ"
+      ],
+      "settings": {
+        "section_anchor_id": "FAQ default",
+        "c-bg-primary": "#fff6ef",
+        "c-title": "#231f20",
+        "title": "FAQs",
+        "pt_mob": 0,
+        "pb_mob": 0,
+        "pt_tab": 0,
+        "pb_tab": 0,
+        "pt_desk": 0,
+        "pb_desk": 0
+      }
+    },
+    "product_list_fAipQi": {
+      "type": "product-list",
+      "settings": {
+        "section_anchor_id": "Product list",
+        "c-bg-primary": "#fff6ef",
+        "c-title": "#231f20",
+        "title": "LEVEL UP YOUR SODA",
+        "products": [
+          "cotton-candy",
+          "root-beer-float",
+          "cosmic-punch",
+          "orange-creamsicle",
+          "splice",
+          "voodoo-cola"
+        ],
+        "layout": "slider",
+        "pt_mob": 30,
+        "pb_mob": 148,
+        "pt_tab": 45,
+        "pb_tab": 250,
+        "pt_desk": 114,
+        "pb_desk": 353
+      }
+    }
+  },
+  "order": [
+    "section_h1_tag_Xzei8H",
+    "banner_with_title_4mFKyQ",
+    "wave_divider_Vc7nEA",
+    "image_blocks_xfqQci",
+    "flavors_slider_JPHqHy",
+    "float_element_RQE3Vy",
+    "faq_default_WCzeQB",
+    "product_list_fAipQi"
+  ]
+}

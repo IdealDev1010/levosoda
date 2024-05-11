@@ -1,0 +1,239 @@
+{% liquid
+  assign section_anchor_id = section.settings.section_anchor_id | handleize
+
+  assign title = section.settings.title
+  assign products = section.settings.products
+  assign layout = section.settings.layout
+
+  assign blocks = section.blocks
+
+  assign pt_mob = section.settings.pt_mob
+  assign pb_mob = section.settings.pb_mob
+  assign pt_tab = section.settings.pt_tab
+  assign pb_tab = section.settings.pb_tab
+  assign pt_desk = section.settings.pt_desk
+  assign pb_desk = section.settings.pb_desk
+%}
+
+{% render 'css-variables-setter' %}
+
+{% render 'section-paddings',
+  section_id: section.id,
+  pt_mob: pt_mob,
+  pb_mob: pb_mob,
+  pt_tab: pt_tab,
+  pb_tab: pb_tab,
+  pt_desk: pt_desk,
+  pb_desk: pb_desk
+%}
+
+<div
+  id="{{ section_anchor_id }}"
+  data-section-id="{{ section.id }}"
+  class="bg-sc-bg-primary text-sc-title overflow-hidden"
+>
+  <div class="space-y-7.5 md:space-y-12.5 2k:max-w-[2280px] container">
+    {% if title != blank %}
+      <div class="overflow-hidden">
+        <h2
+          class="animate__animated font-primary text-title-lg lg:text-title-xl text-center font-bold opacity-0"
+          x-intersect="$el.classList.add('animate__fadeInUp')"
+        >
+          {{ title }}
+        </h2>
+      </div>
+    {% endif %}
+
+    {% if products != blank %}
+      {% case layout %}
+        {% when 'slider' %}
+          {% if products.count > 2 %}
+            <div
+              class="animate__animated swiper mx-auto overflow-visible opacity-0 {% if products.count == 3 %}max-w-[1330px]{% endif %}"
+              x-ignore
+              ax-load="visible"
+              x-data="swiperSlider($el, 'products_slider')"
+              x-intersect.once="$el.classList.add('animate__fadeIn')"
+            >
+              <div class="swiper-wrapper">
+                {% for product in products %}
+                  <div class="swiper-slide !h-auto w-full xl:max-w-[350px]">
+                    {% render 'product-card', product: product, disable_animation: true %}
+                  </div>
+                {% endfor %}
+              </div>
+              <div
+                x-cloak
+                x-show="slider.virtualSize > slider.width"
+                class="swiper-pagination sw-bullet:bg-white sw-bullet-active:bg-[#ED3293] sw-bullet:border-[#231F20] md:sw-bullet:h-2.5 md:sw-bullet:w-2.5 sw-bullet:border sw-bullet:w-2 sw-bullet:h-2 sw-bullet:!m-[0_4px_0_0] justify-center py-10"
+              ></div>
+            </div>
+          {% else %}
+            <div class="md:gap-7.5 2k:max-w-[1150px] mx-auto grid max-w-[950px] grid-cols-2 gap-4">
+              {% for product in products %}
+                {% render 'product-card', product: product, index: forloop.index, init_animation: false %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% when 'grid' %}
+          <div class="md:gap-7.5 2k:max-w-[1150px] mx-auto flex max-w-[1110px] flex-wrap justify-center gap-4">
+            {% for product in products %}
+              {% render 'product-card',
+                product: product,
+                index: forloop.index,
+                init_animation: false,
+                class: 'xs:max-w-[calc(50%-8px)] md:max-w-[calc(50%-15px)] w-full lg:max-w-[350px]'
+              %}
+            {% endfor %}
+          </div>
+      {% endcase %}
+    {% endif %}
+
+    {% if blocks.size > 0 %}
+      <div class="mx-auto flex max-w-lg flex-wrap items-baseline justify-center gap-y-5 md:gap-y-10 lg:max-w-none lg:gap-x-5 lg:pt-6">
+        {% for block in blocks %}
+          {% liquid
+            assign icon = block.settings.icon
+            assign text = block.settings.text
+          %}
+          <div
+            class="animate__animated eag-custom-delay flex w-1/4 scale-75 flex-col items-center space-y-1 opacity-0 transition duration-500 ease-in-out md:space-y-4 lg:w-[135px]"
+            x-intersect.threshold.100.once="$el.classList.remove('opacity-0', 'scale-75')"
+            style="--eag-custom-delay: {{- forloop.index | append: '00ms' }}"
+          >
+            {% if icon != blank %}
+              <div class="max-w-[34px] md:max-w-20">
+                {{
+                  icon
+                  | image_url: width: 160
+                  | image_tag: loading: 'lazy', alt: text, class: 'w-full h-full object-contain'
+                }}
+              </div>
+              {% if text != blank %}
+                <span class="font-secondary text-[10px] font-bold md:text-base">{{ text }}</span>
+              {% endif %}
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product list",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_anchor_id",
+      "label": "Section anchor id",
+      "default": "Product list"
+    },
+    {
+      "type": "color",
+      "id": "c-bg-primary",
+      "label": "Background color",
+      "default": "#FFF6EF"
+    },
+    {
+      "type": "color",
+      "id": "c-title",
+      "label": "Text color",
+      "default": "#231F20"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "LEVEL UP YOUR SODA"
+    },
+    {
+      "type": "product_list",
+      "id": "products",
+      "label": "Product list"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        {
+          "value": "slider",
+          "label": "Slider"
+        },
+        {
+          "value": "grid",
+          "label": "Grid"
+        }
+      ],
+      "default": "slider"
+    },
+    {
+      "type": "header",
+      "content": "Padding Y settings"
+    },
+    {
+      "type": "number",
+      "id": "pt_mob",
+      "label": "Mobile padding top in px",
+      "default": 30
+    },
+    {
+      "type": "number",
+      "id": "pb_mob",
+      "label": "Mobile padding bottom in px",
+      "default": 148
+    },
+    {
+      "type": "number",
+      "id": "pt_tab",
+      "label": "Tablet padding top in px",
+      "default": 45
+    },
+    {
+      "type": "number",
+      "id": "pb_tab",
+      "label": "Tablet padding bottom in px",
+      "default": 250
+    },
+    {
+      "type": "number",
+      "id": "pt_desk",
+      "label": "Desktop padding top in px",
+      "default": 114
+    },
+    {
+      "type": "number",
+      "id": "pb_desk",
+      "label": "Desktop padding bottom in px",
+      "default": 353
+    }
+  ],
+  "blocks": [
+    {
+      "name": "block",
+      "type": "block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Block icon"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Block text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product list",
+      "category": "Repeatable"
+    }
+  ]
+}
+{% endschema %}

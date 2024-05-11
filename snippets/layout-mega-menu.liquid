@@ -1,0 +1,50 @@
+<div
+  data-mega-menu="{{ menu_item.title | handleize }}"
+  class="bg-sc-bg-primary invisible absolute left-0 top-full z-20 w-full border-t opacity-0 shadow duration-200 ease-in hover:visible hover:opacity-100"
+>
+  <div class="container">
+    <div class="narrow-container">
+      <ul
+        class="mx-auto flex w-full max-w-max items-center justify-start space-x-10"
+      >
+        {% for child_link in menu_item.links %}
+          {% if child_link.url == '#' %}
+            <li class="link-with-list text-sc-body-primary relative py-5 text-lg font-normal">
+              <button
+                aria-haspopup="true"
+                class="btn-link-anim pointer-events-none"
+              >
+                <span class="pb-1">{{ child_link.title }}</span>
+              </button>
+              <div
+                data-links-dropdown
+                class="{% if forloop.last %}right-0{% else %}left-0{% endif %} bg-sc-bg-primary absolute top-full max-h-0 overflow-hidden transition-all duration-300"
+              >
+                <ul
+                  class="w-full min-w-[200px] space-y-3 border py-10"
+                >
+                  {% for link in child_link.links %}
+                    <li class="px-7.5 text-base">
+                      <a href="{{ link.url }}" class="btn-link-anim">
+                        <span class="pb-1">{{ link.title }}</span>
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </li>
+          {% else %}
+            <li class="text-sc-body-primary py-5 text-lg font-normal">
+              <a
+                href="{{ child_link.url }}"
+                class="btn-link-anim"
+              >
+                <span class="pb-1">{{ child_link.title }}</span>
+              </a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "main": {
+      "type": "customer__login",
+      "settings": {
+        "pt_mob": 0,
+        "pb_mob": 100,
+        "pt_tab": 100,
+        "pb_tab": 150,
+        "pt_desk": 50,
+        "pb_desk": 450
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

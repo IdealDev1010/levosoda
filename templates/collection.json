@@ -1,0 +1,126 @@
+{
+  "sections": {
+    "banner_with_title_dPVhCU": {
+      "type": "banner-with-title",
+      "settings": {
+        "section_anchor_id": "Banner with title",
+        "bg": "#000000",
+        "text_color": "#ffffff",
+        "title": "#DRINKMORESODA",
+        "image": "shopify:\/\/shop_images\/about-desk.webp",
+        "image_mob": "shopify:\/\/shop_images\/about-mob.webp",
+        "image_size": "medium",
+        "pt_mob": 20,
+        "pb_mob": 0,
+        "pt_tab": 30,
+        "pb_tab": 0,
+        "pt_desk": 30,
+        "pb_desk": 0
+      }
+    },
+    "wave_divider_TQpUa7": {
+      "type": "wave-divider",
+      "settings": {
+        "section_anchor_id": "Divider",
+        "c-bg-primary": "#ffffff",
+        "wave_1": "#9de0fb",
+        "wave_2": "#6accf5",
+        "wave_3": "#fff6ef",
+        "divider_type": "waves",
+        "float_element": "whirlpool",
+        "overflow_full": true,
+        "margin_mob": 0,
+        "margin_tab": 0,
+        "margin": 0
+      }
+    },
+    "product_list_YrcFQg": {
+      "type": "product-list",
+      "disabled": true,
+      "settings": {
+        "section_anchor_id": "Product list",
+        "c-bg-primary": "#fff6ef",
+        "c-title": "#231f20",
+        "title": "SINGLE FLAVORS",
+        "products": [
+          "cotton-candy",
+          "root-beer-float",
+          "cosmic-punch"
+        ],
+        "layout": "grid",
+        "pt_mob": 30,
+        "pb_mob": 30,
+        "pt_tab": 45,
+        "pb_tab": 45,
+        "pt_desk": 114,
+        "pb_desk": 25
+      }
+    },
+    "product_list_pLFYJy": {
+      "type": "product-list",
+      "blocks": {
+        "block_y99c98": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Prebiotics_Icon_5fe8bd70-0ce2-450f-b842-b60ae769bcc6.svg",
+            "text": "<center>Prebiotic Fiber for Gut Health<\/center>"
+          }
+        },
+        "block_R7c4rL": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/5g_Fiber_Icon_1.svg",
+            "text": "5g Cane Sugar"
+          }
+        },
+        "block_nN68GH": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/30.svg",
+            "text": "30 Calories"
+          }
+        },
+        "block_NVwVpk": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/No_BS_Icon2.svg",
+            "text": "<center>No Fake Ingredients<\/center>"
+          }
+        }
+      },
+      "block_order": [
+        "block_y99c98",
+        "block_R7c4rL",
+        "block_nN68GH",
+        "block_NVwVpk"
+      ],
+      "settings": {
+        "section_anchor_id": "Product list",
+        "c-bg-primary": "#fff6ef",
+        "c-title": "#231f20",
+        "title": "SHOP ALL FLAVORS",
+        "products": [
+          "cosmic-punch",
+          "cotton-candy",
+          "root-beer-float",
+          "orange-creamsicle",
+          "splice",
+          "voodoo-cola"
+        ],
+        "layout": "grid",
+        "pt_mob": 30,
+        "pb_mob": 148,
+        "pt_tab": 45,
+        "pb_tab": 250,
+        "pt_desk": 25,
+        "pb_desk": 353
+      }
+    }
+  },
+  "order": [
+    "banner_with_title_dPVhCU",
+    "wave_divider_TQpUa7",
+    "product_list_YrcFQg",
+    "product_list_pLFYJy"
+  ]
+}

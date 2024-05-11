@@ -1,0 +1,354 @@
+{
+  "sections": {
+    "main_product_LanJDb": {
+      "type": "main-product",
+      "blocks": {
+        "product_title_TXKkdm": {
+          "type": "product_title",
+          "settings": {
+          }
+        },
+        "reviews_from_amazon_amazon_ratings_GQBVHx": {
+          "type": "shopify:\/\/apps\/reviews-from-amazon\/blocks\/Amazon ratings\/d2a0c9ad-3f97-43c4-9e0c-bc1a4007a201",
+          "settings": {
+            "heading": "Amazon ratings"
+          }
+        },
+        "product_price_98cXhf": {
+          "type": "product_price",
+          "settings": {
+          }
+        },
+        "product_meta_variants_mGrKLr": {
+          "type": "product_meta_variants",
+          "settings": {
+          }
+        },
+        "product_prime_btn_XKqFiF": {
+          "type": "product_prime_btn",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "product_review_PkzUUd": {
+          "type": "product_review",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "product_form_GKxRJU": {
+          "type": "product_form",
+          "settings": {
+          }
+        },
+        "product_benefits_cr8U3C": {
+          "type": "product_benefits",
+          "settings": {
+          }
+        },
+        "product_accordions_xAy9aB": {
+          "type": "product_accordions",
+          "settings": {
+          }
+        },
+        "product_description_GdJQCW": {
+          "type": "product_description",
+          "disabled": true,
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "product_title_TXKkdm",
+        "reviews_from_amazon_amazon_ratings_GQBVHx",
+        "product_price_98cXhf",
+        "product_meta_variants_mGrKLr",
+        "product_prime_btn_XKqFiF",
+        "product_review_PkzUUd",
+        "product_form_GKxRJU",
+        "product_benefits_cr8U3C",
+        "product_accordions_xAy9aB",
+        "product_description_GdJQCW"
+      ],
+      "settings": {
+        "section_anchor_id": "Main product",
+        "c-title": "#231f20",
+        "c-body-primary": "#3a3a3b",
+        "pt_mob": 30,
+        "pb_mob": 45,
+        "pt_tab": 30,
+        "pb_tab": 45,
+        "pt_desk": 45,
+        "pb_desk": 220
+      }
+    },
+    "richtext_47FpeX": {
+      "type": "richtext",
+      "settings": {
+        "section_anchor_id": "Rich Text",
+        "c-bg-primary": "#fdeef6",
+        "c-title": "#ed3293",
+        "c-body-primary": "#3a3a3b",
+        "title": "COTTON CANDY",
+        "text": "<p>In a dreamy land where clouds are spun from cotton candy, a gentle breeze whisked away these sweet, fluffy tufts, blending them into a sparkling, sweet stream. This magical stream gave rise to LEVO COTTON CANDY soda, a whimsical potion that swirls with the sweet whispers of fairytale skies, enchanting the senses with every ethereal sip.<\/p>",
+        "btn_text": "",
+        "btn_link": "",
+        "btn": "btn_primary_fill",
+        "pt_mob": 80,
+        "pb_mob": 80,
+        "pt_tab": 80,
+        "pb_tab": 80,
+        "pt_desk": 80,
+        "pb_desk": 80
+      }
+    },
+    "image_options_UBYHf7": {
+      "type": "image-options",
+      "blocks": {
+        "block_y99c98": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Prebiotics_Icon_5fe8bd70-0ce2-450f-b842-b60ae769bcc6.svg",
+            "text": "Prebiotic Fiber for Gut Health"
+          }
+        },
+        "block_R7c4rL": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/5g_Fiber_Icon_1.svg",
+            "text": "5g of Cane Sugar"
+          }
+        },
+        "block_nN68GH": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/30.svg",
+            "text": "Only 30 Calories"
+          }
+        },
+        "block_NVwVpk": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/No_BS_Icon2.svg",
+            "text": "No Fake Ingredients"
+          }
+        }
+      },
+      "block_order": [
+        "block_y99c98",
+        "block_R7c4rL",
+        "block_nN68GH",
+        "block_NVwVpk"
+      ],
+      "settings": {
+        "section_anchor_id": "ingredients",
+        "c-bg-primary": "#fdeef6",
+        "c-title": "#231f20",
+        "c-body-primary": "#3a3a3b",
+        "image": "shopify:\/\/shop_images\/cc_nfp.svg",
+        "layout": "container",
+        "headline": "INGREDIENTS",
+        "text": "<p>Ingredients: Carbonated water, maltodextrin soluble dietary fiber, cane sugar, natural flavor, citric acid, and steviol glycosides.<\/p>",
+        "button_url": "",
+        "button_text": "",
+        "button_type": "btn_primary_fill",
+        "pt_mob": 0,
+        "pb_mob": 30,
+        "pt_tab": 80,
+        "pb_tab": 30,
+        "pt_desk": 100,
+        "pb_desk": 70
+      }
+    },
+    "float_element_Gc6hXq": {
+      "type": "float-element",
+      "settings": {
+        "section_anchor_id": "Float element",
+        "image": "shopify:\/\/shop_images\/fl4.svg",
+        "image_width": 300,
+        "container": 1700,
+        "container_wide": 1840,
+        "container_top": 0,
+        "container_bot": 1000,
+        "image_position": "right",
+        "x": 0,
+        "y": -250
+      }
+    },
+    "faq_default_eBbF3k": {
+      "type": "faq-default",
+      "blocks": {
+        "faq_H6fgNj": {
+          "type": "faq",
+          "settings": {
+            "question": "What is LEVO Soda?",
+            "answer": "<p>LEVO is a prebiotic soda that tastes great with indulgent flavors and elevates your wellness with dietary fiber for better gut health. <\/p>"
+          }
+        },
+        "faq_Uk9AUF": {
+          "type": "faq",
+          "settings": {
+            "question": "Why is LEVO good for gut health?",
+            "answer": "<p>LEVO contains 5g natural prebiotics from maltodextrin soluble dietary fiber - an excellent source of dietary fiber - to keep your gut happy, give you glowing skin, and boost your immune system! <\/p>"
+          }
+        },
+        "faq_tQYQAY": {
+          "type": "faq",
+          "settings": {
+            "question": "What’s in LEVO Soda?",
+            "answer": "<p>Levo uses the highest quality ingredients to deliver on function, without sacrificing taste or your health. For a full list of ingredients, check out our <a href=\"\/pages\/why-levo\" target=\"_blank\" title=\"LEVEL UP YOUR SODA\">ingredient page<\/a>.<\/p>"
+          }
+        },
+        "faq_fRNGUg": {
+          "type": "faq",
+          "settings": {
+            "question": "How much sugar is in LEVO Soda?",
+            "answer": "<p>Levo contains only 5 grams of natural cane sugar.<\/p>"
+          }
+        },
+        "faq_xpmUL4": {
+          "type": "faq",
+          "settings": {
+            "question": "How many calories are in Levo Soda?",
+            "answer": "<p>LEVO soda is a mere 30 calories.<\/p>"
+          }
+        },
+        "faq_4Baxnc": {
+          "type": "faq",
+          "settings": {
+            "question": "Does LEVO Soda contain any artificial ingredients?",
+            "answer": "<p>Never. LEVO uses Stevia, a naturally occurring sweetener found in Stevia rebaudiana (Bertoni) plant, an herbal shrub native to South America. On our product label, you’ll find it listed in the ingredients as “Steviol Glycosides”.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_H6fgNj",
+        "faq_Uk9AUF",
+        "faq_tQYQAY",
+        "faq_fRNGUg",
+        "faq_xpmUL4",
+        "faq_4Baxnc"
+      ],
+      "settings": {
+        "section_anchor_id": "FAQs",
+        "c-bg-primary": "#fdeef6",
+        "c-title": "#231f20",
+        "title": "FAQs",
+        "pt_mob": 30,
+        "pb_mob": 20,
+        "pt_tab": 30,
+        "pb_tab": 20,
+        "pt_desk": 70,
+        "pb_desk": 86
+      }
+    },
+    "richtext_rJj9UH": {
+      "type": "richtext",
+      "settings": {
+        "section_anchor_id": "Rich Text",
+        "c-bg-primary": "#fdeef6",
+        "c-title": "#231f20",
+        "c-body-primary": "#3a3a3b",
+        "title": "LEVEL UP YOUR SODA!",
+        "text": "",
+        "btn_text": "ADD TO CART",
+        "btn_link": "#main-product",
+        "btn": "prime_btn",
+        "pt_mob": 67,
+        "pb_mob": 150,
+        "pt_tab": 67,
+        "pb_tab": 250,
+        "pt_desk": 104,
+        "pb_desk": 410
+      }
+    },
+    "wave_divider_Q36yWP": {
+      "type": "wave-divider",
+      "settings": {
+        "section_anchor_id": "Divider",
+        "c-bg-primary": "#ffffff",
+        "wave_1": "#f3c6d8",
+        "wave_2": "#ed3293",
+        "wave_3": "#ffffff",
+        "divider_type": "waves",
+        "float_element": "quotes",
+        "overflow_full": true,
+        "margin_mob": 0,
+        "margin_tab": 0,
+        "margin": 0
+      }
+    },
+    "richtext_iVEntm": {
+      "type": "richtext",
+      "settings": {
+        "section_anchor_id": "Rich Text",
+        "c-bg-primary": "#ffffff",
+        "c-title": "#231f20",
+        "c-body-primary": "#3a3a3b",
+        "title": "REVIEWS",
+        "text": "<p>See what people are saying about LEVO Soda!<\/p>",
+        "btn_text": "",
+        "btn_link": "",
+        "btn": "btn_primary_fill",
+        "pt_mob": 80,
+        "pb_mob": 80,
+        "pt_tab": 80,
+        "pb_tab": 80,
+        "pt_desk": 80,
+        "pb_desk": 80
+      }
+    },
+    "1714152923f9a6953d": {
+      "type": "apps",
+      "blocks": {
+        "reviews_from_amazon_amazon_reviews_fPBAaq": {
+          "type": "shopify:\/\/apps\/reviews-from-amazon\/blocks\/Amazon reviews\/d2a0c9ad-3f97-43c4-9e0c-bc1a4007a201",
+          "settings": {
+            "heading": "Amazon reviews"
+          }
+        }
+      },
+      "block_order": [
+        "reviews_from_amazon_amazon_reviews_fPBAaq"
+      ],
+      "settings": {
+      }
+    },
+    "product_list_fAipQi": {
+      "type": "product-list",
+      "settings": {
+        "section_anchor_id": "Product list",
+        "c-bg-primary": "#ffffff",
+        "c-title": "#231f20",
+        "title": "FIND YOUR FAVORITE FLAVOR!",
+        "products": [
+          "cotton-candy",
+          "root-beer-float",
+          "cosmic-punch",
+          "orange-creamsicle",
+          "splice",
+          "voodoo-cola"
+        ],
+        "layout": "slider",
+        "pt_mob": 30,
+        "pb_mob": 100,
+        "pt_tab": 45,
+        "pb_tab": 250,
+        "pt_desk": 130,
+        "pb_desk": 353
+      }
+    }
+  },
+  "order": [
+    "main_product_LanJDb",
+    "richtext_47FpeX",
+    "image_options_UBYHf7",
+    "float_element_Gc6hXq",
+    "faq_default_eBbF3k",
+    "richtext_rJj9UH",
+    "wave_divider_Q36yWP",
+    "richtext_iVEntm",
+    "1714152923f9a6953d",
+    "product_list_fAipQi"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-contact",
+      "blocks": {
+        "99a13760-d378-424d-a3ba-a94e3dd7b859": {
+          "type": "topic",
+          "settings": {
+            "title": "Account & Checkout"
+          }
+        },
+        "898475e1-e28a-4353-9b51-9c9037261538": {
+          "type": "topic",
+          "settings": {
+            "title": "Orders"
+          }
+        },
+        "2ae2303d-989b-48a2-a959-493f7fbdc22f": {
+          "type": "topic",
+          "settings": {
+            "title": "Shipping"
+          }
+        }
+      },
+      "block_order": [
+        "99a13760-d378-424d-a3ba-a94e3dd7b859",
+        "898475e1-e28a-4353-9b51-9c9037261538",
+        "2ae2303d-989b-48a2-a959-493f7fbdc22f"
+      ],
+      "settings": {
+        "section_anchor_id": "Main contact",
+        "image_size": "medium",
+        "title": "Hi! How can we help?",
+        "text": "<p>We're here to assist you in any way we can. Just fill out the form below or reach out to us directly using the contact information provided.<\/p>",
+        "button_type": "btn_primary_fill",
+        "pt_mob": 40,
+        "pb_mob": 0,
+        "pt_tab": 60,
+        "pb_tab": 160,
+        "pt_desk": 80,
+        "pb_desk": 350
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

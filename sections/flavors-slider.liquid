@@ -1,0 +1,412 @@
+{% liquid
+  assign section_anchor_id = section.settings.section_anchor_id | handleize
+
+  assign blocks = section.blocks
+
+  assign pt_mob = section.settings.pt_mob
+  assign pb_mob = section.settings.pb_mob
+  assign pt_tab = section.settings.pt_tab
+  assign pb_tab = section.settings.pb_tab
+  assign pt_desk = section.settings.pt_desk
+  assign pb_desk = section.settings.pb_desk
+%}
+
+{% render 'css-variables-setter' %}
+
+{% render 'section-paddings',
+  section_id: section.id,
+  pt_mob: pt_mob,
+  pb_mob: pb_mob,
+  pt_tab: pt_tab,
+  pb_tab: pb_tab,
+  pt_desk: pt_desk,
+  pb_desk: pb_desk
+%}
+
+<div
+  id="{{ section_anchor_id }}"
+  data-section-id="{{ section.id }}"
+  class="bg-sc-bg-primary bg-primary-gradient overflow-hidden"
+>
+  <div
+    class="animate__animated opacity-0"
+    x-ignore
+    ax-load
+    x-data="flavorSlider('{{ blocks[0].settings.title | handleize }}', {{ blocks.size }})"
+    x-intersect="$el.classList.add('animate__fadeIn')"
+    style="--active-color: '{{ blocks[0].settings.color }}'"
+  >
+    <div class="container flex flex-wrap justify-center gap-4 pt-1 md:gap-6">
+      {% for block in blocks %}
+        {% liquid
+          assign title = block.settings.title
+          assign title_handle = block.settings.title | handleize
+          assign float = block.settings.float
+          assign color = block.settings.color
+        %}
+        <div class="group flex h-full w-full max-w-[calc(33%-12px)] flex-col space-y-2 md:max-w-[140px]">
+          <button
+            @click.prevent="active = '{{ title_handle }}'; slideTo({{ forloop.index0 }})"
+            class="relative h-0 w-full overflow-hidden rounded-[18px] pb-[100%] outline-none ring-[3px] ring-transparent duration-200 ease-in-out"
+            :class="active === '{{ title_handle }}' && '!ring-sc-title'"
+            style="background-color: {{ color | color_lighten: 30 }}"
+          >
+            {% if float != blank %}
+              <span class="absolute inset-0 flex h-full w-full items-center justify-center px-2 py-1 md:p-3">
+                {{
+                  float
+                  | image_url: width: 130
+                  | image_tag:
+                    alt: float.alt,
+                    loading: 'lazy',
+                    widths: '65, 130',
+                    class: 'w-full h-full object-contain pointer-events-none max-w-[65px] lg:group-hover:scale-110 duration-500 ease-in-out'
+                }}
+              </span>
+            {% else %}
+              <span class="absolute inset-0 flex h-full w-full items-center justify-center p-4">
+                <svg
+                  class="duration-500 ease-in-out lg:group-hover:scale-110"
+                  width="59"
+                  height="46"
+                  viewBox="0 0 59 46"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M8.16418 13.7087C7.62617 13.052 6.96156 12.7236 6.17037 12.7236C5.82225 12.7236 5.49786 12.7869 5.19721 12.9135C4.90446 13.0401 4.65128 13.2142 4.43766 13.4357C4.22404 13.6493 4.05393 13.9065 3.92734 14.2071C3.80866 14.5078 3.74932 14.8322 3.74932 15.1803C3.74932 15.5363 3.80866 15.8647 3.92734 16.1653C4.05393 16.466 4.22404 16.7271 4.43766 16.9486C4.65919 17.1701 4.91633 17.3442 5.20907 17.4708C5.50181 17.5974 5.81829 17.6607 6.1585 17.6607C6.90223 17.6607 7.57078 17.3442 8.16418 16.7113V19.4646L7.92682 19.5477C7.57078 19.6743 7.23848 19.7653 6.92992 19.8206C6.62135 19.8839 6.31674 19.9156 6.01609 19.9156C5.39896 19.9156 4.80556 19.8009 4.23591 19.5714C3.67416 19.3341 3.17571 19.0057 2.74055 18.5864C2.31331 18.1591 1.96914 17.6567 1.70805 17.0792C1.44695 16.4937 1.31641 15.8568 1.31641 15.1684C1.31641 14.4801 1.443 13.8511 1.69618 13.2814C1.95727 12.7039 2.30144 12.2094 2.72868 11.798C3.16384 11.3786 3.66625 11.0542 4.23591 10.8248C4.80556 10.5874 5.40292 10.4688 6.02796 10.4688C6.38399 10.4688 6.73212 10.5083 7.07233 10.5874C7.42046 10.6586 7.7844 10.7734 8.16418 10.9316V13.7087Z" fill="#231F20"/>
+                  <path d="M12.03 15.1922C12.03 15.5482 12.0972 15.8766 12.2317 16.1772C12.3662 16.4779 12.5482 16.739 12.7776 16.9605C13.0071 17.182 13.2721 17.3561 13.5728 17.4827C13.8813 17.6013 14.2057 17.6607 14.5459 17.6607C14.8862 17.6607 15.2066 17.6013 15.5072 17.4827C15.8158 17.3561 16.0848 17.182 16.3143 16.9605C16.5516 16.739 16.7376 16.4779 16.8721 16.1772C17.0066 15.8766 17.0738 15.5482 17.0738 15.1922C17.0738 14.8361 17.0066 14.5078 16.8721 14.2071C16.7376 13.9065 16.5516 13.6454 16.3143 13.4239C16.0848 13.2023 15.8158 13.0322 15.5072 12.9135C15.2066 12.7869 14.8862 12.7236 14.5459 12.7236C14.2057 12.7236 13.8813 12.7869 13.5728 12.9135C13.2721 13.0322 13.0071 13.2023 12.7776 13.4239C12.5482 13.6454 12.3662 13.9065 12.2317 14.2071C12.0972 14.5078 12.03 14.8361 12.03 15.1922ZM9.59704 15.1922C9.59704 14.5276 9.71967 13.9104 9.96494 13.3408C10.2102 12.7632 10.5504 12.2608 10.9856 11.8336C11.4207 11.4063 11.939 11.074 12.5403 10.8367C13.1495 10.5914 13.8181 10.4688 14.5459 10.4688C15.2659 10.4688 15.9305 10.5914 16.5398 10.8367C17.149 11.074 17.6712 11.4063 18.1063 11.8336C18.5494 12.2608 18.8935 12.7632 19.1388 13.3408C19.3841 13.9104 19.5067 14.5276 19.5067 15.1922C19.5067 15.8568 19.3841 16.4779 19.1388 17.0554C18.8935 17.6251 18.5494 18.1235 18.1063 18.5508C17.6712 18.978 17.149 19.3143 16.5398 19.5596C15.9305 19.7969 15.2659 19.9156 14.5459 19.9156C13.8181 19.9156 13.1495 19.7969 12.5403 19.5596C11.939 19.3143 11.4207 18.978 10.9856 18.5508C10.5504 18.1235 10.2102 17.6251 9.96494 17.0554C9.71967 16.4779 9.59704 15.8568 9.59704 15.1922Z" fill="#231F20"/>
+                  <path d="M20.8099 19.6664L22.329 10.718H24.6313L26.4234 15.4889L28.2036 10.718H30.5059L32.025 19.6664H29.7108L28.9394 14.5157L26.8269 19.6664H25.9012L23.8955 14.5157L23.1241 19.6664H20.8099Z" fill="#231F20"/>
+                  <path d="M36.062 10.718V19.6664H33.7359V10.718H36.062Z" fill="#231F20"/>
+                  <path d="M38.1687 19.6664V10.718H40.4948L44.791 16.1891V10.718H47.1052V19.6664H44.791L40.4948 14.1953V19.6664H38.1687Z" fill="#231F20"/>
+                  <path d="M53.737 14.6581H58.3537C58.3537 15.1328 58.3339 15.564 58.2943 15.9517C58.2548 16.3394 58.1756 16.6994 58.057 17.0317C57.8908 17.4985 57.6653 17.9139 57.3805 18.2778C57.0957 18.6339 56.7594 18.9345 56.3717 19.1798C55.9919 19.4171 55.5726 19.5991 55.1137 19.7257C54.6548 19.8523 54.1722 19.9156 53.6658 19.9156C52.9696 19.9156 52.3327 19.8009 51.7551 19.5714C51.1854 19.342 50.6949 19.0215 50.2835 18.6101C49.8721 18.1908 49.5516 17.6923 49.3222 17.1148C49.0927 16.5293 48.978 15.8845 48.978 15.1803C48.978 14.4841 49.0888 13.8471 49.3103 13.2696C49.5398 12.6841 49.8602 12.1856 50.2716 11.7742C50.691 11.3628 51.1934 11.0424 51.7788 10.8129C52.3643 10.5835 53.0171 10.4688 53.737 10.4688C54.6707 10.4688 55.4895 10.6705 56.1937 11.074C56.8979 11.4775 57.4557 12.1026 57.8671 12.9491L55.6596 13.863C55.4539 13.3724 55.1849 13.0203 54.8526 12.8067C54.5282 12.5931 54.1564 12.4863 53.737 12.4863C53.3889 12.4863 53.0724 12.5535 52.7876 12.688C52.5028 12.8146 52.2575 13.0006 52.0518 13.2458C51.854 13.4832 51.6958 13.772 51.5771 14.1122C51.4663 14.4524 51.4109 14.8322 51.4109 15.2515C51.4109 15.6313 51.4584 15.9834 51.5534 16.3078C51.6562 16.6321 51.8065 16.913 52.0043 17.1504C52.2021 17.3877 52.4474 17.5737 52.7401 17.7082C53.0329 17.8348 53.3731 17.898 53.7608 17.898C53.9902 17.898 54.2118 17.8743 54.4254 17.8268C54.639 17.7715 54.8289 17.6884 54.995 17.5776C55.1691 17.4589 55.3115 17.3086 55.4223 17.1266C55.5331 16.9447 55.6082 16.7231 55.6478 16.462H53.737V14.6581Z" fill="#231F20"/>
+                  <path d="M15.2296 28.6241C14.9764 28.4184 14.7232 28.2681 14.47 28.1731C14.2168 28.0703 13.9716 28.0189 13.7342 28.0189C13.4335 28.0189 13.1883 28.0901 12.9984 28.2325C12.8085 28.3749 12.7136 28.5608 12.7136 28.7903C12.7136 28.9485 12.761 29.0791 12.856 29.1819C12.9509 29.2848 13.0736 29.3757 13.2239 29.4549C13.3821 29.5261 13.5562 29.5894 13.7461 29.6448C13.9439 29.7001 14.1377 29.7595 14.3276 29.8228C15.0871 30.076 15.641 30.4162 15.9891 30.8434C16.3451 31.2627 16.5232 31.8126 16.5232 32.493C16.5232 32.9519 16.444 33.3673 16.2858 33.7392C16.1355 34.111 15.91 34.4315 15.6093 34.7005C15.3166 34.9616 14.9526 35.1633 14.5175 35.3057C14.0902 35.4561 13.6037 35.5312 13.0577 35.5312C11.9263 35.5312 10.878 35.195 9.91274 34.5225L10.9096 32.6473C11.2578 32.9559 11.6019 33.1853 11.9422 33.3357C12.2824 33.486 12.6186 33.5612 12.9509 33.5612C13.3307 33.5612 13.6116 33.4741 13.7935 33.3001C13.9834 33.126 14.0784 32.9282 14.0784 32.7067C14.0784 32.5722 14.0546 32.4574 14.0072 32.3625C13.9597 32.2596 13.8806 32.1687 13.7698 32.0895C13.659 32.0025 13.5127 31.9234 13.3307 31.8522C13.1566 31.781 12.943 31.7019 12.6898 31.6148C12.3892 31.5199 12.0925 31.417 11.7997 31.3063C11.5149 31.1876 11.2578 31.0333 11.0283 30.8434C10.8068 30.6535 10.6248 30.4162 10.4824 30.1313C10.3479 29.8386 10.2806 29.4707 10.2806 29.0276C10.2806 28.5846 10.3519 28.185 10.4943 27.829C10.6446 27.465 10.8503 27.1565 11.1114 26.9033C11.3804 26.6422 11.7048 26.4404 12.0846 26.298C12.4722 26.1556 12.9035 26.0844 13.3782 26.0844C13.8212 26.0844 14.2841 26.1477 14.7667 26.2743C15.2493 26.393 15.7122 26.571 16.1553 26.8083L15.2296 28.6241Z" fill="#231F20"/>
+                  <path d="M20.2554 30.8078C20.2554 31.1638 20.3227 31.4922 20.4572 31.7928C20.5917 32.0935 20.7737 32.3546 21.0031 32.5761C21.2325 32.7977 21.4976 32.9717 21.7982 33.0983C22.1068 33.217 22.4312 33.2763 22.7714 33.2763C23.1116 33.2763 23.4321 33.217 23.7327 33.0983C24.0413 32.9717 24.3103 32.7977 24.5397 32.5761C24.7771 32.3546 24.963 32.0935 25.0975 31.7928C25.232 31.4922 25.2993 31.1638 25.2993 30.8078C25.2993 30.4518 25.232 30.1234 25.0975 29.8228C24.963 29.5221 24.7771 29.261 24.5397 29.0395C24.3103 28.818 24.0413 28.6479 23.7327 28.5292C23.4321 28.4026 23.1116 28.3393 22.7714 28.3393C22.4312 28.3393 22.1068 28.4026 21.7982 28.5292C21.4976 28.6479 21.2325 28.818 21.0031 29.0395C20.7737 29.261 20.5917 29.5221 20.4572 29.8228C20.3227 30.1234 20.2554 30.4518 20.2554 30.8078ZM17.8225 30.8078C17.8225 30.1432 17.9451 29.5261 18.1904 28.9564C18.4357 28.3788 18.7759 27.8764 19.211 27.4492C19.6462 27.022 20.1644 26.6897 20.7657 26.4523C21.375 26.207 22.0435 26.0844 22.7714 26.0844C23.4914 26.0844 24.156 26.207 24.7652 26.4523C25.3744 26.6897 25.8966 27.022 26.3318 27.4492C26.7748 27.8764 27.119 28.3788 27.3643 28.9564C27.6096 29.5261 27.7322 30.1432 27.7322 30.8078C27.7322 31.4724 27.6096 32.0935 27.3643 32.6711C27.119 33.2407 26.7748 33.7392 26.3318 34.1664C25.8966 34.5937 25.3744 34.9299 24.7652 35.1752C24.156 35.4125 23.4914 35.5312 22.7714 35.5312C22.0435 35.5312 21.375 35.4125 20.7657 35.1752C20.1644 34.9299 19.6462 34.5937 19.211 34.1664C18.7759 33.7392 18.4357 33.2407 18.1904 32.6711C17.9451 32.0935 17.8225 31.4724 17.8225 30.8078Z" fill="#231F20"/>
+                  <path d="M31.4683 30.8078C31.4683 31.1638 31.5355 31.4922 31.67 31.7928C31.8045 32.0935 31.9865 32.3546 32.2159 32.5761C32.4454 32.7977 32.7104 32.9717 33.0111 33.0983C33.3196 33.217 33.644 33.2763 33.9842 33.2763C34.3245 33.2763 34.6449 33.217 34.9455 33.0983C35.2541 32.9717 35.5231 32.7977 35.7526 32.5761C35.9899 32.3546 36.1758 32.0935 36.3104 31.7928C36.4449 31.4922 36.5121 31.1638 36.5121 30.8078C36.5121 30.4518 36.4449 30.1234 36.3104 29.8228C36.1758 29.5221 35.9899 29.261 35.7526 29.0395C35.5231 28.818 35.2541 28.6479 34.9455 28.5292C34.6449 28.4026 34.3245 28.3393 33.9842 28.3393C33.644 28.3393 33.3196 28.4026 33.0111 28.5292C32.7104 28.6479 32.4454 28.818 32.2159 29.0395C31.9865 29.261 31.8045 29.5221 31.67 29.8228C31.5355 30.1234 31.4683 30.4518 31.4683 30.8078ZM29.0353 30.8078C29.0353 30.1432 29.158 29.5261 29.4032 28.9564C29.6485 28.3788 29.9887 27.8764 30.4239 27.4492C30.859 27.022 31.3773 26.6897 31.9786 26.4523C32.5878 26.207 33.2563 26.0844 33.9842 26.0844C34.7042 26.0844 35.3688 26.207 35.9781 26.4523C36.5873 26.6897 37.1095 27.022 37.5446 27.4492C37.9877 27.8764 38.3318 28.3788 38.5771 28.9564C38.8224 29.5261 38.945 30.1432 38.945 30.8078C38.945 31.4724 38.8224 32.0935 38.5771 32.6711C38.3318 33.2407 37.9877 33.7392 37.5446 34.1664C37.1095 34.5937 36.5873 34.9299 35.9781 35.1752C35.3688 35.4125 34.7042 35.5312 33.9842 35.5312C33.2563 35.5312 32.5878 35.4125 31.9786 35.1752C31.3773 34.9299 30.859 34.5937 30.4239 34.1664C29.9887 33.7392 29.6485 33.2407 29.4032 32.6711C29.158 32.0935 29.0353 31.4724 29.0353 30.8078Z" fill="#231F20"/>
+                  <path d="M40.6517 35.282V26.3336H42.9778L47.274 31.8047V26.3336H49.5882V35.282H47.274L42.9778 29.8109V35.282H40.6517Z" fill="#231F20"/>
+                </svg>
+              </span>
+            {% endif %}
+          </button>
+          <span class="font-primary text-sc-title lg:text-btn-lg xs:text-sm text-center text-xs font-bold">
+            {{- title -}}
+          </span>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="mx-auto max-w-5xl px-3">
+      {% for block in blocks %}
+        {% liquid
+          assign title_handle = block.settings.title | handleize
+          assign text = block.settings.text
+        %}
+
+        {% if text != blank %}
+          <div
+            class="rte text-sc-body-primary lg:text-body-lg font-secondary mt-6 text-center text-base"
+            style="min-height: var(--same-block-height)"
+            x-show="active === '{{ title_handle }}'"
+            x-data="SameBlockHeight('section')"
+          >
+            {{ text }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div
+      class="swiper animate__animated mt-7.5 md:mt-12.5 px-7.5 mx-auto max-w-[1330px] overflow-visible opacity-0"
+      x-ref="slider"
+      x-intersect.once="$el.classList.add('animate__fadeIn')"
+    >
+      <svg
+        class="px-7.5 smD:max-w-[calc(33%+40px)] absolute left-1/2 top-0 h-full w-full -translate-x-1/2 md:max-w-[calc(50%+30px)]"
+        width="448"
+        height="671"
+        viewBox="0 0 448 671"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+      >
+        <rect class="duration-300 ease-in-out" x="1.5" y="1.5" width="445" height="668" rx="18.5" stroke="var(--active-color)" stroke-width="3" stroke-linecap="round" stroke-dasharray="34 34"></rect>
+      </svg>
+
+      <div class="swiper-wrapper">
+        {% for block in blocks %}
+          {% liquid
+            assign title_handle = block.settings.title | handleize
+            assign image = block.settings.image
+            assign color = block.settings.color
+          %}
+
+          {% if image != blank %}
+            <div
+              class="swiper-slide relative !h-auto p-3 lg:p-6"
+              data-flavor="{{ title_handle }}"
+              data-flavor-color="{{ color }}"
+            >
+              {% comment %}
+                OLD VERSION
+                <svg
+                  class="absolute inset-0 h-full w-full duration-300"
+                  :class="active !== '{{ title_handle }}' && 'opacity-0'"
+                  width="448"
+                  height="671"
+                  viewBox="0 0 448 671"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="none"
+                >
+                  <rect x="1.5" y="1.5" width="445" height="668" rx="18.5" stroke="{{ color }}" stroke-width="3" stroke-linecap="round" stroke-dasharray="34 34"/>
+                </svg>
+              {% endcomment %}
+
+              {% assign style = 'background-color: ' | append: color %}
+              {{
+                image
+                | image_url: width: 800
+                | image_tag:
+                  alt: image.alt,
+                  loading: 'lazy',
+                  widths: '300, 400',
+                  class: 'w-full h-full object-contain pointer-events-none rounded-[20px]',
+                  style: style
+              }}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="same-height" style="min-height: var(--same-block-height)">
+      {% for block in blocks %}
+        {% liquid
+          assign title_handle = block.settings.title | handleize
+
+          unless block.settings.ben_icon_1 != blank or block.settings.ben_title_1 != blank
+            break
+          endunless
+        %}
+
+        <div
+          x-show="active === '{{ title_handle }}'"
+          x-data="SameBlockHeight('.same-height')"
+          class="2k:gap-x-5 container mt-6 flex flex-wrap items-baseline justify-center gap-x-2 gap-y-5 md:mt-12 md:gap-y-10 xl:gap-x-3"
+        >
+          {% for i in (1..6) %}
+            {% liquid
+              assign ben_icon_key = 'ben_icon_' | append: i
+              assign ben_title_key = 'ben_title_' | append: i
+
+              assign ben_icon = block.settings[ben_icon_key]
+              assign ben_title = block.settings[ben_title_key]
+            %}
+
+            {% if ben_icon != blank or ben_title != blank %}
+              <div
+                class="smD:w-full smD:max-w-[140px] flex w-[calc(25%-8px)] flex-col items-center space-y-2 md:space-y-4"
+              >
+                {% if ben_icon != blank %}
+                  <div class="max-w-[34px] md:max-w-20">
+                    {{
+                      ben_icon
+                      | image_url: width: 160
+                      | image_tag: alt: ben_title, loading: 'lazy', class: 'w-full h-full object-contain'
+                    }}
+                  </div>
+                {% endif %}
+
+                {% if ben_title != blank %}
+                  <span class="font-secondary text-sc-title text-link-xm text-center font-bold md:text-base">
+                    {{- ben_title -}}
+                  </span>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Flavors slider",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_anchor_id",
+      "label": "Section anchor id",
+      "default": "Flavors slider"
+    },
+    {
+      "type": "color",
+      "id": "c-bg-primary",
+      "label": "Section background color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "c-title",
+      "label": "Section title color",
+      "default": "#231F20"
+    },
+    {
+      "type": "color",
+      "id": "c-body-primary",
+      "label": "Section text color",
+      "default": "#3A3A3B"
+    },
+    {
+      "type": "header",
+      "content": "Padding Y settings"
+    },
+    {
+      "type": "number",
+      "id": "pt_mob",
+      "label": "Mobile padding top in px",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "pb_mob",
+      "label": "Mobile padding bottom in px",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "pt_tab",
+      "label": "Tablet padding top in px",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "pb_tab",
+      "label": "Tablet padding bottom in px",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "pt_desk",
+      "label": "Desktop padding top in px",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "pb_desk",
+      "label": "Desktop padding bottom in px",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "name": "flavor",
+      "type": "block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Flavor title",
+          "default": "COTTON CANDY"
+        },
+        {
+          "type": "image_picker",
+          "id": "float",
+          "label": "Flavor icon"
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Flavor color",
+          "default": "#EFCADD"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Flavor description",
+          "default": "<p>Ingredients: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Flavor image"
+        },
+        {
+          "type": "header",
+          "content": "Benefits"
+        },
+        {
+          "type": "image_picker",
+          "id": "ben_icon_1",
+          "label": "Benefit icon 1"
+        },
+        {
+          "type": "text",
+          "id": "ben_title_1",
+          "label": "Benefit title 1",
+          "info": "--"
+        },
+        {
+          "type": "image_picker",
+          "id": "ben_icon_2",
+          "label": "Benefit icon 2"
+        },
+        {
+          "type": "text",
+          "id": "ben_title_2",
+          "label": "Benefit title 2",
+          "info": "--"
+        },
+        {
+          "type": "image_picker",
+          "id": "ben_icon_3",
+          "label": "Benefit icon 3"
+        },
+        {
+          "type": "text",
+          "id": "ben_title_3",
+          "label": "Benefit title 3",
+          "info": "--"
+        },
+        {
+          "type": "image_picker",
+          "id": "ben_icon_4",
+          "label": "Benefit icon 4"
+        },
+        {
+          "type": "text",
+          "id": "ben_title_4",
+          "label": "Benefit title 4",
+          "info": "--"
+        },
+        {
+          "type": "image_picker",
+          "id": "ben_icon_5",
+          "label": "Benefit icon 5"
+        },
+        {
+          "type": "text",
+          "id": "ben_title_5",
+          "label": "Benefit title 5",
+          "info": "--"
+        },
+        {
+          "type": "image_picker",
+          "id": "ben_icon_6",
+          "label": "Benefit icon 6"
+        },
+        {
+          "type": "text",
+          "id": "ben_title_6",
+          "label": "Benefit title 6"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Flavors slider",
+      "category": "Repeatable"
+    }
+  ]
+}
+{% endschema %}

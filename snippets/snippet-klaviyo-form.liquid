@@ -1,0 +1,31 @@
+<form
+  x-data="klaviyoForm"
+  action="/"
+  @submit.prevent="sendKlaviyo('{{ list_id }}')"
+  class="relative {{ class }}"
+>
+  <div x-cloak x-show="submit" class="font-primary text-center text-xl font-bold">
+    {{ thanks_text }}
+  </div>
+
+  <div x-cloak x-show="!submit">
+    {%- render 'input',
+      name: 'email',
+      label: placeholder,
+      type: 'text',
+      required: true,
+      autocomplete: 'email',
+      enterkeyhint: 'send',
+      self_submit: true,
+      submit_input: true,
+      text_color: text_color,
+      border_color: border_color,
+      input_height: input_height,
+      input_radius: '60px'
+    -%}
+  </div>
+
+  {% if small_text != blank %}
+    <div class="font-secondary mt-3 text-xs md:mt-4 md:text-sm" x-cloak x-show="!submit">{{ small_text }}</div>
+  {% endif %}
+</form>

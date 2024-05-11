@@ -1,0 +1,201 @@
+{% liquid
+  assign logo = section.settings.logo
+  assign logo_width = section.settings.logo_width
+  assign navlist = section.settings.linklist
+  assign bottom_linklist = section.settings.bottom_linklist
+  assign copyright_text = section.settings.copyright_text
+
+  assign pt_mob = section.settings.pt_mob
+  assign pb_mob = section.settings.pb_mob
+  assign pt_tab = section.settings.pt_tab
+  assign pb_tab = section.settings.pb_tab
+  assign pt_desk = section.settings.pt_desk
+  assign pb_desk = section.settings.pb_desk
+%}
+
+{% render 'css-variables-setter' %}
+
+{% render 'section-paddings',
+  section_id: section.id,
+  pt_mob: pt_mob,
+  pb_mob: pb_mob,
+  pt_tab: pt_tab,
+  pb_tab: pb_tab,
+  pt_desk: pt_desk,
+  pb_desk: pb_desk
+%}
+
+<div
+  data-section-id="{{ section.id }}"
+  class="bg-sc-bg-primary text-sc-title"
+>
+  <div class="container">
+    <div class="space-y-12 md:space-y-8">
+      <div>
+        {% if logo != 'none' and settings[logo] != blank %}
+          {{
+            settings[logo]
+            | image_url: width: logo_width
+            | image_tag: loading: 'lazy', alt: shop.name, class: 'mb-5 mx-auto'
+          }}
+        {% elsif logo == 'name' %}
+          <h2 class="mx-auto text-center text-2xl md:text-3xl 2xl:text-5xl">{{ shop.name }}</h2>
+        {% endif %}
+      </div>
+      {% render 'social-media', class: 'flex flex-wrap justify-center gap-3' %}
+    </div>
+    <ul class="smD:space-y-0 smD:space-x-12 smD:mt-15 smD:flex-row mt-11 flex w-full flex-col items-center justify-center space-y-6">
+      {%- for link in navlist.links -%}
+        <li class="font-secondary text-btn-lg flex font-black tracking-wide">
+          <a
+            href="{{ link.url }}"
+            class="{% render 'btn-class', btn: 'link_primary' %} text-sc-title"
+          >
+            <span>
+              {{- link.title -}}
+            </span>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+
+    <hr class="smD:mt-20 bg-sc-title mt-6 h-[1px]">
+
+    <div class="smD:items-baseline smD:flex smD:justify-between smD:space-y-0 smD:space-x-10 mt-7.5 space-y-3.5">
+      {%- if copyright_text != blank -%}
+        <div class="smD:max-w-xs smD:text-left shrink-0 text-center text-base">
+          {{- copyright_text -}}
+        </div>
+      {%- endif -%}
+
+      {% if bottom_linklist != blank %}
+        <ul class="smD:justify-end flex flex-wrap justify-center gap-y-2 space-x-4 md:space-x-6">
+          {%- for link in bottom_linklist.links -%}
+            <li class="font-secondary text-xs md:text-sm">
+              {{- link.title | link_to: link.url, class: 'btn-link-anim underline' -}}
+            </li>
+          {%- endfor -%}
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Footer",
+  "tag": "footer",
+  "settings": [
+    {
+      "type": "color",
+      "id": "c-bg-primary",
+      "label": "Background color",
+      "default": "#ed3293"
+    },
+    {
+      "type": "color",
+      "id": "c-title",
+      "label": "Text color",
+      "default": "#0D1E0A"
+    },
+    {
+      "type": "header",
+      "content": "Footer settings"
+    },
+    {
+      "type": "link_list",
+      "id": "linklist",
+      "label": "Navigation linklist"
+    },
+    {
+      "type": "select",
+      "id": "logo",
+      "label": "Logo style",
+      "options": [
+        {
+          "value": "logo_dark",
+          "label": "Dark logo"
+        },
+        {
+          "value": "logo_light",
+          "label": "Light logo"
+        },
+        {
+          "value": "logo_dark_short",
+          "label": "Dark short logo"
+        },
+        {
+          "value": "logo_light_short",
+          "label": "Light short logo"
+        },
+        {
+          "value": "name",
+          "label": "Display store name"
+        },
+        {
+          "value": "none",
+          "label": "Without logo"
+        }
+      ],
+      "default": "logo_light"
+    },
+    {
+      "type": "number",
+      "id": "logo_width",
+      "label": "Logo width",
+      "default": 164
+    },
+    {
+      "type": "richtext",
+      "id": "copyright_text",
+      "label": "Copyright text",
+      "default": "<p>© 2023 Binaery.</p>"
+    },
+    {
+      "type": "link_list",
+      "id": "bottom_linklist",
+      "label": "Bottom linklist"
+    },
+    {
+      "type": "header",
+      "content": "Padding Y settings"
+    },
+    {
+      "type": "number",
+      "id": "pt_mob",
+      "label": "Mobile padding top in px",
+      "default": 42
+    },
+    {
+      "type": "number",
+      "id": "pb_mob",
+      "label": "Mobile padding bottom in px",
+      "default": 32
+    },
+    {
+      "type": "number",
+      "id": "pt_tab",
+      "label": "Tablet padding top in px",
+      "default": 32
+    },
+    {
+      "type": "number",
+      "id": "pb_tab",
+      "label": "Tablet padding bottom in px",
+      "default": 52
+    },
+    {
+      "type": "number",
+      "id": "pt_desk",
+      "label": "Desktop padding top in px",
+      "default": 80
+    },
+    {
+      "type": "number",
+      "id": "pb_desk",
+      "label": "Desktop padding bottom in px",
+      "default": 20
+    }
+  ]
+}
+{% endschema %}

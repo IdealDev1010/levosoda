@@ -1,0 +1,220 @@
+{
+  "sections": {
+    "section_h1_tag_WDVerX": {
+      "type": "section-h1-tag",
+      "settings": {
+        "h1_title": "FAQ"
+      }
+    },
+    "banner_with_title_4mFKyQ": {
+      "type": "banner-with-title",
+      "settings": {
+        "section_anchor_id": "Banner with title",
+        "bg": "#cdf3f0",
+        "text_color": "#231f20",
+        "title": "FAQ",
+        "image": "shopify:\/\/shop_images\/about-desk.webp",
+        "image_mob": "shopify:\/\/shop_images\/about-mob.webp",
+        "image_size": "medium",
+        "pt_mob": 20,
+        "pb_mob": 0,
+        "pt_tab": 30,
+        "pb_tab": 0,
+        "pt_desk": 30,
+        "pb_desk": 0
+      }
+    },
+    "wave_divider_Vc7nEA": {
+      "type": "wave-divider",
+      "settings": {
+        "section_anchor_id": "Divider",
+        "c-bg-primary": "#fff",
+        "wave_1": "#9de0fb",
+        "wave_2": "#6accf5",
+        "wave_3": "#fff6ef",
+        "divider_type": "waves",
+        "float_element": "whirlpool",
+        "overflow_full": true,
+        "margin_mob": 0,
+        "margin_tab": 0,
+        "margin": 0
+      }
+    },
+    "faq_with_info_rhNVxQ": {
+      "type": "faq-with-info",
+      "blocks": {
+        "faq_xteDnw": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I create an account?",
+            "answer": "<p>To create an account, simply click on the 'Sign Up' button on our website's homepage. Follow the prompts to provide the required information, such as your name, email address, and password.<\/p>"
+          }
+        },
+        "faq_TrWQqn": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your return\/exchange policy?",
+            "answer": "<p>Lorem Ipsum is simply dummy Lorem Ipsum.<\/p>"
+          }
+        },
+        "faq_949K98": {
+          "type": "faq",
+          "settings": {
+            "question": "What payment methods do you accept?",
+            "answer": ""
+          }
+        },
+        "faq_kgL7Jx": {
+          "type": "faq",
+          "settings": {
+            "question": "Are your products\/services covered by a warranty?",
+            "answer": ""
+          }
+        },
+        "faq_NB8CRX": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": ""
+          }
+        },
+        "faq_DD64Kx": {
+          "type": "faq",
+          "settings": {
+            "question": "How can I contact your customer support team?",
+            "answer": ""
+          }
+        },
+        "faq_WCc9QR": {
+          "type": "faq",
+          "settings": {
+            "question": "How can I contact your customer support team?",
+            "answer": ""
+          }
+        }
+      },
+      "block_order": [
+        "faq_xteDnw",
+        "faq_TrWQqn",
+        "faq_949K98",
+        "faq_kgL7Jx",
+        "faq_NB8CRX",
+        "faq_DD64Kx",
+        "faq_WCc9QR"
+      ],
+      "settings": {
+        "section_anchor_id": "FAQ with info",
+        "c-bg-primary": "#fff6ef",
+        "c-title": "#231F20",
+        "c-body-primary": "#3A3A3B",
+        "title": "FREQUENTLY ASKED QUESTIONS",
+        "subtitle": "<p>If you can't find the answer you're looking for, please feel free to chat with our friendly team.<\/p>",
+        "button_url": "",
+        "button_text": "GET IN TOUCH",
+        "button_type": "btn_primary_fill",
+        "pt_mob": 23,
+        "pb_mob": 50,
+        "pt_tab": 30,
+        "pb_tab": 50,
+        "pt_desk": 80,
+        "pb_desk": 80
+      }
+    },
+    "products_list_nWwmiz": {
+      "type": "product-list",
+      "blocks": {
+        "block_y99c98": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/icon-1.webp",
+            "text": "Prebiotics"
+          }
+        },
+        "block_R7c4rL": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/icon-2.webp",
+            "text": "Digestive"
+          }
+        },
+        "block_nN68GH": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/icon-3.webp",
+            "text": "2-5g of sugar"
+          }
+        },
+        "block_NVwVpk": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/icon-4.webp",
+            "text": "Vegan"
+          }
+        },
+        "block_xAPA4J": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/icon-5.webp",
+            "text": "Gluten Free"
+          }
+        },
+        "block_trJrX4": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/icon-6.webp",
+            "text": "5g of Fiber"
+          }
+        },
+        "block_PCYAPe": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/icon-7.webp",
+            "text": "Paleo"
+          }
+        },
+        "block_aKDLDj": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/icon-8.webp",
+            "text": "Non GMO"
+          }
+        }
+      },
+      "block_order": [
+        "block_y99c98",
+        "block_R7c4rL",
+        "block_nN68GH",
+        "block_NVwVpk",
+        "block_xAPA4J",
+        "block_trJrX4",
+        "block_PCYAPe",
+        "block_aKDLDj"
+      ],
+      "settings": {
+        "section_anchor_id": "Products list",
+        "c-bg-primary": "#FFF6EF",
+        "c-title": "#231F20",
+        "title": "LEVEL UP YOUR SODA",
+        "products": [
+          "cotton-candy",
+          "root-beer-float",
+          "cosmic-punch"
+        ],
+        "layout": "slider",
+        "pt_mob": 50,
+        "pb_mob": 148,
+        "pt_tab": 50,
+        "pb_tab": 250,
+        "pt_desk": 36,
+        "pb_desk": 400
+      }
+    }
+  },
+  "order": [
+    "section_h1_tag_WDVerX",
+    "banner_with_title_4mFKyQ",
+    "wave_divider_Vc7nEA",
+    "faq_with_info_rhNVxQ",
+    "products_list_nWwmiz"
+  ]
+}

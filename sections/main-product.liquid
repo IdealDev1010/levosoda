@@ -1,0 +1,585 @@
+{% liquid
+  assign section_anchor_id = section.settings.section_anchor_id | handleize
+
+  assign meta = product.metafields.binaery.product_information
+
+  assign brand_color = meta.value.product_brand_color.value | default: '#fff'
+  assign slogan = meta.value.slogan.value
+  assign price_info = meta.value.price_info.value
+  assign accordions = meta.value.accordions.value
+  assign benefits = meta.value.benefits.value
+  assign review = meta.value.review.value
+  assign prime_link = meta.value.prime_link.value
+  assign meta_variants = meta.value.meta_variants.value
+
+  assign pt_mob = section.settings.pt_mob
+  assign pb_mob = section.settings.pb_mob
+  assign pt_tab = section.settings.pt_tab
+  assign pb_tab = section.settings.pb_tab
+  assign pt_desk = section.settings.pt_desk
+  assign pb_desk = section.settings.pb_desk
+%}
+
+{% render 'section-paddings',
+  section_id: section.id,
+  pt_mob: pt_mob,
+  pb_mob: pb_mob,
+  pt_tab: pt_tab,
+  pb_tab: pb_tab,
+  pt_desk: pt_desk,
+  pb_desk: pb_desk
+%}
+
+{% render 'css-variables-setter' %}
+
+<div
+  id="{{ section_anchor_id }}"
+  data-section-id="{{ section.id }}"
+  class="text-sc-title"
+  style="background-color: {{ brand_color | color_lighten: 40 }}; --brand-color: {{ brand_color }}; --brand-color-30: {{ brand_color | color_lighten: 30 }}"
+>
+  <div
+    class="animate__animated animate__faster smD:grid smD:grid-cols-2 smD:space-x-10 xl:space-x-15 container max-w-[1410px] opacity-0 xl:flex"
+    x-intersect="$el.classList.add('animate__fadeIn')"
+  >
+    <div class="smD:m-0 relative mx-auto mb-5 w-full max-w-2xl rounded-[30px] xl:max-w-[600px]" x-data="CssCarousel">
+      <div class="relative">
+        {% if product.media.size > 1 %}
+          <button
+            :class="activeSlide > 1 && 'opacity-100 !visible'"
+            @click.debounce.300ms="prevSlide()"
+            class="left-7.5 z-1 invisible absolute top-1/2 -translate-y-1/2 opacity-0 duration-200 ease-in-out"
+          >
+            {% render 'icon',
+              name: 'carousel-arrow',
+              class: 'w-7.5 h-[56px] rotate-180 text-white duration-300 ease-in-out hover:text-sc-title'
+            %}
+          </button>
+        {% endif %}
+
+        <ul
+          x-ref="mainSlider"
+          class="scrollbar-hide gap-7.5 grid w-full snap-x snap-mandatory auto-cols-[100%] grid-flow-col overflow-x-auto scroll-smooth rounded-[30px] duration-200"
+        >
+          {% assign counter = 1 %}
+          {% for media in product.media %}
+            {% liquid
+              if media.alt == 'hidden'
+                continue
+              endif
+
+              assign lazy_load = false
+              assign preload = true
+              if counter > 1
+                assign lazy_load = 'lazy'
+                assign preload = false
+              endif
+            %}
+
+            <li
+              class="relative flex h-0 w-full snap-start list-none pb-[100%]"
+              x-intersect:enter.full="activeSlide = {{ counter }}"
+            >
+              {% case media.media_type %}
+                {% when 'image' %}
+                  {{
+                    media
+                    | image_url: width: 1200
+                    | image_tag:
+                      alt: media.alt,
+                      loading: lazy_load,
+                      preload: preload,
+                      class: 'h-full w-full absolute inset-0 object-cover rounded-[30px]',
+                      widths: '246, 315, 493, 600, 713, 823, 990, 1100, 1200'
+                  }}
+                {% when 'video' %}
+                  <span class="absolute inset-0" x-data="videoToggler()">
+                    <button
+                      type="button"
+                      @click="togglePlay()"
+                      aria-label="play/pause video"
+                      :class="play && 'opacity-0 hover:opacity-100'"
+                      class="absolute left-1/2 top-1/2 z-[2] -translate-x-1/2 -translate-y-1/2 text-white duration-300"
+                    >
+                      <span x-show="!play" x-cloak>{% render 'icon', name: 'play-btn', class: 'w-12 h-12' %}</span>
+                      <span x-show="play" x-cloak>{% render 'icon', name: 'pause-btn', class: 'w-12 h-12' %}</span>
+                    </button>
+
+                    {% assign img_poster = none %}
+                    {% if media.preview_image != blank %}
+                      {% assign img_poster = media.preview_image | image_url: width: 520 %}
+                    {% endif %}
+
+                    <span class="block h-full w-full cursor-pointer" @click="togglePlay()">
+                      {{
+                        media
+                        | video_tag:
+                          loop: false,
+                          muted: false,
+                          controls: false,
+                          class: 'h-full w-full object-cover rounded-[30px]',
+                          x-ref: 'video',
+                          playsinline: true,
+                          poster: img_poster,
+                          loading: lazy_load
+                      }}
+                    </span>
+                  </span>
+              {% endcase %}
+            </li>
+            {% assign counter = counter | plus: 1 %}
+          {% endfor %}
+        </ul>
+
+        {% if product.media.size > 1 %}
+          <button
+            :class="activeSlide < slideCount && 'opacity-100 !visible'"
+            @click.debounce.300ms="nextSlide()"
+            class="right-7.5 z-1 invisible absolute top-1/2 -translate-y-1/2 opacity-0 duration-200 ease-in-out"
+          >
+            {% render 'icon',
+              name: 'carousel-arrow',
+              class: 'w-7.5 h-[56px] text-white duration-300 ease-in-out hover:text-sc-title'
+            %}
+          </button>
+        {% endif %}
+      </div>
+
+      {% assign product_benefits_size = section.blocks | where: 'type', 'product_benefits' | size %}
+      {% if benefits and product_benefits_size == 1 %}
+        <div class="smD:flex hidden flex-wrap justify-center gap-2 py-10">
+          {% for benefit in benefits %}
+            <div
+              class="lg:eag-custom-delay relative flex w-[calc(25%-8px)] flex-col items-center space-y-3"
+              style="--eag-custom-delay: {{- 4 | minus: forloop.index | append: '00ms' }}"
+            >
+              {% if benefit.icon != blank %}
+                <div class="max-w-11 md:max-w-16">
+                  {{
+                    benefit.icon
+                    | image_url: width: 220
+                    | image_tag: alt: benefit.title, class: 'w-full h-full object-contain'
+                  }}
+                </div>
+              {% endif %}
+
+              {% if benefit.title != blank %}
+                <span
+                  class="font-primary xs:text-sm text-center text-xs font-bold"
+                >
+                  {{- benefit.title -}}
+                </span>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if product.images.size > 1 %}
+        <ul class="smD:grid smD:grid-cols-2 smD:gap-7.5 mt-3 flex flex-wrap justify-center gap-2 md:mt-5">
+          {% assign counter = 1 %}
+          {% for media in product.media %}
+            {% liquid
+              if media.alt == 'hidden'
+                continue
+              endif
+
+              assign lazy_load = false
+              if counter > 1
+                assign lazy_load = 'lazy'
+              endif
+            %}
+
+            <li
+              class="smD:h-0 smD:pb-[300px] smD:w-full relative flex snap-start list-none overflow-hidden rounded-[10px] border border-transparent duration-200 ease-in-out"
+              :class="activeSlide === {{ counter }} && '!border-[var(--brand-color)]'"
+            >
+              <button
+                @click="slideTo({{ counter | minus: 1 }})"
+                class="h-12.5 w-12.5 smD:w-full smD:h-full smD:absolute smD:inset-0 md:h-20 md:w-20"
+              >
+                {% case media.media_type %}
+                  {% when 'image' %}
+                    {{
+                      media
+                      | image_url: width: 400
+                      | image_tag:
+                        alt: media.alt,
+                        loading: lazy_load,
+                        class: 'h-full w-full object-cover',
+                        widths: '50, 100, 200, 300, 400'
+                    }}
+                  {% when 'video' %}
+                    {{
+                      media.preview_image
+                      | image_url: width: 400
+                      | image_tag:
+                        alt: media.preview_image.alt,
+                        loading: lazy_load,
+                        class: 'h-full w-full object-cover',
+                        widths: '50, 100, 200, 300, 400'
+                    }}
+                {% endcase %}
+              </button>
+            </li>
+
+            {% assign counter = counter | plus: 1 %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+
+    <div class="smD:pt-9 sticky top-0 h-max max-h-full flex-1">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when '@app' %}
+            <div class="">{% render block %}</div>
+
+          {% when 'product_title' %}
+            <h1 class="font-primary text-title-sm smD:text-title-lg mb-1 font-bold" style="color: var(--brand-color);">
+              {{ product.title }}
+            </h1>
+
+          {% when 'product_price' %}
+            <div class="mt-4 flex items-center space-x-2">
+              <span class="text-title-ml font-primary font-bold tracking-wide">{{ product.price | money }}</span>
+              {% if product.compare_at_price > product.price %}
+                <del class="text-sc-body-primary font-secondary text-body-lg">
+                  {{- product.compare_at_price | money -}}
+                </del>
+              {% endif %}
+            </div>
+
+            {% if price_info %}
+              <div class="mt-1 flex flex-wrap items-center">
+                {% for pr_info in price_info %}
+                  <span class="font-secondary text-sc-body-primary mr-2 text-sm">{{ pr_info }}</span>
+                  {% unless forloop.last %}
+                    <svg
+                      class="mr-2"
+                      width="12"
+                      height="13"
+                      viewBox="0 0 12 13"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M6 0.5C7.0286 3.27974 9.22026 5.4714 12 6.5C9.22026 7.5286 7.0286 9.72026 6 12.5C4.9714 9.72026 2.77974 7.5286 0 6.5C2.77974 5.4714 4.9714 3.27974 6 0.5Z" fill="var(--brand-color)"/>
+                    </svg>
+                  {% endunless %}
+                {% endfor %}
+              </div>
+            {% endif %}
+
+          {% when 'product_description' %}
+            {% if product.description != blank %}
+              <div class="text-sc-body-primary font-secondary mt-4 line-clamp-3 text-sm">
+                {{ product.description | strip_html }}
+              </div>
+            {% endif %}
+
+          {% when 'product_prime_btn' %}
+            {% if prime_link %}
+              <div class="md:mt-7.5 mx-auto mt-6 max-w-xl">
+                {% render 'prime-btn', link: prime_link %}
+              </div>
+            {% endif %}
+
+          {% when 'product_accordions' %}
+            {% if accordions %}
+              <div
+                x-data="{active: 0}"
+                class="my-7.5"
+              >
+                {% for accordion in accordions %}
+                  {% capture content %}
+                    {% if accordion.content.value.count > 1 %}
+                      <ul class="!m-0 list-none space-y-3 !p-0">
+                        {% for item in accordion.content.value %}
+                          <li class="flex items-baseline space-x-2">
+                            <svg class="shrink-0" width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M6 0.212891C7.0286 2.99263 9.22026 5.18429 12 6.21289C9.22026 7.24149 7.0286 9.43315 6 12.2129C4.9714 9.43315 2.77974 7.24149 0 6.21289C2.77974 5.18429 4.9714 2.99263 6 0.212891Z" fill="var(--brand-color)"/>
+                            </svg>
+
+                            <span>
+                              <span class="font-secondary text-sc-title text-sm font-bold">
+                                {{ item.title }}
+                              </span>
+
+                              <span class="rte font-secondary text-sc-body-primary pt-0.5 text-xs">{{ item.text | metafield_tag }}</span>
+                            </span>
+                          </li>
+
+                        {% endfor %}
+                      </ul>
+                    {% else %}
+                      {% assign content = accordion.content.value | first %}
+                      {{ content.text | metafield_tag }}
+                    {% endif %}
+                  {% endcapture %}
+
+                  {% assign accordion_class = 'border-t border-[var(--brand-color-30)] py-6' %}
+                  {% if forloop.last %}
+                    {% assign accordion_class = accordion_class | append: ' border-b' %}
+                  {% endif %}
+
+                  {% render 'product-info-accordion-item',
+                    active: forloop.index0,
+                    title: accordion.title,
+                    content: content,
+                    class: accordion_class
+                  %}
+                {% endfor %}
+              </div>
+            {% endif %}
+
+          {% when 'product_benefits' %}
+            {% if benefits %}
+              <div class="smD:hidden mt-7.5 mb-5 flex flex-wrap justify-center gap-3">
+                {% for benefit in benefits %}
+                  <div
+                    class="lg:eag-custom-delay relative flex w-full max-w-[calc(50%-8px)] flex-col items-center space-y-3"
+                    style="--eag-custom-delay: {{- 4 | minus: forloop.index | append: '00ms' }}"
+                  >
+                    {% if benefit.icon != blank %}
+                      <div class="max-w-11 md:max-w-16">
+                        {{
+                          benefit.icon
+                          | image_url: width: 220
+                          | image_tag: alt: benefit.title, class: 'w-full h-full object-contain'
+                        }}
+                      </div>
+                    {% endif %}
+
+                    {% if benefit.title != blank %}
+                      <span
+                        class="font-primary xs:text-sm text-center text-xs font-bold"
+                      >
+                        {{- benefit.title -}}
+                      </span>
+                    {% endif %}
+                  </div>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+          {% when 'product_review' %}
+            {% if review %}
+              <div class="smD:flex mt-7.5 hidden items-center space-x-4 rounded-[8px] bg-white/70 px-5 py-4">
+                {% if review.image != blank %}
+                  <div class="max-w-20 overflow-hidden rounded-full">
+                    {{
+                      review.image
+                      | image_url: width: 160
+                      | image_tag: alt: benefit.title, class: 'w-full h-full object-cover rounded-full'
+                    }}
+                  </div>
+                {% endif %}
+                <div class="space-y-1">
+                  {% if review.title != blank %}
+                    <span class="font-primary text-sm font-bold">{{ review.title }}</span>
+                  {% endif %}
+                  <div class="flex items-center space-x-0.5">
+                    {% for i in (1..review.rating.value) %}
+                      {% render 'icon', name: 'rev_star' %}
+                    {% endfor %}
+                  </div>
+                  {% if review.text != blank %}
+                    <div class="rte text-sc-body-primary font-secondary text-base">
+                      {{ review.text | metafield_tag }}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            {% endif %}
+
+          {% when 'product_form' %}
+            {% style %}
+              .shopify-payment-button__more-options, .shopify-payment-button__button {
+                height: 0px;
+                visibility: hidden;
+              }
+            {% endstyle %}
+            {% form 'product', product %}
+             {{ form | payment_button }}
+            {% endform %}
+
+          {% when 'product_meta_variants' %}
+            {% if meta_variants %}
+              <div class="mt-6 md:mt-3.5">
+                <span class="font-secondary mb-2 text-xs font-black tracking-wide">SINGLE PACK</span>
+                <div class="grid grid-cols-3 gap-3.5">
+                  {% for meta_product in meta_variants %}
+                    {% assign meta_product_bg = meta_product.metafields.binaery.product_information.value.product_brand_color.value %}
+                    {% assign meta_product_image = meta_product.metafields.binaery.product_information.value.float_element
+                      | default: meta_product.featured_image
+                    %}
+                    <a
+                      href="{{ meta_product.url }}"
+                      class="smD:flex-row smD:px-3 smD:py-3.5 flex flex-col items-center justify-between rounded-[10px] border-[2px] border-[var(--meta-brand-color)] p-2.5 {% if meta_product.handle == product.handle %}bg-[var(--meta-brand-color)]{% else %} bg-transparent{% endif %}"
+                      style="--meta-brand-color: {{ meta_product_bg }};"
+                    >
+                      <span class="font-secondary smD:text-left mb-1.5 text-center text-xs font-black tracking-wide md:text-sm {% if meta_product.handle == product.handle %}text-white{% else %}text-sc-title{% endif %}">
+                        {{- meta_product.title -}}
+                      </span>
+                      {% if meta_product_image != blank %}
+                        <div class="max-w-[28px] md:max-w-10">
+                          {{
+                            meta_product_image
+                            | image_url: width: 90
+                            | image_tag:
+                              alt: meta_product_image.alt,
+                              class: 'h-full w-full object-contain',
+                              widths: '40, 60, 80, 90'
+                          }}
+                        </div>
+                      {% endif %}
+                    </a>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Main product",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_anchor_id",
+      "label": "Section anchor id",
+      "default": "Main product"
+    },
+    {
+      "type": "color",
+      "id": "c-title",
+      "label": "Section title color",
+      "default": "#231F20"
+    },
+    {
+      "type": "color",
+      "id": "c-body-primary",
+      "label": "Section text color",
+      "default": "#3A3A3B"
+    },
+    {
+      "type": "header",
+      "content": "Padding Y settings"
+    },
+    {
+      "type": "number",
+      "id": "pt_mob",
+      "label": "Mobile padding top in px",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "pb_mob",
+      "label": "Mobile padding bottom in px",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "pt_tab",
+      "label": "Tablet padding top in px",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "pb_tab",
+      "label": "Tablet padding bottom in px",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "pt_desk",
+      "label": "Desktop padding top in px",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "pb_desk",
+      "label": "Desktop padding bottom in px",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_title",
+      "name": "Product title",
+      "limit": 1
+    },
+    {
+      "type": "product_price",
+      "name": "Product price",
+      "limit": 1
+    },
+    {
+      "type": "product_description",
+      "name": "Product description",
+      "limit": 1
+    },
+    {
+      "type": "product_form",
+      "name": "Product form",
+      "limit": 1
+    },
+    {
+      "type": "product_prime_btn",
+      "name": "Product Prime button",
+      "limit": 1
+    },
+    {
+      "type": "product_accordions",
+      "name": "Product accordions",
+      "limit": 1
+    },
+    {
+      "type": "product_benefits",
+      "name": "Product benefits",
+      "limit": 1
+    },
+    {
+      "type": "product_review",
+      "name": "Product review",
+      "limit": 1
+    },
+    {
+      "type": "product_meta_variants",
+      "name": "Product meta-variants",
+      "limit": 1
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main product",
+      "category": "Repeatable",
+      "blocks": [
+        {
+          "type": "product_title"
+        },
+        {
+          "type": "product_price"
+        },
+        {
+          "type": "product_description"
+        },
+        {
+          "type": "product_form"
+        },
+        {
+          "type": "product_prime_btn"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

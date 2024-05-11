@@ -1,0 +1,26 @@
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "header": {
+      "type": "header",
+      "settings": {
+        "c-title": "#ffffff",
+        "c-body-primary": "#000000",
+        "c-bg-primary": "#000000",
+        "c-bg-secondary": "#000000",
+        "sticky_header": true,
+        "header_link_list": "main-menu",
+        "layout_header": "logo_left",
+        "login_layout": "drawer",
+        "logo_style": "light",
+        "shop_all_btn_text": "SHOP",
+        "shop_all_btn_url": "shopify:\/\/collections\/shop",
+        "shop_all_btn": "btn_primary_outline"
+      }
+    }
+  },
+  "order": [
+    "header"
+  ]
+}

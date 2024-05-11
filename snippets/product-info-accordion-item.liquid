@@ -1,0 +1,22 @@
+{% assign class = class | default: 'border-b border-gray-200 pb-5' %}
+
+<div class="{{ class }}">
+  <button
+    type="button"
+    class="text-sc-title flex w-full items-center justify-between text-base font-medium"
+    @click="active === {{ active }} ? active = null : active = {{ active }}"
+  >
+    <span class="font-primary lg:text-btn-lg text-base font-bold">{{ title }}</span>
+
+    {% render 'icon',
+      name: 'accordion-icon',
+      class: 'shrink-0 duration-200 ease-in-out text-sc-title',
+      active: active
+    %}
+  </button>
+  <div x-show="active === {{ active }}" x-collapse>
+    <div class="text-sc-body-primary rte pt-3 text-xs">
+      {{ content }}
+    </div>
+  </div>
+</div>

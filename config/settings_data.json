@@ -1,0 +1,157 @@
+{
+  "current": {
+    "favicon": "shopify:\/\/shop_images\/cotton_candy.svg",
+    "uniq_hp_header": true,
+    "font_primary": "futura_n4",
+    "font_secondary": "lato_n4",
+    "logo_dark": "shopify:\/\/shop_images\/black_levo.png",
+    "logo_light": "shopify:\/\/shop_images\/Levo_Logo_3D_White_with_Black.svg",
+    "logo_max_w_mobile": 120,
+    "logo_max_w_desktop": 250,
+    "c-subtitle": "#000000",
+    "c-blur-overlay": "#fff",
+    "c-btn-primary-bg-default": "#231f20",
+    "c-btn-primary-bg-hover": "#ffffff",
+    "c-btn-primary-text-hover": "#000000",
+    "c-btn-secondary-text-default": "#231F20",
+    "c-btn-secondary-bg-hover": "#ffe76c",
+    "c-btn-secondary-text-hover": "#231F20",
+    "c-link-primary-text": "#ed3293",
+    "c-link-secondary-text": "#ffd812",
+    "c-accent-success": "#13d38f",
+    "r-btn-main": 60,
+    "r-input": 5,
+    "r-block": 0,
+    "social_facebook": "#",
+    "social_twitter": "#",
+    "social_instagram": "#",
+    "social_youtube": "#",
+    "sections": {
+      "color-swatches": {
+        "type": "color-swatches",
+        "blocks": {
+          "33eb0d79-ce3e-4a2c-a089-b5df4c9cd38c": {
+            "type": "color_swatch",
+            "settings": {
+              "title": "Red",
+              "swatch_color": "#ff0000"
+            }
+          },
+          "e332c989-c45d-4955-a93c-3dec52b70273": {
+            "type": "color_swatch",
+            "settings": {
+              "title": "Black",
+              "swatch_color": "#000000"
+            }
+          },
+          "2eeeb294-a23e-44ad-8b80-7e8777aeb0e7": {
+            "type": "color_swatch",
+            "settings": {
+              "title": "Yellow",
+              "swatch_color": "#ecff00"
+            }
+          },
+          "965244c2-a4d0-4f05-b989-d41ec9d2dc89": {
+            "type": "color_swatch",
+            "settings": {
+              "title": "Purple",
+              "swatch_color": "#b300ff"
+            }
+          },
+          "a7ecb758-ebd2-41f9-98dd-76ff35f69cac": {
+            "type": "color_swatch",
+            "settings": {
+              "title": "Cuba Havana",
+              "swatch_color": "#927935"
+            }
+          }
+        },
+        "block_order": [
+          "33eb0d79-ce3e-4a2c-a089-b5df4c9cd38c",
+          "e332c989-c45d-4955-a93c-3dec52b70273",
+          "2eeeb294-a23e-44ad-8b80-7e8777aeb0e7",
+          "965244c2-a4d0-4f05-b989-d41ec9d2dc89",
+          "a7ecb758-ebd2-41f9-98dd-76ff35f69cac"
+        ],
+        "settings": {
+        }
+      },
+      "mobile-menu": {
+        "type": "mobile-menu",
+        "settings": {
+          "c-title": "#231f20",
+          "c-body-primary": "#3a3a3b",
+          "c-bg-primary": "#ffffff",
+          "c-bg-secondary": "#f6f6f6",
+          "main_linklist": "main-menu",
+          "additional_linklist": "",
+          "enable_social_link": true,
+          "enable_help_btn": true,
+          "help_btn_text": "Need Help?",
+          "help_btn_url": "shopify:\/\/pages\/contact"
+        }
+      },
+      "cart": {
+        "type": "cart",
+        "blocks": {
+          "e3b74ed2-5376-4541-a55f-b21c31c22dcd": {
+            "type": "empty_cart_btn",
+            "settings": {
+              "text": "Continue shopping",
+              "url": "shopify:\/\/collections\/shop"
+            }
+          }
+        },
+        "block_order": [
+          "e3b74ed2-5376-4541-a55f-b21c31c22dcd"
+        ],
+        "settings": {
+          "sc-title": "#151515",
+          "sc-subtitle": "#054a49",
+          "sc-body-primary": "#52525b",
+          "sc-bg-primary": "#ffffff",
+          "sc-bg-secondary": "#f6f6f6",
+          "sc-btn-primary-bg-default": "#054a49",
+          "sc-btn-primary-text-default": "#ffffff",
+          "sc-btn-primary-bg-hover": "#002f2e",
+          "sc-btn-primary-text-hover": "#ffffff",
+          "cart_type": "drawer",
+          "cart_title": "Shopping Cart",
+          "empty_cart_title": "Your cart is empty",
+          "cart_progress_bar_enabled": true,
+          "cart_progress_bar_threshold": 100,
+          "cart_progress_message": "Spend [amount_left] more and get free shipping!",
+          "cart_progress_reached_message": "You are eligible for free shipping.",
+          "cart_upsells_enabled": true,
+          "cart_upsells_title": "Trending this month",
+          "cart_upsells": [
+            "dev",
+            "the-3p-fulfilled-snowboard",
+            "selling-plans-ski-wax",
+            "gift-card"
+          ],
+          "cart_footer_title": "Total",
+          "cart_footer_privacy_rte": "<p>Taxes and <a href=\"\/\" target=\"_blank\" title=\"\/\">shipping<\/a> calculated at checkout<\/p>",
+          "cart_checkout_btn_text": "Checkout"
+        }
+      },
+      "search": {
+        "type": "search",
+        "settings": {
+          "search_menu": "mobile-main-links",
+          "search_upsells_enabled": true,
+          "search_upsells_title": "Trending this month",
+          "search_upsells": [
+            "rossignol-circuit-amptek-snowboard-2016",
+            "burton-citizen-binding-2016-womens",
+            "dev",
+            "pdp-dev"
+          ]
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  }
+}

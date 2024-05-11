@@ -1,0 +1,189 @@
+{% liquid
+  assign section_anchor_id = section.settings.section_anchor_id | handleize
+  assign bg = section.settings.bg
+  assign text_color = section.settings.text_color
+
+  assign title = section.settings.title
+
+  assign image = section.settings.image
+  assign image_tab = section.settings.image_tab | default: image
+  assign image_mob = section.settings.image_mob | default: image_tab
+  assign image_size = section.settings.image_size
+  case image_size
+    when 'small'
+      assign img_size = 'max-h-[350px] md:max-h-[550px] 2k:max-h-[650px]'
+    when 'medium'
+      assign img_size = 'max-h-[400px] md:max-h-[600px] 2k:max-h-[750px]'
+    when 'large'
+      assign img_size = 'max-h-[500px] md:max-h-[650px] 2k:max-h-[800px]'
+  endcase
+
+  assign pt_mob = section.settings.pt_mob
+  assign pb_mob = section.settings.pb_mob
+  assign pt_tab = section.settings.pt_tab
+  assign pb_tab = section.settings.pb_tab
+  assign pt_desk = section.settings.pt_desk
+  assign pb_desk = section.settings.pb_desk
+%}
+
+{% render 'section-paddings',
+  section_id: section.id,
+  pt_mob: pt_mob,
+  pb_mob: pb_mob,
+  pt_tab: pt_tab,
+  pb_tab: pb_tab,
+  pt_desk: pt_desk,
+  pb_desk: pb_desk
+%}
+
+<div
+  id="{{ section_anchor_id }}"
+  data-section-id="{{ section.id }}"
+  style="background-color: {{ bg }}; color: {{ text_color }}"
+>
+  {% if title != blank %}
+    <div class="container overflow-hidden">
+      <h2
+        class="animate__animated font-primary text-title-sm lg:text-title-xl break-words text-center font-bold opacity-0"
+        x-intersect="$el.classList.add('animate__fadeInUp')"
+      >
+        {{- title -}}
+      </h2>
+    </div>
+  {% endif %}
+
+  {% assign img_class = img_size | append: ' h-full w-full object-cover object-top' %}
+  {% if image %}
+    <picture>
+      <source srcset="{{ image | image_url: width: 1700 }}" media="(min-width: 1020px)">
+      <source srcset="{{ image_tab | image_url: width: 1150 }}" media="(min-width: 600px)">
+      <source srcset="{{ image_mob | image_url: width: 600 }}" media="(max-width: 600px)">
+      {{
+        image
+        | image_url: width: image.width
+        | image_tag: alt: image.alt, class: img_class, widths: '375, 500, 768, 1024, 1280, 1440, 1536, 1700'
+      }}
+    </picture>
+  {% else %}
+    {{ 'lifestyle-2' | placeholder_svg_tag: img_class }}
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Banner with title",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_anchor_id",
+      "label": "Section anchor id",
+      "default": "Banner with title"
+    },
+    {
+      "type": "color",
+      "id": "bg",
+      "label": "Section background color",
+      "default": "#CDF3F0"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Section title color",
+      "default": "#231F20"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "Our story"
+    },
+    {
+      "type": "header",
+      "content": "Image settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_tab",
+      "label": "Tablet image (optional)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mob",
+      "label": "Mobile image (optional)"
+    },
+    {
+      "type": "select",
+      "id": "image_size",
+      "label": "Image height",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium",
+      "info": "aspect ratio 3:2"
+    },
+    {
+      "type": "header",
+      "content": "Padding Y settings"
+    },
+    {
+      "type": "number",
+      "id": "pt_mob",
+      "label": "Mobile padding top in px",
+      "default": 20
+    },
+    {
+      "type": "number",
+      "id": "pb_mob",
+      "label": "Mobile padding bottom in px",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "pt_tab",
+      "label": "Tablet padding top in px",
+      "default": 30
+    },
+    {
+      "type": "number",
+      "id": "pb_tab",
+      "label": "Tablet padding bottom in px",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "pt_desk",
+      "label": "Desktop padding top in px",
+      "default": 30
+    },
+    {
+      "type": "number",
+      "id": "pb_desk",
+      "label": "Desktop padding bottom in px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner with title",
+      "category": "Repeatable"
+    }
+  ]
+}
+{% endschema %}

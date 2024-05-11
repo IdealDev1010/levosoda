@@ -1,0 +1,46 @@
+{
+  "sections": {
+    "main": {
+      "type": "cart_main",
+      "blocks": {
+        "3f78b395-e8f2-4144-b863-ffb460d0f493": {
+          "type": "empty_cart_btn",
+          "settings": {
+            "text": "Continue Shopping",
+            "url": "shopify:\/\/collections"
+          }
+        }
+      },
+      "block_order": [
+        "3f78b395-e8f2-4144-b863-ffb460d0f493"
+      ],
+      "settings": {
+        "sc-title": "#151515",
+        "sc-subtitle": "#054a49",
+        "sc-body-primary": "#52525b",
+        "sc-bg-primary": "#ffffff",
+        "sc-bg-secondary": "#f6f6f6",
+        "sc-btn-primary-bg-default": "#054a49",
+        "sc-btn-primary-text-default": "#ffffff",
+        "sc-btn-primary-bg-hover": "#002f2e",
+        "sc-btn-primary-text-hover": "#ffffff",
+        "cart_title": "Your Cart",
+        "empty_cart_title": "You cart is empty",
+        "cart_upsells_enabled": true,
+        "cart_upsells_title": "You may also like",
+        "cart_upsells": [
+          "dev",
+          "gift-card",
+          "selling-plans-ski-wax",
+          "the-3p-fulfilled-snowboard"
+        ],
+        "cart_footer_title": "Subtotal",
+        "cart_footer_privacy_rte": "<p>Taxes and shipping calculated at checkout.<\/p>",
+        "cart_checkout_btn_text": "Checkout"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

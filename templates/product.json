@@ -1,0 +1,199 @@
+{
+  "sections": {
+    "main_product_LanJDb": {
+      "type": "main-product",
+      "blocks": {
+        "product_title_TXKkdm": {
+          "type": "product_title",
+          "settings": {
+          }
+        },
+        "product_price_98cXhf": {
+          "type": "product_price",
+          "settings": {
+          }
+        },
+        "product_meta_variants_mGrKLr": {
+          "type": "product_meta_variants",
+          "settings": {
+          }
+        },
+        "product_prime_btn_XKqFiF": {
+          "type": "product_prime_btn",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "product_review_PkzUUd": {
+          "type": "product_review",
+          "settings": {
+          }
+        },
+        "product_benefits_cr8U3C": {
+          "type": "product_benefits",
+          "settings": {
+          }
+        },
+        "product_accordions_xAy9aB": {
+          "type": "product_accordions",
+          "settings": {
+          }
+        },
+        "product_form_GKxRJU": {
+          "type": "product_form",
+          "settings": {
+          }
+        },
+        "product_description_GdJQCW": {
+          "type": "product_description",
+          "disabled": true,
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "product_title_TXKkdm",
+        "product_price_98cXhf",
+        "product_meta_variants_mGrKLr",
+        "product_prime_btn_XKqFiF",
+        "product_review_PkzUUd",
+        "product_benefits_cr8U3C",
+        "product_accordions_xAy9aB",
+        "product_form_GKxRJU",
+        "product_description_GdJQCW"
+      ],
+      "settings": {
+        "section_anchor_id": "Main product",
+        "c-title": "#231f20",
+        "c-body-primary": "#3a3a3b",
+        "pt_mob": 30,
+        "pb_mob": 45,
+        "pt_tab": 30,
+        "pb_tab": 45,
+        "pt_desk": 45,
+        "pb_desk": 45
+      }
+    },
+    "image_options_UBYHf7": {
+      "type": "image-options",
+      "settings": {
+        "section_anchor_id": "ingredients",
+        "c-bg-primary": "#fdeef6",
+        "c-title": "#231f20",
+        "c-body-primary": "#3a3a3b",
+        "layout": "container",
+        "headline": "INGREDIENTS",
+        "text": "<p>Ingredients: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.<\/p>",
+        "button_url": "",
+        "button_text": "Button text",
+        "button_type": "prime_btn",
+        "pt_mob": 30,
+        "pb_mob": 30,
+        "pt_tab": 30,
+        "pb_tab": 30,
+        "pt_desk": 0,
+        "pb_desk": 70
+      }
+    },
+    "faq_default_eBbF3k": {
+      "type": "faq-default",
+      "blocks": {
+        "faq_H6fgNj": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I create an account?",
+            "answer": "<p>To create an account, simply click on the 'Sign Up' button on our website's homepage. Follow the prompts to provide the required information, such as your name, email address, and password.<\/p>"
+          }
+        },
+        "faq_Uk9AUF": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your return\/exchange policy?",
+            "answer": ""
+          }
+        }
+      },
+      "block_order": [
+        "faq_H6fgNj",
+        "faq_Uk9AUF"
+      ],
+      "settings": {
+        "section_anchor_id": "FAQS",
+        "c-bg-primary": "#fdeef6",
+        "c-title": "#231f20",
+        "title": "FAQS",
+        "pt_mob": 30,
+        "pb_mob": 20,
+        "pt_tab": 30,
+        "pb_tab": 20,
+        "pt_desk": 70,
+        "pb_desk": 86
+      }
+    },
+    "richtext_rJj9UH": {
+      "type": "richtext",
+      "settings": {
+        "section_anchor_id": "Rich Text",
+        "c-bg-primary": "#fdeef6",
+        "c-title": "#231f20",
+        "c-body-primary": "#3a3a3b",
+        "title": "LEVEL UP YOUR SODA WITH LEVO PREBIOTIC SODA!",
+        "text": "",
+        "btn_text": "ADD TO CART",
+        "btn_link": "",
+        "btn": "prime_btn",
+        "pt_mob": 67,
+        "pb_mob": 150,
+        "pt_tab": 67,
+        "pb_tab": 250,
+        "pt_desk": 104,
+        "pb_desk": 410
+      }
+    },
+    "wave_divider_gV9PXQ": {
+      "type": "wave-divider",
+      "settings": {
+        "section_anchor_id": "Divider",
+        "c-bg-primary": "#ffffff",
+        "wave_1": "#f49ac1",
+        "wave_2": "#f3c6d8",
+        "wave_3": "#fdeef6",
+        "divider_type": "waves",
+        "float_element": "quotes",
+        "overflow_full": true,
+        "margin_mob": 0,
+        "margin_tab": 0,
+        "margin": 0
+      }
+    },
+    "product_list_fAipQi": {
+      "type": "product-list",
+      "settings": {
+        "section_anchor_id": "Product list",
+        "c-bg-primary": "#fdeef6",
+        "c-title": "#231f20",
+        "title": "LEVEL UP YOUR SODA",
+        "products": [
+          "cotton-candy",
+          "root-beer-float",
+          "cosmic-punch"
+        ],
+        "layout": "slider",
+        "pt_mob": 30,
+        "pb_mob": 148,
+        "pt_tab": 45,
+        "pb_tab": 250,
+        "pt_desk": 114,
+        "pb_desk": 353
+      }
+    }
+  },
+  "order": [
+    "main_product_LanJDb",
+    "image_options_UBYHf7",
+    "faq_default_eBbF3k",
+    "richtext_rJj9UH",
+    "wave_divider_gV9PXQ",
+    "product_list_fAipQi"
+  ]
+}

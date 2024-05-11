@@ -1,0 +1,223 @@
+<!-- newsletter.liquid -->
+{% liquid
+  assign section_anchor_id = section.settings.section_anchor_id | handleize
+
+  assign c-title = section.settings['c-title']
+  assign input_color = section.settings.input_color
+
+  assign float_img = section.settings.float_img
+  assign float_img_width = section.settings.float_img_width | append: 'px'
+
+  assign title = section.settings.title
+  assign subtitle = section.settings.subtitle
+  assign list_id = section.settings.list_id
+  assign placeholder = section.settings.placeholder
+  assign thanks_text = section.settings.thanks_text
+  assign small_text = section.settings.small_text
+
+  assign pt_mob = section.settings.pt_mob
+  assign pb_mob = section.settings.pb_mob
+  assign pt_tab = section.settings.pt_tab
+  assign pb_tab = section.settings.pb_tab
+  assign pt_desk = section.settings.pt_desk
+  assign pb_desk = section.settings.pb_desk
+%}
+
+{% render 'css-variables-setter' %}
+
+{% render 'section-paddings',
+  section_id: section.id,
+  pt_mob: pt_mob,
+  pb_mob: pb_mob,
+  pt_tab: pt_tab,
+  pb_tab: pb_tab,
+  pt_desk: pt_desk,
+  pb_desk: pb_desk
+%}
+
+<div
+  id="{{ section_anchor_id }}"
+  data-section-id="{{ section.id }}"
+  class="bg-sc-bg-primary text-sc-title overflow-hidden"
+>
+  <div class="container relative max-w-[1440px]">
+    {% if float_img %}
+      <div
+        x-data="FloatElement('{{ pb_desk }}', '{{ pt_desk }}')"
+        class="parallax-brand absolute left-6 hidden w-full lg:block"
+        style="max-width: {{ float_img_width }};"
+      >
+        {{
+          float_img
+          | image_url: width: float_img_width
+          | image_tag: loading: 'lazy', alt: float_img.alt, class: 'w-full h-full object-contain'
+        }}
+      </div>
+    {% endif %}
+
+    <div class="2k:max-w-5xl mx-auto max-w-2xl 2xl:max-w-3xl">
+      {% if subtitle != blank %}
+        <div class="rte mb-4 text-center text-base font-medium">
+          {{ subtitle }}
+        </div>
+      {% endif %}
+      {% if title != blank %}
+        <div class="overflow-hidden">
+          <h2
+            class="animate__animated font-primary text-title-sm lg:text-title-xl mb-3 text-center font-bold opacity-0 lg:mb-12"
+            x-intersect.once="$el.classList.add('animate__fadeInUp')"
+          >
+            {{ title }}
+          </h2>
+        </div>
+      {% endif %}
+      <div
+        class="animate__animated eag-delay-500ms mx-auto max-w-xl opacity-0"
+        x-intersect.once="$el.classList.add('animate__fadeIn')"
+      >
+        {% render 'snippet-klaviyo-form',
+          list_id: list_id,
+          placeholder: placeholder,
+          thanks_text: thanks_text,
+          small_text: small_text,
+          input_height: 56,
+          text_color: c-title,
+          border_color: input_color
+        %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_anchor_id",
+      "label": "Section anchor id",
+      "default": "Newsletter"
+    },
+    {
+      "type": "color",
+      "id": "c-title",
+      "label": "Text color",
+      "default": "#231F20"
+    },
+    {
+      "type": "color",
+      "id": "input_color",
+      "label": "Input color",
+      "default": "#ED3293"
+    },
+    {
+      "type": "color",
+      "id": "c-bg-primary",
+      "label": "Background color",
+      "default": "#fff"
+    },
+    {
+      "type": "image_picker",
+      "id": "float_img",
+      "label": "Float image"
+    },
+    {
+      "type": "number",
+      "id": "float_img_width",
+      "label": "Float image width",
+      "default": 345
+    },
+    {
+      "type": "header",
+      "content": "Newsletter settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "Join our newsletter"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Section subtitle",
+      "default": "<p>Stay in the know</p>"
+    },
+    {
+      "type": "header",
+      "content": "Sign up settings"
+    },
+    {
+      "type": "text",
+      "id": "list_id",
+      "label": "Klaviyo list id"
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Input placeholder",
+      "default": "Enter Email"
+    },
+    {
+      "type": "richtext",
+      "id": "thanks_text",
+      "label": "Thanks text",
+      "default": "<p>Thanks for subscribing!</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "small_text",
+      "label": "Additional small text",
+      "default": "<p>Helper text goes here.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Padding Y settings"
+    },
+    {
+      "type": "number",
+      "id": "pt_mob",
+      "label": "Mobile padding top in px",
+      "default": 60
+    },
+    {
+      "type": "number",
+      "id": "pb_mob",
+      "label": "Mobile padding bottom in px",
+      "default": 40
+    },
+    {
+      "type": "number",
+      "id": "pt_tab",
+      "label": "Tablet padding top in px",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "pb_tab",
+      "label": "Tablet padding bottom in px",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "pt_desk",
+      "label": "Desktop padding top in px",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "pb_desk",
+      "label": "Desktop padding bottom in px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter",
+      "category": "Repeatable"
+    }
+  ]
+}
+{% endschema %}

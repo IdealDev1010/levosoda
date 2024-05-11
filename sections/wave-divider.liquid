@@ -1,0 +1,165 @@
+{% liquid
+  assign section_anchor_id = section.settings.section_anchor_id | handleize
+
+  assign wave_1 = section.settings.wave_1
+  assign wave_2 = section.settings.wave_2
+  assign wave_3 = section.settings.wave_3
+  assign divider_type = section.settings.divider_type
+
+  assign float_element = section.settings.float_element
+
+  assign overflow_full = section.settings.overflow_full
+  assign margin_mob = section.settings.margin_mob
+  assign margin_tab = section.settings.margin_tab
+  assign margin = section.settings.margin
+%}
+
+{% render 'css-variables-setter' %}
+
+{% unless overflow_full %}
+  {% if margin != 0 or margin_tab != 0 or margin_mob != 0 %}
+    {% style %}
+      [data-section-id="{{ section.id }}"] {
+        margin-top: {{ margin_mob | append: 'px' }};
+      }
+      @media (min-width: 744px) {
+        [data-section-id="{{ section.id }}"] {
+          margin-top: {{ margin_tab | append: 'px' }};
+        }
+      }
+      @media (min-width: 1024px) {
+        [data-section-id="{{ section.id }}"] {
+          margin-top: {{ margin | append: 'px' }};
+        }
+      }
+    {% endstyle %}
+  {% endif %}
+{% endunless %}
+
+<div
+  id="{{ section_anchor_id }}"
+  data-section-id="{{ section.id }}"
+  class="{% if overflow_full %}absolute bottom-full w-full{% endif %}"
+>
+  <div class="-z-1 bg-sc-bg-primary absolute inset-0 h-full w-full"></div>
+
+  {% render 'waves', type: divider_type, float: float_element, wave_1: wave_1, wave_2: wave_2, wave_3: wave_3 %}
+</div>
+
+{% schema %}
+{
+  "name": "Divider",
+  "tag": "section",
+  "class": "relative",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_anchor_id",
+      "label": "Section anchor id",
+      "default": "Divider"
+    },
+    {
+      "type": "color",
+      "id": "c-bg-primary",
+      "label": "Background color",
+      "default": "#fff"
+    },
+    {
+      "type": "header",
+      "content": "Waves settings"
+    },
+    {
+      "type": "color",
+      "id": "wave_1",
+      "label": "Wave 1 color",
+      "default": "#9DE0FB"
+    },
+    {
+      "type": "color",
+      "id": "wave_2",
+      "label": "Wave 2 color",
+      "default": "#6ACCF5"
+    },
+    {
+      "type": "color",
+      "id": "wave_3",
+      "label": "Wave 3 color",
+      "default": "#23AAE1"
+    },
+    {
+      "type": "select",
+      "id": "divider_type",
+      "label": "Section divider type",
+      "options": [
+        {
+          "value": "waves",
+          "label": "Waves"
+        },
+        {
+          "value": "waves_big",
+          "label": "Big waves"
+        }
+      ],
+      "default": "waves"
+    },
+    {
+      "type": "header",
+      "content": "Float elements settings"
+    },
+    {
+      "type": "select",
+      "id": "float_element",
+      "label": "Section float elements",
+      "options": [
+        {
+          "value": "whirlpool",
+          "label": "Whirlpool"
+        },
+        {
+          "value": "quotes",
+          "label": "Quotes"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ],
+      "default": "whirlpool"
+    },
+    {
+      "type": "header",
+      "content": "Overflow settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "overflow_full",
+      "label": "Cover previous section",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "margin_mob",
+      "label": "Margin top mobile (optional)",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "margin_tab",
+      "label": "Margin top tablet (optional)",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "margin",
+      "label": "Margin top desktop (optional)",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Divider",
+      "category": "Repeatable"
+    }
+  ]
+}
+{% endschema %}

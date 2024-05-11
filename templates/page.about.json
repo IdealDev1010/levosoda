@@ -1,0 +1,192 @@
+{
+  "sections": {
+    "section_h1_tag_Xzei8H": {
+      "type": "section-h1-tag",
+      "settings": {
+        "h1_title": "OUR STORY"
+      }
+    },
+    "banner_with_title_4mFKyQ": {
+      "type": "banner-with-title",
+      "settings": {
+        "section_anchor_id": "Banner with title",
+        "bg": "#000000",
+        "text_color": "#ffffff",
+        "title": "OUR STORY",
+        "image": "shopify:\/\/shop_images\/about-desk.webp",
+        "image_mob": "shopify:\/\/shop_images\/about-mob.webp",
+        "image_size": "medium",
+        "pt_mob": 20,
+        "pb_mob": 0,
+        "pt_tab": 30,
+        "pb_tab": 0,
+        "pt_desk": 30,
+        "pb_desk": 0
+      }
+    },
+    "wave_divider_Vc7nEA": {
+      "type": "wave-divider",
+      "settings": {
+        "section_anchor_id": "Divider",
+        "c-bg-primary": "#ffffff",
+        "wave_1": "#9de0fb",
+        "wave_2": "#6accf5",
+        "wave_3": "#fff6ef",
+        "divider_type": "waves",
+        "float_element": "whirlpool",
+        "overflow_full": true,
+        "margin_mob": 0,
+        "margin_tab": 0,
+        "margin": 0
+      }
+    },
+    "float_element_hyHjX6": {
+      "type": "float-element",
+      "settings": {
+        "section_anchor_id": "Float element",
+        "image": "shopify:\/\/shop_images\/fl6.svg",
+        "image_width": 250,
+        "container": 1640,
+        "container_wide": 1440,
+        "container_top": 400,
+        "container_bot": 450,
+        "image_position": "right",
+        "x": -125,
+        "y": 600
+      }
+    },
+    "image_with_text_R97JAh": {
+      "type": "image-with-text",
+      "settings": {
+        "section_anchor_id": "Image with text",
+        "c-bg-primary": "#fff6ef",
+        "c-title": "#231f20",
+        "img_color": "#f3c6d8",
+        "image": "shopify:\/\/shop_images\/cotton-candy-ls2.jpg",
+        "image_size": "medium",
+        "layout": "container_reverse",
+        "headline": "OUR MISSION",
+        "title_size": "big",
+        "text": "<p>LEVO Soda was created for those of you looking to get a little more flavor out of life. People who approach the world with an open mind and a vivid imagination. Reaching for more and unwilling to compromise on what matters most. Even when it comes to sodas. You love the indulgent taste of traditional sodas but aren’t willing to accept their unhealthy baggage.<\/p>",
+        "button_url": "",
+        "button_text": "",
+        "button_type": "btn_fill",
+        "pt_mob": 40,
+        "pb_mob": 40,
+        "pt_tab": 60,
+        "pb_tab": 60,
+        "pt_desk": 100,
+        "pb_desk": 120
+      }
+    },
+    "float_element_RQE3Vy": {
+      "type": "float-element",
+      "settings": {
+        "section_anchor_id": "Float element",
+        "image": "shopify:\/\/shop_images\/fl5.svg",
+        "image_width": 215,
+        "container": 1740,
+        "container_wide": 1740,
+        "container_top": 150,
+        "container_bot": 500,
+        "image_position": "left",
+        "x": 100,
+        "y": -100
+      }
+    },
+    "image_with_text_TFCMw6": {
+      "type": "image-with-text",
+      "settings": {
+        "section_anchor_id": "Image with text",
+        "c-bg-primary": "#fff6ef",
+        "c-title": "#231f20",
+        "img_color": "#f3c6d8",
+        "image": "shopify:\/\/shop_images\/dms.png",
+        "image_size": "medium",
+        "layout": "container",
+        "headline": "OUR FOUNDATIONAL INGREDIENTS",
+        "title_size": "big",
+        "text": "<p>LEVO Soda levels up your soda. It’s a prebiotic soda that pushes the boundaries of taste with delicious, indulgent flavors and elevates your wellness with 5 grams of dietary fiber for better gut health, contains all-natural flavors, only 5 grams of cane sugar, and a mere 30 calories.<\/p>",
+        "button_url": "shopify:\/\/pages\/why-levo",
+        "button_text": "LEARN MORE",
+        "button_type": "btn_primary_fill",
+        "pt_mob": 40,
+        "pb_mob": 40,
+        "pt_tab": 60,
+        "pb_tab": 60,
+        "pt_desk": 100,
+        "pb_desk": 120
+      }
+    },
+    "product_list_fAipQi": {
+      "type": "product-list",
+      "blocks": {
+        "block_y99c98": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Prebiotics_Icon_5fe8bd70-0ce2-450f-b842-b60ae769bcc6.svg",
+            "text": "<center>Prebiotic Fiber<br>for Gut Health<\/center>"
+          }
+        },
+        "block_R7c4rL": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/5g_Fiber_Icon_1.svg",
+            "text": "5g Cane Sugar"
+          }
+        },
+        "block_nN68GH": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/30.svg",
+            "text": "30 Calories"
+          }
+        },
+        "block_NVwVpk": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/No_BS_Icon2.svg",
+            "text": "<center>No Fake Ingredients<\/center>"
+          }
+        }
+      },
+      "block_order": [
+        "block_y99c98",
+        "block_R7c4rL",
+        "block_nN68GH",
+        "block_NVwVpk"
+      ],
+      "settings": {
+        "section_anchor_id": "Product list",
+        "c-bg-primary": "#fff6ef",
+        "c-title": "#231f20",
+        "title": "LEVEL UP YOUR SODA",
+        "products": [
+          "cotton-candy",
+          "root-beer-float",
+          "cosmic-punch",
+          "orange-creamsicle",
+          "splice",
+          "voodoo-cola"
+        ],
+        "layout": "slider",
+        "pt_mob": 30,
+        "pb_mob": 148,
+        "pt_tab": 45,
+        "pb_tab": 250,
+        "pt_desk": 114,
+        "pb_desk": 353
+      }
+    }
+  },
+  "order": [
+    "section_h1_tag_Xzei8H",
+    "banner_with_title_4mFKyQ",
+    "wave_divider_Vc7nEA",
+    "float_element_hyHjX6",
+    "image_with_text_R97JAh",
+    "float_element_RQE3Vy",
+    "image_with_text_TFCMw6",
+    "product_list_fAipQi"
+  ]
+}

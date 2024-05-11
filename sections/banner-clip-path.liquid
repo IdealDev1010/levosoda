@@ -1,0 +1,581 @@
+{% liquid
+  assign section_anchor_id = section.settings.section_anchor_id | handleize
+
+  assign blocks = section.blocks
+%}
+
+{% capture data_json %}
+  [
+  {% for block in blocks %}
+    {'id': '{{ block.id }}', 'bg': '{{ block.settings.bg }}', 'bg_light': '{{ block.settings.bg | color_lighten: 30 }}', 'color': '{{ block.settings.color }}'},
+  {% endfor %}
+  ]
+{% endcapture %}
+
+{% assign data_object = data_json | jsonToObject %}
+
+{% if section.index == 1 and settings.uniq_hp_header %}
+  {% style %}
+    @media (min-width: 1024px) {
+      [data-section-id='{{ section.id }}'] [data-inner] {
+        min-height: calc(100vh + var(--header-height));
+      }
+      [data-section-id='{{ section.id }}'] [data-flavor] {
+        min-height: calc(100vh + var(--header-height));
+      }
+    }
+    [data-section-id='{{ section.id }}'] [data-flavor] {
+      padding-top: var(--header-height);
+    }
+  {% endstyle %}
+{% endif %}
+
+{% style %}
+  .warning-overlay {
+    display: none;
+  }
+  @media only screen and (max-width: 915px) and (max-height: 550px) and (orientation: landscape) {
+    .warning-overlay {
+      display: flex;
+    }
+  }
+{% endstyle %}
+
+<div
+  class="warning-overlay z-full fixed inset-0 flex h-full w-full flex-col items-center justify-center space-y-3"
+  style="background: {{ blocks[0].settings.bg }}"
+>
+  <span style="color: {{ blocks[0].settings.color }}">For better experience, please use portrait mode</span>
+  <svg
+    width="100px"
+    height="100px"
+    fill="{{ blocks[0].settings.color }}"
+    viewBox="0 0 100 100"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="m93.684 44.707c0.09375 0.85938-0.52734 1.6289-1.3828 1.7227-0.85938 0.089843-1.6289-0.53125-1.7227-1.3867-0.72656-6.6992-3.3281-13.059-7.5039-18.348-4.1758-5.2891-9.7578-9.2969-16.105-11.559l2.7891 5.2266c0.40625 0.76172 0.12109 1.707-0.64062 2.1133-0.76172 0.40625-1.707 0.12109-2.1133-0.64062l-4.1797-7.8242c-0.28516-0.53516-0.34766-1.1602-0.17188-1.7383 0.17578-0.57813 0.57422-1.0625 1.1055-1.3438l7.6914-4.0625c0.76172-0.38672 1.6953-0.09375 2.0938 0.66406 0.39844 0.75391 0.11719 1.6914-0.63672 2.1016l-4.8672 2.5703c6.8945 2.4648 12.953 6.8203 17.488 12.57 4.5352 5.7461 7.3633 12.656 8.1562 19.934z"/>
+    <path d="m36.242 89.07-7.6914 4.0625c-0.76172 0.38672-1.6953 0.09375-2.0938-0.66406-0.39844-0.75391-0.11719-1.6914 0.63672-2.1016l4.8711-2.5703h-0.003906c-6.8945-2.4648-12.953-6.8203-17.488-12.57-4.5352-5.7461-7.3633-12.656-8.1562-19.934-0.082031-0.85156 0.53516-1.6094 1.3867-1.7031 0.85156-0.089844 1.6172 0.51953 1.7188 1.3672 0.72656 6.6992 3.3281 13.059 7.5039 18.348 4.1758 5.2891 9.7578 9.2969 16.105 11.559l-2.7891-5.2266c-0.39844-0.76172-0.10938-1.6992 0.64844-2.1016 0.75781-0.40625 1.6953-0.12109 2.1055 0.62891l4.1758 7.8242h0.003906c0.28516 0.53516 0.34766 1.1602 0.17188 1.7383-0.17578 0.57813-0.57422 1.0625-1.1055 1.3438z"/>
+    <path d="m57.875 90.023-47.898-47.898c-2.2617-2.2656-2.2617-5.9336 0-8.1992l23.949-23.949c2.2656-2.2617 5.9336-2.2617 8.1992 0l47.898 47.898c2.2617 2.2656 2.2617 5.9336 0 8.1992l-23.949 23.949c-2.2656 2.2617-5.9336 2.2617-8.1992 0zm-21.738-77.836-23.949 23.949c-1.043 1.043-1.043 2.7344 0 3.7773l47.898 47.898c1.043 1.043 2.7344 1.043 3.7773 0l23.949-23.949c1.043-1.043 1.043-2.7344 0-3.7773l-47.898-47.898c-1.043-1.043-2.7344-1.043-3.7773 0z"/>
+    <path d="m22.949 28.938 5.9883-5.9883c0.60938-0.60156 1.5938-0.59766 2.1992 0.007812 0.60938 0.60938 0.61328 1.5898 0.007812 2.2031l-5.9883 5.9883 0.003906-0.003907c-0.61328 0.60547-1.5977 0.60156-2.2031-0.003906-0.60938-0.60938-0.61328-1.5938-0.007812-2.2031z"/>
+    <path d="m67.855 74.059c-1.2539-1.2539-1.6289-3.1406-0.94922-4.7812 0.67969-1.6367 2.2773-2.707 4.0508-2.707 1.7734 0 3.3711 1.0703 4.0508 2.707 0.67969 1.6406 0.30469 3.5273-0.94922 4.7812-1.7148 1.707-4.4883 1.707-6.2031 0zm2.2109-3.9922c-0.36328 0.35938-0.46875 0.90234-0.27344 1.3711 0.19531 0.47266 0.65234 0.77734 1.1641 0.77734 0.50781 0 0.96875-0.30469 1.1641-0.77734 0.19531-0.46875 0.085937-1.0117-0.27344-1.3711-0.49219-0.49219-1.2891-0.49219-1.7812 0z"/>
+  </svg>
+</div>
+
+<div
+  id="{{ section_anchor_id }}"
+  data-section-id="{{ section.id }}"
+  class="xsE:min-h-screen animate__animated relative min-h-[650px] overflow-hidden opacity-0"
+  x-intersect="$el.classList.add('animate__fadeIn')"
+  x-data="bannerClipPath('{{ blocks[0].id }}', {{ data_object }})"
+  style="--flavor-color: {{ blocks[0].settings.bg }}; --flavor-color-lighter-30: {{ blocks[0].settings.bg | color_lighten: 30 }}; --flavor-text-color: {{ blocks[0].settings.color }}; background-color: var(--flavor-color);"
+>
+  <div data-inner class="xsE:min-h-screen relative min-h-[650px] overflow-hidden">
+    {% for block in blocks %}
+      {% liquid
+        assign title = block.settings.title
+        assign title_size_mob = block.settings.title_size_mob | default: '14vw'
+        assign title_size_tab = block.settings.title_size_tab | default: '8vw'
+        assign title_size_desk = block.settings.title_size_desk | default: '6rem'
+        assign title_pt_mob = block.settings.title_pt_mob
+
+        assign subtitle = block.settings.subtitle
+
+        assign bg = block.settings.bg
+        assign bg_lighten = bg | color_lighten: 30
+        assign color = block.settings.color
+        assign image = block.settings.image
+        assign flavor = block.settings.flavor
+
+        assign product = block.settings.product
+        assign link = block.settings.link | default: product.url
+
+        assign ben_text_color = block.settings.ben_text_color
+      %}
+
+      <style>
+        [data-section-id="{{ section.id }}"] [data-flavor="{{ block.id }}"] h2 {
+          font-size: {{ title_size_mob }};
+        }
+        @media (min-width: 740px) {
+          [data-section-id="{{ section.id }}"] [data-flavor="{{ block.id }}"] h2 {
+            font-size: {{ title_size_tab }};
+          }
+        }
+        @media (min-width: 1024px) {
+          [data-section-id="{{ section.id }}"] [data-flavor="{{ block.id }}"] h2 {
+            font-size: {{ title_size_desk }};
+          }
+        }
+      </style>
+
+      <div
+        x-ref="{{ block.id }}"
+        data-flavor="{{ block.id }}"
+        class="xsE:min-h-screen absolute flex min-h-[650px] w-full flex-col items-center duration-1000 ease-in-out {% if forloop.first %}z-1{% endif %}"
+        style="background-color: {{ bg }}; color: {{ color }}; will-change: transform, clip-path; transform: translateZ(0);"
+      >
+        {% if title != blank %}
+          <h2
+            style="--title-pt-mob: {{ title_pt_mob }}"
+            class="font-primary px-7.5 4k:leading-[1] relative mx-auto w-max max-w-full pt-[var(--title-pt-mob)] text-center font-bold leading-[1.3] tracking-[1vw] duration-500 ease-in-out lg:pt-2.5 {% if forloop.first %}translate-y-[30px]{% endif %}"
+            {% if forloop.first %}
+              x-intersect="$el.classList.remove('translate-y-[30px]')"
+            {% endif %}
+          >
+            {{ title }}
+
+            {% if subtitle != blank %}
+              {% assign split_subtitle = subtitle | split: '||' %}
+              <div class="px-7.5 absolute left-0 top-full mx-auto flex w-full justify-between space-x-2 pt-2 tracking-wide">
+                {% for sp in split_subtitle %}
+                  <span class="font-primary text-xs md:text-sm lg:text-base 2xl:text-lg">{{ sp }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </h2>
+        {% endif %}
+
+        {% if flavor != blank %}
+          <a
+            href="{{ link }}"
+            class="2k:bottom-1/4 2k:h-[25vw] absolute bottom-[40%] right-1/2 h-[33vw] translate-x-1/2 md:right-1/4 md:translate-x-0 lg:h-[25vw] xl:bottom-1/3"
+          >
+            {{- flavor | image_url: width: flavor.width | image_tag: class: 'w-auto h-full animate__floating' -}}
+          </a>
+        {% endif %}
+
+        <div class="pointer-events-none absolute bottom-0 left-0 w-full">
+          <div
+            class="4k:h-[1000px] pointer-events-auto relative h-[56vw] w-max md:left-[2vw] md:max-h-[40vh] lg:h-[774px] lg:max-h-[50vh] xl:max-h-[60vh] 2xl:max-h-[70vh]"
+          >
+            <a
+              href="{{ link }}"
+              class="z-1 4k:h-[1000px] relative flex h-[56vw] rotate-[20deg] scale-75 delay-500 duration-1000 ease-in-out md:max-h-[40vh] lg:h-[774px] lg:max-h-[50vh] xl:max-h-[60vh] 2xl:max-h-[70vh]"
+              data-flavor-img
+              :class="active === '{{ block.id }}' && '!scale-100'"
+            >
+              {{
+                image
+                | image_url: width: 640
+                | image_tag: widths: '65, 130, 260, 350', class: 'w-auto h-full object-contain'
+              }}
+            </a>
+
+            <div class="4k:max-w-[800px] absolute right-0 top-0 w-[48vw] -translate-y-1/4 translate-x-3/4 md:w-[60vw] md:max-w-[370px] lg:max-w-[500px] xl:max-w-[610px] 2xl:top-[8vw]">
+              {% render 'flavor-bubbles',
+                class: 'w-full h-full',
+                link: link,
+                bg: bg,
+                bg_lighten: bg_lighten,
+                color: color
+              %}
+            </div>
+          </div>
+        </div>
+
+        <div class="-z-1 2k:bottom-[15vw] absolute bottom-[30vw] left-0 w-full after:absolute after:top-[calc(100%-5px)] after:h-screen after:w-full after:bg-white after:content-[''] md:bottom-[15vw] xl:bottom-[10vw] 2xl:bottom-[3vw]">
+          <svg
+            class="w-full md:h-[150px] lg:hidden"
+            width="375"
+            height="76"
+            viewBox="0 0 375 76"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+          >
+            <path d="M0 44.9509C0 44.9509 23.76 4.4518 74 0.255459C124.24 -3.94089 187.5 44.9509 187.5 44.9509C187.5 44.9509 195.506 1.77561 234 1.75554C272.494 1.73546 281.25 44.9509 281.25 44.9509H375V76H0V44.9509Z" fill="white"/>
+          </svg>
+
+          <svg
+            class="hidden w-full lg:block"
+            width="1445"
+            height="481"
+            viewBox="0 0 1445 481"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+          >
+            <path d="M296.731 290.119C325.231 242.619 1326.82 308 1444 308C1444 316.718 1444.1 480.5 1444.1 480.5H0.229858L0 242.619C0 242.619 119.231 116.619 296.731 290.119Z" fill="white"/>
+            <path d="M1319.5 333.5C1116.5 333.5 1158 333.5 966.944 333.5C769.82 333.5 818.5 333.5 620.5 333.5C620.5 136.123 769.82 0.615234 966.944 0.615234C1164.07 0.615234 1319.5 136.123 1319.5 333.5Z" fill="white"/>
+            <path d="M887 428.885C684 428.885 725.5 428.885 534.444 428.885C337.32 428.885 386 428.885 188 428.885C188 231.508 337.32 96 534.444 96C731.567 96 887 231.508 887 428.885Z" fill="white"/>
+            <path d="M1444 308C1283.11 308 1319 328 1167.58 328C1011.35 328 1049.93 328 893 328C893 170.874 929.268 147.5 1085.5 147.5C1241.73 147.5 1444 150.874 1444 308Z" fill="white"/>
+          </svg>
+        </div>
+      </div>
+    {% endfor %}
+
+    <div
+      class="2k:w-[700px] 2k:right-[-350px] 2k:h-[700px] 4k:bottom-[150px] absolute -right-[35vw] bottom-10 z-[1000] h-[67vw] w-[67vw] rounded-full border-[4px] bg-white duration-500 md:right-[-225px] md:h-[450px] md:w-[450px] md:border-[11px] xl:right-[-295px] xl:h-[590px] xl:w-[590px]"
+      style="border-color: var(--flavor-color)"
+    >
+      {% for block in blocks %}
+        {% liquid
+          assign bg = block.settings.bg
+          assign bg_lighten = bg | color_lighten: 30
+          assign color = block.settings.color
+          assign flavor = block.settings.flavor
+          assign image = block.settings.image
+
+          assign product = block.settings.product
+          assign link = block.settings.link | default: product.url
+          assign btn_text = block.settings.btn_text
+
+          assign btn_size = 'h-[17vw] w-[17vw] md:h-[100px] md:w-[100px] xl:h-[135px] xl:w-[135px]'
+          assign btn_class = 'rotate-[-28deg]'
+          assign btn_rev_class = 'rotate-[28deg]'
+          case blocks.size
+            when 2
+              if forloop.index == 2
+                assign btn_class = 'rotate-[-72deg]'
+                assign btn_rev_class = 'rotate-[72deg]'
+              endif
+            when 3
+              if forloop.index == 1
+                assign btn_class = 'rotate-0'
+                assign btn_rev_class = 'rotate-0'
+              elsif forloop.index == 2
+                assign btn_class = 'rotate-[-40deg]'
+                assign btn_rev_class = 'rotate-[40deg]'
+              elsif forloop.index == 3
+                assign btn_class = 'rotate-[-80deg]'
+                assign btn_rev_class = 'rotate-[80deg]'
+              endif
+            when 4
+              assign btn_size = 'h-[15vw] w-[15vw] md:h-[100px] md:w-[100px] xl:h-[125px] xl:w-[125px]'
+
+              if forloop.index == 1
+                assign btn_class = 'rotate-[15deg]'
+                assign btn_rev_class = 'rotate-[-15deg]'
+              elsif forloop.index == 2
+                assign btn_class = 'rotate-[-25deg]'
+                assign btn_rev_class = 'rotate-[25deg]'
+              elsif forloop.index == 3
+                assign btn_class = 'rotate-[-65deg]'
+                assign btn_rev_class = 'rotate-[65deg]'
+              elsif forloop.index == 4
+                assign btn_class = 'rotate-[-105deg]'
+                assign btn_rev_class = 'rotate-[105deg]'
+              endif
+            when 5
+              assign btn_size = 'h-[13vw] w-[13vw] md:h-[90px] md:w-[90px] xl:h-[110px] xl:w-[110px]'
+
+              if forloop.index == 1
+                assign btn_class = 'rotate-[20deg]'
+                assign btn_rev_class = 'rotate-[-20deg]'
+              elsif forloop.index == 2
+                assign btn_class = 'rotate-[-13deg]'
+                assign btn_rev_class = 'rotate-[13deg]'
+              elsif forloop.index == 3
+                assign btn_class = 'rotate-[-45deg]'
+                assign btn_rev_class = 'rotate-[45deg]'
+              elsif forloop.index == 4
+                assign btn_class = 'rotate-[-77deg]'
+                assign btn_rev_class = 'rotate-[77deg]'
+              elsif forloop.index == 5
+                assign btn_class = 'rotate-[-110deg]'
+                assign btn_rev_class = 'rotate-[110deg]'
+              endif
+            when 6
+              assign btn_size = 'h-[13vw] w-[13vw] md:h-[80px] md:w-[80px] xl:h-[100px] xl:w-[100px] 2k:w-[120px] 2k:h-[120px]'
+
+              if forloop.index == 1
+                assign btn_class = 'rotate-[30deg]'
+                assign btn_rev_class = 'rotate-[-30deg]'
+              elsif forloop.index == 2
+                assign btn_class = 'rotate-0'
+                assign btn_rev_class = 'rotate-0'
+              elsif forloop.index == 3
+                assign btn_class = 'rotate-[-30deg]'
+                assign btn_rev_class = 'rotate-[30deg]'
+              elsif forloop.index == 4
+                assign btn_class = 'rotate-[-60deg]'
+                assign btn_rev_class = 'rotate-[60deg]'
+              elsif forloop.index == 5
+                assign btn_class = 'rotate-[-90deg]'
+                assign btn_rev_class = 'rotate-[90deg]'
+              elsif forloop.index == 6
+                assign btn_class = 'rotate-[-120deg]'
+                assign btn_rev_class = 'rotate-[120deg]'
+              endif
+          endcase
+        %}
+
+        {% comment %} FLAVOR CHANGE BUTTON {% endcomment %}
+        <div
+          class="pointer-events-none absolute -m-0.5 h-full w-full p-1 {{ btn_class }} {% if blocks.size == 6 %}md:p-3 xl:p-6 2k:p-7.5 {% elsif blocks.size > 3 %}md:p-3 xl:p-4 2k:p-8 {% else %}2k:p-4{% endif %}"
+          style="--flavor-color-lighter-30: {{ bg_lighten }}; --eag-custom-duration: 240s;"
+        >
+          <div
+            class="z-full after:eag-anim-custom-duration relative h-max w-max p-1 duration-300 ease-in-out after:pointer-events-none after:absolute after:inset-0 after:h-full after:w-full after:animate-spin after:rounded-full after:border-[2px] after:border-dashed after:border-[var(--flavor-color-lighter-30)] after:opacity-0 after:duration-1000 after:ease-in-out after:content-[''] hover:scale-105 md:p-2 md:after:border-[4px]"
+            :class="active === '{{ block.id }}' && 'after:opacity-100'"
+          >
+            <button
+              data-flavor-btn="{{ block.id }}"
+              @click="changeFlavor({ flavor: '{{ block.id }}', bg: '{{ bg }}', bgLight: '{{ bg | color_lighten: 30 }}', color: '{{ color }}'})"
+              class="pointer-events-auto flex rounded-full bg-white {{ btn_rev_class }}"
+            >
+              <span
+                class="relative flex rotate-[-25deg] overflow-hidden rounded-full p-1 {{ btn_size }}"
+                style="background-color: var(--flavor-color-lighter-30)"
+              >
+                {{
+                  image
+                  | image_url: width: 260
+                  | image_tag: widths: '65, 130, 260', class: 'w-full h-full object-contain pointer-events-none'
+                }}
+              </span>
+            </button>
+          </div>
+        </div>
+
+        {% comment %} SHOP NOW BUTTON HIDDEN {% endcomment %}
+        {% if link != blank and false %}
+          <div
+            class="pointer-events-none absolute left-[4vw] top-0 flex h-[21.5vw] max-h-[150px] w-[21.5vw] max-w-[150px] -translate-y-1/2 items-center justify-center rounded-full border-[6px] text-center opacity-0 delay-500 duration-500 ease-in-out"
+            style="border-color: {{ color }}; background-color: {{ bg_lighten }}; color: {{ bg }}"
+            :class="active === '{{ block.id }}' && 'opacity-100'"
+          >
+            <a class="font-primary pointer-events-auto text-[4vw] font-bold md:text-[30px]" href="{{ link }}">
+              {{- btn_text -}}
+            </a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  {% for block in blocks %}
+    {% liquid
+      assign ben_text_color = block.settings.ben_text_color
+    %}
+
+    {% if block.settings.ben_icon_1 != blank or block.settings.ben_text_1 != blank %}
+      <div
+        class="relative bg-white"
+        :style="{zIndex: zIndex}"
+        x-cloak
+        x-show="oldActive === '{{ block.id }}'"
+      >
+        <div
+          class="pb-7.5 md:pb-15 md:gap-x-15 xs:gap-6 2k:max-w-[1060px] 2k:justify-between mx-auto flex max-w-lg flex-wrap items-baseline justify-center gap-10 md:pt-10 lg:max-w-none lg:gap-8 xl:pt-0"
+        >
+          {% for i in (1..4) %}
+            {% liquid
+              assign ben_icon_key = 'ben_icon_' | append: i
+              assign ben_text_key = 'ben_text_' | append: i
+
+              assign ben_icon = block.settings[ben_icon_key]
+              assign ben_text = block.settings[ben_text_key]
+            %}
+
+            {% if ben_icon != blank or ben_text != blank %}
+              <div
+                class="lg:eag-custom-delay xs:max-w-[150px] relative flex w-full max-w-[100px] flex-col items-center space-y-2 md:space-y-3 md:px-3 lg:max-w-[200px] xl:-mt-5"
+                x-cloak
+                x-show="oldActive === '{{ block.id }}'"
+                x-transition:enter="transition ease-in-out duration-500 lg:duration-300"
+                x-transition:enter-start="opacity-0 scale-90"
+                x-transition:enter-end="opacity-100 scale-100"
+                style="--eag-custom-delay: {{- 4 | minus: forloop.index | append: '00ms' }}"
+              >
+                {% if ben_icon != blank %}
+                  <div class="md:max-w-30 max-w-20">
+                    {{
+                      ben_icon
+                      | image_url: width: 220
+                      | image_tag: alt: ben_text, class: 'w-full h-full object-contain'
+                    }}
+                  </div>
+                {% endif %}
+
+                {% if ben_text != blank %}
+                  <span
+                    class="font-primary xs:text-sm text-center text-xs font-bold lg:text-lg"
+                    style="color: {{ ben_text_color }}"
+                  >
+                    {{- ben_text -}}
+                  </span>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Banner clip path",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_anchor_id",
+      "label": "Section anchor id",
+      "default": "Banner clip path"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Banner",
+      "type": "banner",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Title settings"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Banner title",
+          "default": "PREBIOTIC SODA"
+        },
+        {
+          "type": "text",
+          "id": "title_size_mob",
+          "label": "Title mobile size",
+          "default": "14vw"
+        },
+        {
+          "type": "text",
+          "id": "title_size_tab",
+          "label": "Title tablet size",
+          "default": "8vw"
+        },
+        {
+          "type": "text",
+          "id": "title_size_desk",
+          "label": "Title desktop size",
+          "default": "6rem"
+        },
+        {
+          "type": "text",
+          "id": "title_pt_mob",
+          "label": "Title padding top (mobile)",
+          "default": "15px"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitles",
+          "default": "A MAGIC DUO || OF FLAVOR || AND HEALTH",
+          "info": "use || to split text"
+        },
+        {
+          "type": "color",
+          "id": "bg",
+          "label": "Block bg color",
+          "default": "#B95929"
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Block text color",
+          "default": "#fff"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Can image",
+          "info": "335x795 mandatory res!"
+        },
+        {
+          "type": "image_picker",
+          "id": "flavor",
+          "label": "Flavor float image"
+        },
+        {
+          "type": "header",
+          "content": "Button settings"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Block product",
+          "info": "Future feature"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Product link"
+        },
+        {
+          "type": "header",
+          "content": "Benefits settings"
+        },
+        {
+          "type": "color",
+          "id": "ben_text_color",
+          "label": "Benefit text color",
+          "default": "#946EA9"
+        },
+        {
+          "type": "header",
+          "content": "Benefit 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "ben_icon_1",
+          "label": "Benefit 1 icon"
+        },
+        {
+          "type": "text",
+          "id": "ben_text_1",
+          "label": "Benefit 1 text"
+        },
+        {
+          "type": "header",
+          "content": "Benefit 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "ben_icon_2",
+          "label": "Benefit 2 icon"
+        },
+        {
+          "type": "text",
+          "id": "ben_text_2",
+          "label": "Benefit 2 text"
+        },
+        {
+          "type": "header",
+          "content": "Benefit 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "ben_icon_3",
+          "label": "Benefit 3 icon"
+        },
+        {
+          "type": "text",
+          "id": "ben_text_3",
+          "label": "Benefit 3 text"
+        },
+        {
+          "type": "header",
+          "content": "Benefit 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "ben_icon_4",
+          "label": "Benefit 4 icon"
+        },
+        {
+          "type": "text",
+          "id": "ben_text_4",
+          "label": "Benefit 4 text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner clip path",
+      "category": "Repeatable"
+    }
+  ]
+}
+{% endschema %}

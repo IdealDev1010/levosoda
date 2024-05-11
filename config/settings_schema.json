@@ -1,0 +1,357 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Levo theme",
+    "theme_version": "1.0.0",
+    "theme_author": "Binaery Agency",
+    "theme_documentation_url": "https:\/\/www.binaery.com\/",
+    "theme_support_url": "https:\/\/www.binaery.com\/"
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon image",
+        "info": "32 x 32px .png recommended"
+      }
+    ]
+  },
+  {
+    "name": "Homepage header",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "uniq_hp_header",
+        "label": "Uniq homepage header",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Fonts",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "font_primary",
+        "label": "Primary font",
+        "info": "Used for headings\/titles",
+        "default": "roboto_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_secondary",
+        "label": "Secondary font",
+        "info": "Used for body\/text",
+        "default": "ubuntu_n4"
+      }
+    ]
+  },
+  {
+    "name": "LOGO",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo_dark",
+        "label": "Dark logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_light",
+        "label": "Light logo"
+      },
+      {
+        "type": "number",
+        "id": "logo_max_w_mobile",
+        "label": "Logo max width in px",
+        "info": "For small screens"
+      },
+      {
+        "type": "number",
+        "id": "logo_max_w_desktop",
+        "label": "Logo max width in px",
+        "info": "For large screens"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_dark_short",
+        "label": "Short dark logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_light_short",
+        "label": "Short light logo"
+      },
+      {
+        "type": "number",
+        "id": "logo_max_w_short",
+        "label": "Short logo max width in px"
+      }
+    ]
+  },
+  {
+    "name": "COLORS",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Main colors"
+      },
+      {
+        "type": "color",
+        "id": "c-title",
+        "label": "Title color",
+        "default": "#231F20"
+      },
+      {
+        "type": "color",
+        "id": "c-subtitle",
+        "label": "Subtitle",
+        "default": "#3A3A3B"
+      },
+      {
+        "type": "color",
+        "id": "c-text-primary",
+        "label": "Text color",
+        "default": "#3A3A3B"
+      },
+      {
+        "type": "color",
+        "id": "c-bg-primary",
+        "label": "Primary background color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "c-bg-secondary",
+        "label": "Secondary background color",
+        "default": "#FFF6EF"
+      },
+      {
+        "type": "color",
+        "id": "c-blur-overlay",
+        "label": "Blurred overlay",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "header",
+        "content": "Primary button"
+      },
+      {
+        "type": "color",
+        "id": "c-btn-primary-bg-default",
+        "label": "Primary btn bg default",
+        "default": "#ED3293"
+      },
+      {
+        "type": "color",
+        "id": "c-btn-primary-text-default",
+        "label": "Primary btn text default",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "c-btn-primary-bg-hover",
+        "label": "Primary btn bg hover",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "c-btn-primary-text-hover",
+        "label": "Primary btn text hover",
+        "default": "#ED3293"
+      },
+      {
+        "type": "header",
+        "content": "Secondary button"
+      },
+      {
+        "type": "color",
+        "id": "c-btn-secondary-bg-default",
+        "label": "Secondary btn bg default",
+        "default": "#FFD812"
+      },
+      {
+        "type": "color",
+        "id": "c-btn-secondary-text-default",
+        "label": "Secondary btn text default",
+        "default": "#231F20"
+      },
+      {
+        "type": "color",
+        "id": "c-btn-secondary-bg-hover",
+        "label": "Secondary btn bg hover",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "c-btn-secondary-text-hover",
+        "label": "Secondary btn text hover",
+        "default": "#231F20"
+      },
+      {
+        "type": "header",
+        "content": "Links"
+      },
+      {
+        "type": "color",
+        "id": "c-link-primary-text",
+        "label": "Primary link",
+        "default": "#0D1E0A"
+      },
+      {
+        "type": "color",
+        "id": "c-link-secondary-text",
+        "label": "Secondary link",
+        "default": "#0D1E0A"
+      },
+      {
+        "type": "header",
+        "content": "Accent colors"
+      },
+      {
+        "type": "color",
+        "id": "c-accent-success",
+        "label": "Success",
+        "default": "#004B23"
+      },
+      {
+        "type": "color",
+        "id": "c-accent-warning",
+        "label": "Warning",
+        "default": "#FFAA00"
+      },
+      {
+        "type": "color",
+        "id": "c-accent-error",
+        "label": "Error",
+        "default": "#D62828"
+      }
+    ]
+  },
+  {
+    "name": "ROUNDING",
+    "settings": [
+      {
+        "type": "range",
+        "id": "r-btn-main",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Btn main corner radius",
+        "default": 60
+      },
+      {
+        "type": "range",
+        "id": "r-input",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Input corner radius",
+        "default": 60
+      },
+      {
+        "type": "range",
+        "id": "r-block",
+        "min": 0,
+        "max": 64,
+        "step": 4,
+        "unit": "px",
+        "label": "Block corner radius",
+        "default": 0
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "url",
+        "id": "social_facebook",
+        "label": "Facebook"
+      },
+      {
+        "type": "url",
+        "id": "social_twitter",
+        "label": "Twitter"
+      },
+      {
+        "type": "url",
+        "id": "social_pinterest",
+        "label": "Pinterest"
+      },
+      {
+        "type": "url",
+        "id": "social_instagram",
+        "label": "Instagram"
+      },
+      {
+        "type": "url",
+        "id": "social_vimeo",
+        "label": "Vimeo"
+      },
+      {
+        "type": "url",
+        "id": "social_whatsapp",
+        "label": "WhatsApp"
+      },
+      {
+        "type": "url",
+        "id": "social_tumblr",
+        "label": "Tumblr"
+      },
+      {
+        "type": "url",
+        "id": "social_youtube",
+        "label": "YouTube"
+      },
+      {
+        "type": "url",
+        "id": "social_tiktok",
+        "label": "TikTok"
+      },
+      {
+        "type": "url",
+        "id": "social_linkedin",
+        "label": "LinkedIn"
+      },
+      {
+        "type": "url",
+        "id": "social_snapchat",
+        "label": "Snapchat"
+      },
+      {
+        "type": "url",
+        "id": "social_fancy",
+        "label": "Fancy"
+      },
+      {
+        "type": "url",
+        "id": "social_wechat",
+        "label": "WeChat"
+      },
+      {
+        "type": "url",
+        "id": "social_reddit",
+        "label": "Reddit"
+      },
+      {
+        "type": "url",
+        "id": "social_line",
+        "label": "LINE"
+      },
+      {
+        "type": "url",
+        "id": "social_spotify",
+        "label": "Spotify"
+      },
+      {
+        "type": "url",
+        "id": "social_21buttons",
+        "label": "21 Buttons"
+      }
+    ]
+  }
+]

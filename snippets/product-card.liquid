@@ -1,0 +1,148 @@
+{% liquid
+  assign meta = product.metafields.binaery.product_information
+
+  assign brand_color = meta.value.product_brand_color.value
+  assign slogan = meta.value.slogan.value
+
+  assign index = index | default: 1
+  assign animation_delay = index | times: 150
+  if init_animation
+    assign init_animation = init_animation
+  endif
+%}
+
+<article
+  class="animate__animated group relative flex h-full flex-col overflow-hidden rounded-[10px] bg-white shadow-md lg:min-h-[400px] lg:rounded-[20px] xl:min-h-[450px] {{ class }} {% unless disable_animation %}opacity-0{% endunless %}"
+  {% unless disable_animation %}
+    {%- if init_animation -%}
+      x-init="setTimeout(() => { $el.classList.add('animate__fadeIn') }, {{ animation_delay }})"
+    {%- else -%}
+      x-intersect.threshold.25.once="setTimeout(() => { $el.classList.add('animate__fadeIn') }, {{ animation_delay }})"
+    {%- endif -%}
+  {% endunless %}
+>
+  {% unless product.available %}
+    <span class="z-1 absolute left-0 top-0 flex space-x-1 rounded-br-[10px] bg-[#FFF7FA] px-2 py-1.5 md:px-5 md:py-2.5 lg:rounded-br-[20px] lg:bg-white/50">
+      <svg
+        class="h-2.5 w-2.5 md:h-[18px] md:w-[18px]"
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M7.13585 4.6527C6.77936 4.45301 6.4482 4.20904 6.15219 3.92849C5.55454 3.36178 5.07923 2.63684 4.7396 1.77407L4.24531 0.517578L3.75101 1.77407C3.4114 2.63681 2.93609 3.36172 2.33842 3.92849C2.04101 4.21044 1.71053 4.45443 1.35546 4.6534L0.529297 5.11676L1.35546 5.58011C1.71055 5.7791 2.04101 6.02308 2.33842 6.30503C2.93608 6.87104 3.41138 7.59597 3.75101 8.45945L4.24531 9.71594L4.7396 8.45945C5.07921 7.59671 5.55452 6.87179 6.15219 6.30503C6.4496 6.02308 6.78008 5.77909 7.13585 5.58011L7.96274 5.11606L7.13585 4.6527Z" fill="#946EA9"/>
+        <path d="M15.8173 10.154C15.4545 9.95078 15.1184 9.70328 14.8182 9.41852C14.2051 8.83703 13.715 8.08891 13.3634 7.19462L12.3741 4.68164L11.3848 7.19462C11.0326 8.089 10.5432 8.83712 9.93009 9.41852C9.62844 9.70468 9.29235 9.95218 8.93164 10.1547L7.2793 11.0821L8.93164 12.0088C9.29235 12.2113 9.62844 12.4588 9.92938 12.745C10.5432 13.3265 11.0326 14.0753 11.3841 14.9689L12.3734 17.4819L13.3627 14.9689C13.715 14.0745 14.2044 13.3264 14.8175 12.745C15.1191 12.4588 15.4552 12.2106 15.8166 12.0088L17.4697 11.0814L15.8173 10.154Z" fill="#946EA9"/>
+      </svg>
+      <span class="font-primary text-[8px] font-bold md:text-xs">{{ 'common.coming_soon' | t }}</span>
+    </span>
+  {% endunless %}
+
+  {% comment %}MOBILE LAYOUT{% endcomment %}
+  <a class="flex flex-col px-2 pb-5 pt-2.5 lg:hidden" href="{{ product.url }}">
+    <span class="font-primary ml-auto text-sm font-bold">
+      {{- product.price | money_without_trailing_zeros -}}
+    </span>
+    <div class="mb-3 px-6">
+      <div class="relative h-0 rounded-full pb-[100%]" style="background-color: {{ brand_color | color_lighten: 30 }}">
+        {% if product.featured_image != blank %}
+          {{
+            product.featured_image
+            | image_url: width: 900
+            | image_tag:
+              alt: product.featured_image.alt,
+              class: 'w-full h-full object-contain absolute inset-0 p-2',
+              loading: 'lazy',
+              widths: '100, 200, 300, 450, 550, 650'
+          }}
+        {% else %}
+          {{ 'product-1' | placeholder_svg_tag: 'w-full h-full object-contain absolute inset-0 p-2' }}
+        {% endif %}
+      </div>
+    </div>
+    <div class="flex h-full flex-col px-3">
+      <h1
+        class="font-primary px-1 text-center text-sm font-bold"
+        style="min-height: var(--same-block-height)"
+        x-data="SameBlockHeight('section')"
+      >
+        {{- product.title -}}
+      </h1>
+      {% if slogan != blank %}
+        <p class="font-secondary mt-2 text-center text-xs">{{ slogan }}</p>
+      {% endif %}
+      <div class="mt-auto flex justify-center pt-2">
+        <button class="{% render 'btn-class', btn: 'link_primary' %} active">
+          <span>
+            {% if product.available %}
+              {{ 'common.shop_now' | t }}
+            {% else %}
+              {{ 'common.learn_more' | t }}
+            {% endif %}
+          </span>
+        </button>
+      </div>
+    </div>
+  </a>
+
+  {% comment %}DESKTOP LAYOUT{% endcomment %}
+  <div
+    class="relative hidden h-full flex-1 flex-col rounded-[10px] lg:flex lg:rounded-[20px]"
+    style="background-color: {{ brand_color | color_lighten: 30 }}"
+  >
+    <span class="font-primary absolute right-5 top-8 ml-auto text-2xl font-bold">
+      {{- product.price | money_without_trailing_zeros -}}
+    </span>
+    <a
+      href="{{ product.url }}"
+      class="translate-y-7.5 relative h-0 rounded-full pb-[100%] duration-1000 group-hover:translate-y-3"
+    >
+      {% if product.featured_image != blank %}
+        {{
+          product.featured_image
+          | image_url: width: 900
+          | image_tag:
+            alt: product.featured_image.alt,
+            class: 'w-full h-full object-contain absolute inset-0 p-2',
+            loading: 'lazy',
+            widths: '100, 200, 300, 450, 550, 650'
+        }}
+      {% else %}
+        {{ 'product-1' | placeholder_svg_tag: 'w-full h-full object-contain absolute inset-0 p-2' }}
+      {% endif %}
+    </a>
+    <div class="pb-7.5 mt-auto flex justify-center pt-2">
+      <a
+        href="{{ product.url }}"
+        class="{% render 'btn-class', btn: 'btn_primary_fill' %} !min-h-10 !px-4 !py-2 text-sm"
+      >
+        <span>
+          {% if product.available %}
+            {{ 'common.shop_now' | t }}
+          {% else %}
+            {{ 'common.learn_more' | t }}
+          {% endif %}
+        </span>
+      </a>
+    </div>
+    <div class="absolute -left-0.5 bottom-0 w-[calc(100%+4px)] translate-y-0 duration-500 ease-in-out group-hover:translate-y-full">
+      <svg
+        class="-mb-0.5 w-full"
+        width="450"
+        height="120"
+        viewBox="0 0 450 166"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+      >
+        <path d="M0 71.5167L5.78125 74.1042C11.5312 76.887 23.125 81.7692 34.6875 87.1395C46.1562 92.5098 57.8125 97.3919 69.375 97.5383C80.7812 97.3919 92.1875 92.5098 103.75 76.7405C115.375 61.2642 126.875 34.9009 138.438 29.8723C150 24.6484 161.562 40.2712 173.125 45.4951C184.625 50.5236 196.25 45.6415 207.812 40.2712C219.219 34.9008 230.625 30.0187 242.187 45.4951C253.844 61.2643 265.312 97.3919 276.875 105.35C288.469 113.015 300 92.5098 311.562 74.1042C323.062 55.8939 334.687 40.2712 346.25 27.2359C357.687 14.396 369.375 3.65526 380.625 1.2142C392.312 -1.22686 403.75 3.65527 415.312 6.43808C426.938 9.0256 438.438 9.0256 444.375 9.0256H450V165.5C173.125 165.5 191.92 165.5 0 165.5V71.5167Z" fill="white"/>
+      </svg>
+      <div class="p-4.5 bg-white pb-7 text-center">
+        <h2 class="font-primary text-btn-lg font-bold">{{ product.title }}</h2>
+        {% if slogan != blank %}
+          <p class="font-secondary mt-2 text-center text-base">{{ slogan }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</article>

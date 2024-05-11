@@ -1,0 +1,284 @@
+{% liquid
+  assign section_anchor_id = section.settings.section_anchor_id | handleize
+
+  assign bg = section.settings.bg
+  assign text_color = section.settings.text_color
+  assign circle_bg = section.settings.circle_bg
+
+  assign title = section.settings.title
+  assign title_size = section.settings.title_size
+
+  assign circle_text = section.settings.circle_text
+  assign c_text_size_mob = section.settings.c_text_size_mob
+  assign c_text_size_tab = section.settings.c_text_size_tab
+  assign c_text_size_desk = section.settings.c_text_size_desk
+  assign c_text_size_wide = section.settings.c_text_size_wide
+
+  assign blocks = section.blocks
+%}
+
+{% style %}
+  [data-section-id="{{ section.id }}"] span {
+    font-size: {{ c_text_size_mob }};
+  }
+  @media (min-width: 744px) {
+    [data-section-id="{{ section.id }}"] span {
+      font-size: {{ c_text_size_tab }};
+    }
+  }
+  @media (min-width: 1024px) {
+    [data-section-id="{{ section.id }}"] span {
+      font-size: {{ c_text_size_desk }};
+    }
+  }
+  @media (min-width: 1900px) {
+    [data-section-id="{{ section.id }}"] span {
+      font-size: {{ c_text_size_wide }};
+    }
+  }
+{% endstyle %}
+
+<div
+  id="{{ section_anchor_id }}"
+  data-section-id="{{ section.id }}"
+  class="relative overflow-hidden"
+  style="background-color: {{ bg }}; color: {{ text_color }}"
+  x-data="lerp({from: -50, to: 50})"
+>
+  <svg
+    class="h-full w-full"
+    width="375"
+    height="420"
+    viewBox="0 0 375 250"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    x-intersect:enter.threshold.25="setStartOffset()"
+  >
+    <ellipse cx="187.371" cy="208.784" rx="209.766" ry="208.253" fill="{{ circle_bg }}"/>
+    <ellipse cx="187.563" cy="192.461" rx="180.01" ry="174.742" fill="{{ circle_bg | color_lighten: 3 }}"/>
+    <ellipse cx="187.563" cy="179.094" rx="142.106" ry="148.001" fill="{{ circle_bg | color_lighten: 6 }}"/>
+    <path id="{{ section.id | append: 'curved-text' }}" d="M11.5 41.0001C85 -37.0002 257.5 -61.0006 363.5 40.9991" stroke="transparent"/>
+    <text fill="{{ text_color }}">
+      <textPath style="font-size: {{ title_size }}" class="font-primary font-bold opacity-0 duration-300 ease-in-out" :class="from > 0 && 'opacity-100'" startOffset="-50%" text-anchor="middle" xlink:href="#{{ section.id | append: 'curved-text' }}">
+        {{ title }}
+      </textPath>
+    </text>
+  </svg>
+
+  <div class="z-1 absolute bottom-[12vw] right-[3vw] hidden xl:block">
+    <div class="relative flex h-[368px] w-[358px] items-center justify-center">
+      <svg
+        class="eag-anim-paused hover:eag-anim-running relative -left-2.5 -top-6 animate-spin"
+        width="213"
+        height="206"
+        viewBox="0 0 213 206"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M35.3816 177.413C23.128 165.938 14.2486 152.223 8.75707 137.483C13.1694 144.587 18.5654 151.24 24.9586 157.223C64.2601 194.038 125.965 192.016 162.78 152.715C199.596 113.413 197.574 51.7083 158.272 14.893C151.879 8.90963 144.899 3.95085 137.522 0.0165983C152.576 4.53826 166.851 12.5024 179.105 23.9773C221.48 63.6614 223.652 130.189 183.968 172.564C144.284 214.939 77.7568 217.111 35.3816 177.427L35.3816 177.413Z" fill="white"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M132.317 151.718C121.197 158.63 109.067 162.55 96.8542 163.712C103.097 161.826 109.19 159.094 114.996 155.488C150.677 133.303 161.606 86.4063 139.434 50.7247C117.25 15.0432 70.3526 4.11473 34.6711 26.2859C28.8654 29.8923 23.729 34.1544 19.262 38.922C25.7098 28.4853 34.5892 19.3463 45.7089 12.434C84.1635 -11.472 134.735 0.3171 158.641 38.7717C182.547 77.2263 170.758 127.798 132.304 151.704L132.317 151.718Z" fill="#BCA6D0"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M130.582 109.752C127.864 119.97 122.891 128.986 116.348 136.418C118.971 131.855 121.061 126.883 122.482 121.541C127.208 103.783 123.656 85.7642 114.19 71.5982C106.184 59.6178 93.9582 50.3832 78.9315 46.3943C46.1597 37.6652 12.5136 57.1589 3.7845 89.9444C2.3638 95.272 1.69442 100.627 1.70808 105.9C-0.272708 96.2009 -0.0950954 85.9008 2.62337 75.6827C12.0355 40.3427 48.3044 19.3327 83.6308 28.7312C118.971 38.1434 139.981 74.4123 130.582 109.739L130.582 109.752Z" fill="white"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M98.4115 76.8025C103.042 83.2503 105.911 90.4359 107.1 97.7716C105.706 94.0696 103.807 90.4905 101.389 87.1299C93.3434 75.9283 81.1854 69.3985 68.4537 68.1418C57.6892 67.0762 46.5011 69.781 37.0207 76.584C16.3385 91.4467 11.6119 120.257 26.4747 140.939C28.8926 144.3 31.6794 147.237 34.7394 149.75C28.1686 146.28 22.2809 141.267 17.6499 134.819C1.62604 112.525 6.72144 81.4608 29.0156 65.4369C51.3097 49.413 82.3739 54.5084 98.3978 76.8025L98.4115 76.8025Z" fill="#A14E76"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M88.3298 86.4337C94.0126 89.4117 98.6709 93.5783 102.195 98.4414C99.8457 96.2694 97.1819 94.3706 94.2175 92.8133C84.3409 87.6222 73.2075 87.308 63.5494 90.9964C55.3804 94.1247 48.2769 100.122 43.8918 108.468C34.3157 126.692 41.3236 149.218 59.5469 158.794C62.5112 160.351 65.5849 161.471 68.6995 162.168C62.6888 162.032 56.6235 160.543 50.9407 157.565C31.2968 147.237 23.7424 122.949 34.0698 103.305C44.3973 83.6607 68.6858 76.1063 88.3298 86.4337Z" fill="#0787A7"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M85.3251 97.7035C90.1337 98.3728 94.5187 100.149 98.2754 102.717C96.0487 101.774 93.6581 101.091 91.1582 100.75C82.7979 99.575 74.7791 102.198 68.8368 107.293C63.8097 111.61 60.2852 117.703 59.288 124.765C57.1296 140.202 67.8805 154.463 83.317 156.635C85.8306 156.991 88.3031 156.991 90.7074 156.704C86.3907 158.138 81.6914 158.63 76.8829 157.96C60.2443 155.625 48.6464 140.243 50.9824 123.604C53.3183 106.965 68.7002 95.3675 85.3388 97.7035L85.3251 97.7035Z" fill="#FACEE1"/>
+      </svg>
+
+      <svg
+        class="pointer-events-none absolute inset-0"
+        width="358"
+        height="358"
+        viewBox="0 0 358 358"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M56.576 215.069C50.6934 195.644 49.6791 175.909 52.8378 157.16C53.1662 167.264 54.7986 177.494 57.8704 187.636C76.7644 249.959 142.623 285.158 204.936 266.255C239.759 255.697 266.12 230.476 279.295 199.411C289.708 174.876 291.891 146.689 283.555 119.189C280.483 109.046 276.156 99.6379 270.814 91.0506C283.855 104.883 293.978 121.864 299.87 141.28C320.252 208.472 282.299 279.459 215.118 299.831C182.381 309.752 148.747 305.849 120.512 291.447C90.79 276.291 67.0276 249.534 56.576 215.069Z" fill="{{ circle_bg | color_darken: 10 }}"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="absolute inset-0 flex h-full w-full flex-col items-center justify-center overflow-hidden px-[15vw] pt-[23vw] text-center">
+    {% liquid
+      assign circle_text_split = circle_text | split: '||'
+      assign circle_text_split_group_size = circle_text_split.size | divided_by: 2
+    %}
+
+    {% if circle_text_split.size > 1 %}
+      <div class="overflow-hidden">
+        <div
+          class="animate__animated flex flex-col opacity-0 duration-1000"
+          x-intersect.half.once="$el.classList.add('animate__fadeInUp')"
+        >
+          {% for c_text in circle_text_split %}
+            {% if forloop.index <= circle_text_split_group_size %}
+              <span class="font-primary font-bold">{{ c_text }}</span>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="overflow-hidden">
+        <div
+          class="animate__animated flex flex-col opacity-0 delay-500 duration-1000"
+          x-intersect.half.once="$el.classList.add('animate__fadeInDown')"
+        >
+          {% for c_text in circle_text_split %}
+            {% if forloop.index > circle_text_split_group_size %}
+              <span class="font-primary font-bold">{{ c_text }}</span>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% else %}
+      <span
+        class="font-primary animate__animated font-bold opacity-0"
+        x-intersect.half.once="$el.classList.add('animate__fadeIn')"
+      >
+        {{- circle_text -}}
+      </span>
+    {% endif %}
+  </div>
+
+  {% for block in blocks %}
+    {% liquid
+      assign bl_bg = block.settings.bg
+      assign bl_text_color = block.settings.text_color
+      assign bl_text_spilt = block.settings.text | split: '||'
+    %}
+    <svg
+      class="z-2 absolute h-[20vw] w-[20vw] translate-y-1/2 -rotate-180 opacity-0 duration-500 ease-in-out {% if forloop.first %}left-0 bottom-[70vw]{% else %}left-[15vw] bottom-[81vw]{% endif %}"
+      width="300"
+      height="306"
+      viewBox="0 0 300 306"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      x-intersect:enter.threshold.100="$el.classList.remove('opacity-0', '-rotate-180')"
+    >
+      <circle cx="151.811" cy="148.107" r="92.3077" fill="{{ bl_text_color | color_lighten: 30 }}"/>
+      <circle class="duration-500 ease-in-out hover:scale-110 origin-center" cx="147.807" cy="157.109" r="86.8077" fill="{{ bl_bg }}" stroke="{{ bl_text_color | color_lighten: 30 }}" stroke-width="11"/>
+      <text fill="{{ bl_text_color }}" x="50%" y="43%" class="font-primary font-bold pointer-events-none">
+        {% for bl_text in bl_text_spilt %}
+          <tspan text-anchor="middle" x="49%" dy="1.2em">
+            {{ bl_text }}
+          </tspan>
+        {% endfor %}
+      </text>
+    </svg>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Ellipse text",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_anchor_id",
+      "label": "Section anchor id",
+      "default": "Ellipse text"
+    },
+    {
+      "type": "color",
+      "id": "bg",
+      "label": "Background color",
+      "default": "#23AAE1"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "circle_bg",
+      "label": "Circle color",
+      "default": "#8D6AA9"
+    },
+    {
+      "type": "header",
+      "content": "Content settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "IT'S TIME TO LOVE SODA AGAIN"
+    },
+    {
+      "type": "text",
+      "id": "title_size",
+      "label": "Title font size",
+      "default": "22px",
+      "info": "--"
+    },
+    {
+      "type": "text",
+      "id": "circle_text",
+      "label": "Section circle text",
+      "default": "SUPPORTS DIGESTIVE HEALTH",
+      "info": "Use || to linebreak"
+    },
+    {
+      "type": "text",
+      "id": "c_text_size_mob",
+      "label": "Section circle text mobile font size",
+      "default": "44px"
+    },
+    {
+      "type": "text",
+      "id": "c_text_size_tab",
+      "label": "Section circle text tablet font size",
+      "info": "Screen width: 744px+",
+      "default": "84px"
+    },
+    {
+      "type": "text",
+      "id": "c_text_size_desk",
+      "label": "Section circle text desktop font size",
+      "info": "Screen width: 1024px+",
+      "default": "122px"
+    },
+    {
+      "type": "text",
+      "id": "c_text_size_wide",
+      "label": "Section circle text ultra-wide font size",
+      "info": "Screen width: 1900px+",
+      "default": "200px"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Float block",
+      "type": "block",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "color",
+          "id": "bg",
+          "label": "Block bg color",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Block text color",
+          "default": "#E63690"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Block text",
+          "default": "ZERO || ASPARTAME",
+          "info": "Use || to linebreak"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ellipse text",
+      "category": "Repeatable"
+    }
+  ]
+}
+{% endschema %}

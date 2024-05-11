@@ -1,0 +1,76 @@
+<style>
+  :root {
+
+  /* MAIN COLORS */
+    --c-title: {{ settings.c-title.rgb }};
+    --c-subtitle: {{ settings.c-subtitle.rgb }};
+    --c-bg-primary: {{ settings.c-bg-primary.rgb }};
+    --c-bg-secondary: {{ settings.c-bg-secondary.rgb }};
+    --c-body-primary: {{ settings.c-body-primary.rgb }};
+
+  /* BUTTONS */
+    {% if settings.c-btn-primary-bg-default.alpha == 0.0 or settings.c-btn-primary-bg-default == blank %}
+        {% assign c-btn-primary-bg-default = 'transparent' %}
+    {% else %}
+        {% assign c-btn-primary-bg-default = settings.c-btn-primary-bg-default.rgb %}
+    {% endif %}
+
+    {% if settings.c-btn-primary-bg-hover.alpha == 0.0 or settings.c-btn-primary-bg-hover == blank %}
+        {% assign c-btn-primary-bg-hover = 'transparent' %}
+    {% else %}
+        {% assign c-btn-primary-bg-hover = settings.c-btn-primary-bg-hover.rgb %}
+    {% endif %}
+
+    {% if settings.c-btn-secondary-bg-default.alpha == 0.0 or settings.c-btn-secondary-bg-default == blank %}
+        {% assign c-btn-secondary-bg-default = 'transparent' %}
+    {% else %}
+        {% assign c-btn-secondary-bg-default = settings.c-btn-secondary-bg-default.rgb %}
+    {% endif %}
+
+    {% if settings.c-btn-secondary-bg-hover.alpha == 0.0 or settings.c-btn-secondary-bg-hover == blank %}
+        {% assign c-btn-secondary-bg-hover = 'transparent' %}
+    {% else %}
+        {% assign c-btn-secondary-bg-hover = settings.c-btn-secondary-bg-hover.rgb %}
+    {% endif %}
+
+    --c-btn-primary-bg-default: {{ c-btn-primary-bg-default }};
+    --c-btn-primary-text-default: {{ settings.c-btn-primary-text-default.rgb }};
+    --c-btn-primary-bg-hover: {{ c-btn-primary-bg-hover }};
+    --c-btn-primary-text-hover: {{ settings.c-btn-primary-text-hover.rgb }};
+    --c-btn-secondary-bg-default: {{ c-btn-secondary-bg-default }};
+    --c-btn-secondary-text-default: {{ settings.c-btn-secondary-text-default.rgb }};
+    --c-btn-secondary-bg-hover: {{ c-btn-secondary-bg-hover }};
+    --c-btn-secondary-text-hover: {{ settings.c-btn-secondary-text-hover.rgb }};
+    --c-link-primary-text: {{ settings.c-link-primary-text.rgb }};
+    --c-link-secondary-text: {{ settings.c-link-secondary-text.rgb }};
+
+  /* OVERLAY */
+    --c-blur-overlay: {{ settings.c-blur-overlay.rgb }};
+
+  /* ACCENT COLORS */
+    --c-accent-success: {{ settings.c-accent-success.rgb }};
+    --c-accent-warning: {{ settings.c-accent-warning.rgb }};
+    --c-accent-error: {{ settings.c-accent-error.rgb }};
+
+  /* BORDER RADIUS */
+    --r-btn-main: {{ settings.r-btn-main |  append: 'px' }};
+    --r-input: {{ settings.r-input | append: 'px' }};
+    --r-block: {{ settings.r-block | append: 'px' }};
+
+   /* OTHER */
+    --cursor-close: url({{ 'cursor-close.svg' | asset_url }});
+  }
+
+  .shop-logo-short {
+    max-width: {{ settings.logo_max_w_short | append: 'px' }};
+  }
+
+  .shop-logo {
+    max-width: {{ settings.logo_max_w_mobile | append: 'px' }};
+  }
+  @media (min-width: 744px) {
+    .shop-logo {
+      max-width: {{ settings.logo_max_w_desktop | append: 'px' }};
+    }
+  }
+</style>

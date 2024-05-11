@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "main": {
+      "type": "list-collections",
+      "settings": {
+        "section_anchor_id": "List collections",
+        "button_text": "Button text",
+        "button_type": "link_primary",
+        "pt_mob": 0,
+        "pb_mob": 40,
+        "pt_tab": 0,
+        "pb_tab": 250,
+        "pt_desk": 0,
+        "pb_desk": 400
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

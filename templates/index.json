@@ -1,0 +1,460 @@
+{
+  "sections": {
+    "banner_clip_path_qcAKUq": {
+      "type": "banner-clip-path",
+      "blocks": {
+        "banner_hRiwDE": {
+          "type": "banner",
+          "settings": {
+            "title": "DRINK MORE SODA",
+            "title_size_mob": "11vw",
+            "title_size_tab": "7vw",
+            "title_size_desk": "vw",
+            "title_pt_mob": "1vw",
+            "subtitle": "A MAGICAL DUO || OF FLAVOR || AND HEALTH",
+            "bg": "#000000",
+            "color": "#ffffff",
+            "image": "shopify:\/\/shop_images\/voodoo_levo_soda.png",
+            "flavor": "shopify:\/\/shop_images\/Voodoo_Doll_Icon_54x65_2eb6dd51-c721-41da-b214-a9ed51b0a8a0.svg",
+            "product": "voodoo-cola",
+            "link": "shopify:\/\/products\/voodoo-cola",
+            "ben_text_color": "#000000",
+            "ben_icon_1": "shopify:\/\/shop_images\/vc_fiber_red_new.svg",
+            "ben_text_1": "EXCELLENT SOURCE OF DIETARY FIBER",
+            "ben_icon_2": "shopify:\/\/shop_images\/Voodoo_Cola_Logo_Icon_eadd1c66-383f-4dfe-a516-182755a32131.svg",
+            "ben_text_2": "NATURAL FLAVORS",
+            "ben_icon_3": "shopify:\/\/shop_images\/flavor-2-icon-arrow_red_new.svg",
+            "ben_text_3": "80% LESS SUGAR THAN THE LEADING SODA",
+            "ben_icon_4": "shopify:\/\/shop_images\/x_vc.svg",
+            "ben_text_4": "ZERO CAFFEINE ZERO ASPARTAME ZERO SUCRALOSE"
+          }
+        },
+        "banner_UxV6ei": {
+          "type": "banner",
+          "settings": {
+            "title": "DRINK MORE SODA",
+            "title_size_mob": "11vw",
+            "title_size_tab": "7vw",
+            "title_size_desk": "7vw",
+            "title_pt_mob": "1vw",
+            "subtitle": "A MAGICAL DUO || OF FLAVOR || AND HEALTH",
+            "bg": "#e63690",
+            "color": "#ffffff",
+            "image": "shopify:\/\/shop_images\/cotton_candy_levo_soda.png",
+            "flavor": "shopify:\/\/shop_images\/Cotton_Candy_Icon_3abbf7b8-14a0-45db-9183-cbca51640eaa.svg",
+            "product": "cotton-candy",
+            "link": "shopify:\/\/products\/cotton-candy",
+            "ben_text_color": "#946ea9",
+            "ben_icon_1": "shopify:\/\/shop_images\/flavor-1-icon-5g.svg",
+            "ben_text_1": "EXCELLENT SOURCE OF DIETARY FIBER",
+            "ben_icon_2": "shopify:\/\/shop_images\/cotton_candy.svg",
+            "ben_text_2": "NATURAL FLAVORS",
+            "ben_icon_3": "shopify:\/\/shop_images\/flavor-1-icon-arrow.svg",
+            "ben_text_3": "80% LESS SUGAR THAN THE LEADING SODA",
+            "ben_icon_4": "shopify:\/\/shop_images\/flavor-1-icon-ex.svg",
+            "ben_text_4": "ZERO CAFFEINE ZERO ASPARTAME ZERO SUCRALOSE"
+          }
+        },
+        "banner_efcJMP": {
+          "type": "banner",
+          "settings": {
+            "title": "DRINK MORE SODA",
+            "title_size_mob": "11vw",
+            "title_size_tab": "7vw",
+            "title_size_desk": "7vw",
+            "title_pt_mob": "1vw",
+            "subtitle": "A MAGICAL DUO || OF FLAVOR || AND HEALTH",
+            "bg": "#3c2415",
+            "color": "#ffffff",
+            "image": "shopify:\/\/shop_images\/flavor-beer-can-min.png",
+            "flavor": "shopify:\/\/shop_images\/float-root-beer.svg",
+            "product": "",
+            "link": "shopify:\/\/products\/root-beer-float",
+            "ben_text_color": "#bc623a",
+            "ben_icon_1": "shopify:\/\/shop_images\/flavor-2-icon-5g.svg",
+            "ben_text_1": "EXCELLENT SOURCE OF FIBER",
+            "ben_icon_2": "shopify:\/\/shop_images\/Root_Beer_Logo_Icon_f52d15c8-705c-493b-bd2f-3978715e590a.svg",
+            "ben_text_2": "NATURAL FLAVORS",
+            "ben_icon_3": "shopify:\/\/shop_images\/flavor-2-icon-arrow.svg",
+            "ben_text_3": "80% LESS SUGAR THAN THE LEADING SODA",
+            "ben_icon_4": "shopify:\/\/shop_images\/flavor-2-icon-ex.svg",
+            "ben_text_4": "ZERO CAFFEINE ZERO ASPARTAME ZERO SUCRALOSE"
+          }
+        },
+        "banner_AMNrem": {
+          "type": "banner",
+          "settings": {
+            "title": "DRINK MORE SODA",
+            "title_size_mob": "11vw",
+            "title_size_tab": "7vw",
+            "title_size_desk": "7vw",
+            "title_pt_mob": "1vw",
+            "subtitle": "A MAGICAL DUO || OF FLAVOR || AND HEALTH",
+            "bg": "#22beff",
+            "color": "#ffffff",
+            "image": "shopify:\/\/shop_images\/cosmic_home_1031b6ae-ca74-4a3f-b6aa-b68848eeaeef.png",
+            "flavor": "shopify:\/\/shop_images\/Cosmic_Punch_O.svg",
+            "product": "",
+            "link": "shopify:\/\/products\/cosmic-punch",
+            "ben_text_color": "#61c1ee",
+            "ben_icon_1": "shopify:\/\/shop_images\/cp_fiber_red.svg",
+            "ben_text_1": "EXCELLENT SOURCE OF DIETARY FIBER",
+            "ben_icon_2": "shopify:\/\/shop_images\/planet.svg",
+            "ben_text_2": "NATURAL FLAVORS",
+            "ben_icon_3": "shopify:\/\/shop_images\/flavor-2-icon-arrow_cosmic.svg",
+            "ben_text_3": "80% LESS SUGAR THAN THE LEADING SODA",
+            "ben_icon_4": "shopify:\/\/shop_images\/x_cosmic.svg",
+            "ben_text_4": "ZERO CAFFEINE ZERO ASPARTAME ZERO SUCRALOSE"
+          }
+        },
+        "banner_nk6NQx": {
+          "type": "banner",
+          "settings": {
+            "title": "DRINK MORE SODA",
+            "title_size_mob": "11vw",
+            "title_size_tab": "7vw",
+            "title_size_desk": "7vw",
+            "title_pt_mob": "1vw",
+            "subtitle": "A MAGICAL DUO || OF FLAVOR || AND HEALTH",
+            "bg": "#6fac46",
+            "color": "#ffffff",
+            "image": "shopify:\/\/shop_images\/splice_levo_soda.png",
+            "flavor": "shopify:\/\/shop_images\/Splice_Emojis_54x65_cd14a00e-d688-4ffc-943a-590bdb2da963.svg",
+            "product": "",
+            "link": "shopify:\/\/products\/splice",
+            "ben_text_color": "#fadf4b",
+            "ben_icon_1": "shopify:\/\/shop_images\/splice_fiber.svg",
+            "ben_text_1": "EXCELLENT SOURCE OF DIETARY FIBER",
+            "ben_icon_2": "shopify:\/\/shop_images\/Splice_Logo_Icon_68cc4f52-24cc-40e3-8cb9-b82845521804.svg",
+            "ben_text_2": "NATURAL FLAVORS",
+            "ben_icon_3": "shopify:\/\/shop_images\/flavor-2-icon-arrow_green.svg",
+            "ben_text_3": "80% LESS SUGAR THAN THE LEADING SODA",
+            "ben_icon_4": "shopify:\/\/shop_images\/x_greeen.svg",
+            "ben_text_4": "ZERO CAFFEINE ZERO ASPARTAME ZERO SUCRALOSE"
+          }
+        },
+        "banner_LzQjUU": {
+          "type": "banner",
+          "settings": {
+            "title": "DRINK MORE SODA",
+            "title_size_mob": "11vw",
+            "title_size_tab": "7vw",
+            "title_size_desk": "7vw",
+            "title_pt_mob": "1vw",
+            "subtitle": "A MAGICAL DUO || OF FLAVOR || AND HEALTH",
+            "bg": "#f15922",
+            "color": "#ffffff",
+            "image": "shopify:\/\/shop_images\/orange_levo_soda.png",
+            "flavor": "shopify:\/\/shop_images\/Orange_Creamsicle_Icon3.svg",
+            "product": "orange-creamsicle",
+            "link": "shopify:\/\/products\/orange-creamsicle",
+            "ben_text_color": "#e9993e",
+            "ben_icon_1": "shopify:\/\/shop_images\/orange_fiber_orange.svg",
+            "ben_text_1": "EXCELLENT SOURCE OF FIBER",
+            "ben_icon_2": "shopify:\/\/shop_images\/Creamsicle_Icon_a615f977-fc76-4879-a2c2-61ef0b10881b.svg",
+            "ben_text_2": "NATURAL FLAVORS",
+            "ben_icon_3": "shopify:\/\/shop_images\/flavor-2-icon-arrow_orange.svg",
+            "ben_text_3": "80% LESS SUGAR THAN THE LEADING SODA",
+            "ben_icon_4": "shopify:\/\/shop_images\/orange_x.svg",
+            "ben_text_4": "ZERO CAFFEINE ZERO ASPARTAME ZERO SUCRALOSE"
+          }
+        }
+      },
+      "block_order": [
+        "banner_hRiwDE",
+        "banner_UxV6ei",
+        "banner_efcJMP",
+        "banner_AMNrem",
+        "banner_nk6NQx",
+        "banner_LzQjUU"
+      ],
+      "settings": {
+        "section_anchor_id": "Banner clip path id"
+      }
+    },
+    "wave_divider_jrXEnG": {
+      "type": "wave-divider",
+      "settings": {
+        "section_anchor_id": "Divider",
+        "c-bg-primary": "#ffffff",
+        "wave_1": "#9de0fb",
+        "wave_2": "#6accf5",
+        "wave_3": "#23aae1",
+        "divider_type": "waves",
+        "float_element": "whirlpool",
+        "overflow_full": false,
+        "margin_mob": -20,
+        "margin_tab": -20,
+        "margin": -50
+      }
+    },
+    "elipse_text_TfKj7G": {
+      "type": "ellipse-text",
+      "blocks": {
+        "block_gCKJxM": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "bg": "#ffffff",
+            "text_color": "#e63690",
+            "text": "ZERO || ASPARTAME"
+          }
+        },
+        "block_qLU984": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "bg": "#ffffff",
+            "text_color": "#e63690",
+            "text": "ZERO || SUCRALOSE"
+          }
+        }
+      },
+      "block_order": [
+        "block_gCKJxM",
+        "block_qLU984"
+      ],
+      "settings": {
+        "section_anchor_id": "Ellipse text",
+        "bg": "#23aae1",
+        "text_color": "#ffffff",
+        "circle_bg": "#8d6aa9",
+        "title": "IT'S TIME TO LOVE SODA AGAIN",
+        "title_size": "22px",
+        "circle_text": "SUPPORTS || DIGESTIVE || HEALTH",
+        "c_text_size_mob": "44px",
+        "c_text_size_tab": "84px",
+        "c_text_size_desk": "122px",
+        "c_text_size_wide": "200px"
+      }
+    },
+    "wave_divider_jttLfz": {
+      "type": "wave-divider",
+      "settings": {
+        "section_anchor_id": "Divider",
+        "c-bg-primary": "#ffffff",
+        "wave_1": "#f3c6d8",
+        "wave_2": "#ffe6d3",
+        "wave_3": "#fff6ef",
+        "divider_type": "waves",
+        "float_element": "quotes",
+        "overflow_full": true,
+        "margin_mob": 0,
+        "margin_tab": 0,
+        "margin": 0
+      }
+    },
+    "products_list_nWwmiz": {
+      "type": "product-list",
+      "blocks": {
+        "block_y99c98": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Prebiotics_Icon_5fe8bd70-0ce2-450f-b842-b60ae769bcc6.svg",
+            "text": "<center>Prebiotic Fiber<br>for Gut Health<\/center>"
+          }
+        },
+        "block_nN68GH": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/5g_Fiber_Icon_1.svg",
+            "text": "5g Cane Sugar"
+          }
+        },
+        "block_NVwVpk": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/30.svg",
+            "text": "30 Calories"
+          }
+        },
+        "block_xAPA4J": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/No_BS_Icon2.svg",
+            "text": "<center>No Fake Ingredients<\/center>"
+          }
+        }
+      },
+      "block_order": [
+        "block_y99c98",
+        "block_nN68GH",
+        "block_NVwVpk",
+        "block_xAPA4J"
+      ],
+      "settings": {
+        "section_anchor_id": "Products list",
+        "c-bg-primary": "#fff6ef",
+        "c-title": "#231f20",
+        "title": "LEVEL UP YOUR SODA",
+        "products": [
+          "cotton-candy",
+          "root-beer-float",
+          "cosmic-punch",
+          "orange-creamsicle",
+          "splice",
+          "voodoo-cola"
+        ],
+        "layout": "slider",
+        "pt_mob": 30,
+        "pb_mob": 148,
+        "pt_tab": 45,
+        "pb_tab": 250,
+        "pt_desk": 114,
+        "pb_desk": 450
+      }
+    },
+    "wave_divider_dcDVbY": {
+      "type": "wave-divider",
+      "settings": {
+        "section_anchor_id": "Divider",
+        "c-bg-primary": "#ffffff",
+        "wave_1": "#a45825",
+        "wave_2": "#f3c6d8",
+        "wave_3": "#fff7fa",
+        "divider_type": "waves",
+        "float_element": "quotes",
+        "overflow_full": true,
+        "margin_mob": 0,
+        "margin_tab": 0,
+        "margin": 0
+      }
+    },
+    "image_with_text_dtaxYe": {
+      "type": "image-with-text",
+      "blocks": {
+        "block_4Yqweh": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/icon-7.webp",
+            "text": "Save 15% on every order"
+          }
+        },
+        "block_NPERbm": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/icon-2.webp",
+            "text": "Early access to new flavors"
+          }
+        },
+        "block_zRfFVp": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/icon-3.webp",
+            "text": "Free Shipping, Always"
+          }
+        },
+        "block_GKeDtN": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/icon-4.webp",
+            "text": "Swap, skip or cancel any time"
+          }
+        }
+      },
+      "block_order": [
+        "block_4Yqweh",
+        "block_NPERbm",
+        "block_zRfFVp",
+        "block_GKeDtN"
+      ],
+      "disabled": true,
+      "settings": {
+        "section_anchor_id": "Image with text",
+        "c-bg-primary": "#fff7fa",
+        "c-title": "#231f20",
+        "img_color": "#f3c6d8",
+        "image": "shopify:\/\/shop_images\/image_2.webp",
+        "image_size": "medium",
+        "layout": "container",
+        "headline": "Save 15% with Endless LEVO.",
+        "title_size": "normal",
+        "text": "<p>Never run out of your favorite flavors when you join our fam. Subscribe and save on every order — your wallet (and digestion) will thank you.<\/p>",
+        "button_url": "#",
+        "button_text": "SHOP NOW",
+        "button_type": "btn_secondary_fill",
+        "pt_mob": 40,
+        "pb_mob": 40,
+        "pt_tab": 0,
+        "pb_tab": 0,
+        "pt_desk": 0,
+        "pb_desk": 0
+      }
+    },
+    "image_with_text_NJHMmD": {
+      "type": "image-with-text",
+      "settings": {
+        "section_anchor_id": "Image with text",
+        "c-bg-primary": "#fff7fa",
+        "c-title": "#231f20",
+        "img_color": "#f3c6d8",
+        "image": "shopify:\/\/shop_images\/dms.png",
+        "image_size": "medium",
+        "layout": "container_reverse",
+        "headline": "PREBIOTICS FOR GUT HEALTH",
+        "title_size": "big",
+        "text": "<p>Levo Soda levels up your soda. It’s a prebiotic soda that pushes the boundaries of taste with delicious, indulgent flavors and elevates your wellness with 5 grams of dietary fiber for better gut health, contains all-natural flavors, only 5 grams of cane sugar, and a mere 30 calories. <\/p>",
+        "button_url": "",
+        "button_text": "LEARN MORE",
+        "button_type": "btn_primary_fill",
+        "pt_mob": 30,
+        "pb_mob": 140,
+        "pt_tab": 45,
+        "pb_tab": 245,
+        "pt_desk": 120,
+        "pb_desk": 400
+      }
+    },
+    "wave_divider_EDDNCf": {
+      "type": "wave-divider",
+      "settings": {
+        "section_anchor_id": "Divider",
+        "c-bg-primary": "#ffffff",
+        "wave_1": "#f3c6d8",
+        "wave_2": "#946ea9",
+        "wave_3": "#ffffff",
+        "divider_type": "waves",
+        "float_element": "quotes",
+        "overflow_full": true,
+        "margin_mob": 0,
+        "margin_tab": 0,
+        "margin": 0
+      }
+    },
+    "newsletter_EDTHKV": {
+      "type": "newsletter",
+      "settings": {
+        "section_anchor_id": "Newsletter",
+        "c-title": "#231f20",
+        "input_color": "#ed3293",
+        "c-bg-primary": "#ffffff",
+        "float_img": "shopify:\/\/shop_images\/float.svg",
+        "float_img_width": 345,
+        "title": "LET’S BE FRIENDS",
+        "subtitle": "",
+        "list_id": "",
+        "placeholder": "Enter Email",
+        "thanks_text": "<p>Thanks for subscribing!<\/p>",
+        "small_text": "<p>By sharing your email address, you are agreeing to receive email communication, including Levo news and promotions.We will not share your information with any 3rd parties.Please review our privacy policy for more information.<\/p>",
+        "pt_mob": 40,
+        "pb_mob": 120,
+        "pt_tab": 70,
+        "pb_tab": 200,
+        "pt_desk": 100,
+        "pb_desk": 400
+      }
+    }
+  },
+  "order": [
+    "banner_clip_path_qcAKUq",
+    "wave_divider_jrXEnG",
+    "elipse_text_TfKj7G",
+    "wave_divider_jttLfz",
+    "products_list_nWwmiz",
+    "wave_divider_dcDVbY",
+    "image_with_text_dtaxYe",
+    "image_with_text_NJHMmD",
+    "wave_divider_EDDNCf",
+    "newsletter_EDTHKV"
+  ]
+}

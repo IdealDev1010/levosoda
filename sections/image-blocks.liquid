@@ -1,0 +1,320 @@
+{% liquid
+  assign section_anchor_id = section.settings.section_anchor_id | handleize
+  assign title = section.settings.title
+
+  assign img_color = section.settings.img_color
+  assign image = section.settings.image
+  assign image_tab = section.settings.image_tab | default: image
+  assign image_mob = section.settings.image_mob | default: image_tab
+  assign image_size = section.settings.image_size
+  case image_size
+    when 'small'
+      assign img_size = 'h-[350px] md:h-[550px] 2k:h-[650px]'
+    when 'medium'
+      assign img_size = 'h-[400px] md:h-[600px] 2k:h-[750px]'
+    when 'large'
+      assign img_size = 'h-[500px] md:h-[650px] 2k:h-[800px]'
+  endcase
+
+  assign blocks = section.blocks
+
+  assign pt_mob = section.settings.pt_mob
+  assign pb_mob = section.settings.pb_mob
+  assign pt_tab = section.settings.pt_tab
+  assign pb_tab = section.settings.pb_tab
+  assign pt_desk = section.settings.pt_desk
+  assign pb_desk = section.settings.pb_desk
+%}
+
+{% render 'css-variables-setter' %}
+
+{% render 'section-paddings',
+  section_id: section.id,
+  pt_mob: pt_mob,
+  pb_mob: pb_mob,
+  pt_tab: pt_tab,
+  pb_tab: pb_tab,
+  pt_desk: pt_desk,
+  pb_desk: pb_desk
+%}
+
+<div
+  id="{{ section_anchor_id }}"
+  data-section-id="{{ section.id }}"
+  class="bg-sc-bg-primary bg-primary-gradient"
+>
+  <div class="md:space-y-15 2k:max-w-[2280px] container relative space-y-10">
+    {% if title != blank %}
+      <div class="overflow-hidden">
+        <h2
+          class="animate__animated font-primary text-title-lg lg:text-title-xl text-center font-bold opacity-0"
+          x-intersect="$el.classList.add('animate__fadeInUp')"
+        >
+          {{ title }}
+        </h2>
+      </div>
+    {% endif %}
+
+    <div class="smD:grid smD:items-center smD:grid-cols-2 smD:gap-x-20 2k:grid-cols-[minmax(0,1fr)_minmax(0,600px)] mx-auto max-w-[1440px]">
+      {% capture image_tag %}
+        {% liquid
+          assign img_class = img_size | append: ' h-full w-full object-cover object-center rounded-[50px] duration-300 ease-in-out translate-x-2.5 translate-y-2.5 md:translate-x-5 md:translate-y-5 hover:translate-x-0 hover:translate-y-0'
+        %}
+        {% if image %}
+          <picture>
+            <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width: 1150px)">
+            <source srcset="{{ image_tab | image_url: width: 900 }}" media="(min-width: 740px)">
+            <source srcset="{{ image_mob | image_url: width: 740 }}" media="(max-width: 740px)">
+            <img
+              class="{{ img_class }}"
+              src="{{ image | image_url: width: image.width }}"
+              alt="{{ image.alt | escape }}"
+              loading="lazy"
+              width="{{ image.width }}"
+              height="{{ image.height }}"
+            >
+          </picture>
+        {% else %}
+          {% assign img_class = img_class | append: ' bg-white' %}
+          {{ 'lifestyle-2' | placeholder_svg_tag: img_class }}
+        {% endif %}
+      {% endcapture %}
+
+      <div class="rounded-[50px]" style="background-color: {{ img_color }}">
+        {{ image_tag }}
+      </div>
+
+      {% if blocks.size > 0 %}
+        <div
+          class="my-7.5 flex flex-col items-baseline"
+        >
+          {% for block in blocks %}
+            {% liquid
+              assign image = block.settings.image
+              assign title = block.settings.title
+              assign subtitle = block.settings.subtitle
+              assign text = block.settings.text
+            %}
+            <article
+              class="border-sc-link-primary-text-default/30 w-full border-b py-6 {% if forloop.first %}border-t{% endif %}"
+              x-data="{isOpen: false}"
+            >
+              <!-- ITEM HEAD -->
+              <button
+                @click="isOpen = !isOpen"
+                type="button"
+                class="no-select group flex w-full items-center text-left"
+                aria-controls="content-{{ index }}"
+              >
+                {% if image != blank %}
+                  <span class="max-w-12.5 mr-3.5 w-full shrink-0">
+                    {{
+                      image
+                      | image_url: width: 100
+                      | image_tag:
+                        alt: image.alt,
+                        class: 'h-full w-full object-cover',
+                        loading: 'lazy',
+                        widths: '50, 100'
+                    }}
+                  </span>
+                {% endif %}
+
+                <span class="mr-auto flex flex-col">
+                  <span
+                    class="font-primary text-body-lg group-hover:text-sc-link-primary-text-default font-bold duration-200 ease-in-out"
+                    :class="isOpen ? 'text-sc-link-primary-text-default' : 'text-sc-title'"
+                  >
+                    {{ title }}
+                  </span>
+                  {% if subtitle != blank %}
+                    <span class="font-secondary text-sc-body-primary text-sm">{{ subtitle }}</span>
+                  {% endif %}
+                </span>
+
+                {% render 'icon',
+                  name: 'faq-chevron',
+                  class: 'ml-2 md:ml-5 duration-300 ease-in-out shrink-0 group-hover:text-sc-link-primary-text-default'
+                %}
+              </button>
+
+              <!-- ITEM CONTENT -->
+              <div
+                x-cloak
+                x-collapse
+                x-show="isOpen"
+                :aria-hidden="!isOpen"
+                id="content-{{ index }}"
+              >
+                <div class="smD:pt-3 pt-2 md:pt-4">
+                  <div class="rte font-secondary text-sc-body-primary list-image-star text-base">
+                    {{ text }}
+                  </div>
+                </div>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Image blocks",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_anchor_id",
+      "label": "Section anchor id",
+      "default": "Image blocks"
+    },
+    {
+      "type": "color",
+      "id": "c-bg-primary",
+      "label": "Section background color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "c-title",
+      "label": "Section title color",
+      "default": "#231F20"
+    },
+    {
+      "type": "color",
+      "id": "c-body-primary",
+      "label": "Section text color",
+      "default": "#3A3A3B"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "Frequently asked questions"
+    },
+    {
+      "type": "header",
+      "content": "Image settings"
+    },
+    {
+      "type": "color",
+      "id": "img_color",
+      "label": "Image shadow color",
+      "default": "#F3C6D8"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_tab",
+      "label": "Tablet image (optional)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mob",
+      "label": "Mobile image (optional)"
+    },
+    {
+      "type": "select",
+      "id": "image_size",
+      "label": "Image height",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium",
+      "info": "aspect ratio 3:2"
+    },
+    {
+      "type": "header",
+      "content": "Padding Y settings"
+    },
+    {
+      "type": "number",
+      "id": "pt_mob",
+      "label": "Mobile padding top in px",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "pb_mob",
+      "label": "Mobile padding bottom in px",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "pt_tab",
+      "label": "Tablet padding top in px",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "pb_tab",
+      "label": "Tablet padding bottom in px",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "pt_desk",
+      "label": "Desktop padding top in px",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "pb_desk",
+      "label": "Desktop padding bottom in px",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Block image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Block title"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Block subtitle"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Block text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image blocks",
+      "category": "Repeatable"
+    }
+  ]
+}
+{% endschema %}

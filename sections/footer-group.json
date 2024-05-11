@@ -1,0 +1,111 @@
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "contact_popup_67KXfk": {
+      "type": "contact-popup",
+      "blocks": {
+        "topic_JKMiRP": {
+          "type": "topic",
+          "settings": {
+            "title": "Account & Checkout"
+          }
+        },
+        "topic_jJkjpz": {
+          "type": "topic",
+          "settings": {
+            "title": "Order status"
+          }
+        },
+        "topic_RCGBw9": {
+          "type": "topic",
+          "settings": {
+            "title": "Report an issue"
+          }
+        },
+        "topic_YjfHgE": {
+          "type": "topic",
+          "settings": {
+            "title": "Product question"
+          }
+        },
+        "topic_tR3j4i": {
+          "type": "topic",
+          "settings": {
+            "title": "Feedback"
+          }
+        },
+        "faq_xbXPzh": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I create an account?",
+            "answer": "<p>To create an account, simply click on the 'Sign Up' button on our website's homepage. Follow the prompts to provide the required information, such as your name, email address, and password.<\/p>"
+          }
+        },
+        "faq_FexdWq": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your return\/exchange policy?",
+            "answer": ""
+          }
+        }
+      },
+      "block_order": [
+        "topic_JKMiRP",
+        "topic_jJkjpz",
+        "topic_RCGBw9",
+        "topic_YjfHgE",
+        "topic_tR3j4i",
+        "faq_xbXPzh",
+        "faq_FexdWq"
+      ],
+      "settings": {
+        "section_anchor_id": "Contact Pop-up",
+        "footer_trigger": "#contact",
+        "footer_title": "HI! HOW CAN WE HELP?",
+        "footer_text": "<p>We're here to assist you in any way we can. Just fill out the form below or reach out to us directly using the contact information provided.<\/p>",
+        "faq_title": "FREQUENTLY ASKED QUESTIONS",
+        "button_type": "btn_primary_fill"
+      }
+    },
+    "wave_divider_BBqFWd": {
+      "type": "wave-divider",
+      "settings": {
+        "section_anchor_id": "Divider",
+        "c-bg-primary": "#ffffff",
+        "wave_1": "#f3c6d8",
+        "wave_2": "#ed3293",
+        "wave_3": "#000000",
+        "divider_type": "waves_big",
+        "float_element": "quotes",
+        "overflow_full": true,
+        "margin_mob": 0,
+        "margin_tab": 0,
+        "margin": 0
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "c-bg-primary": "#000000",
+        "c-title": "#ffffff",
+        "linklist": "footer",
+        "logo": "logo_light",
+        "logo_width": 456,
+        "copyright_text": "<p>© 2024 Levo. All rights reserved.<\/p>",
+        "bottom_linklist": "footer-bottom-menu",
+        "pt_mob": 42,
+        "pb_mob": 32,
+        "pt_tab": 32,
+        "pb_tab": 52,
+        "pt_desk": 80,
+        "pb_desk": 20
+      }
+    }
+  },
+  "order": [
+    "contact_popup_67KXfk",
+    "wave_divider_BBqFWd",
+    "footer"
+  ]
+}

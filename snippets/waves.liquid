@@ -1,0 +1,150 @@
+{% case type %}
+  {% when 'waves' %}
+    <div class="relative">
+      <svg
+        class="relative top-[1px] w-full md:h-[186px] xl:hidden"
+        width="375"
+        height="89"
+        viewBox="0 0 375 89"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+      >
+        <path d="M-0.259766 0C-0.259766 0 54.9255 46.8654 91.5371 46.8654C128.149 46.8654 150.629 24.2402 187.24 24.2402C223.852 24.2402 268.337 55.0363 304.949 55.0363C341.56 55.0363 374.74 36.2433 374.74 36.2433V89.0625H-0.259766V0Z" fill="{{ wave_1 }}"/>
+        <path d="M-0.259766 17.708C-0.259766 17.708 54.9255 62.0473 91.5371 62.0473C128.149 62.0473 150.629 37.1286 187.24 37.1286C223.852 37.1286 268.337 68.5936 304.949 68.5936C341.56 68.5936 374.74 61.3497 374.74 61.3497V89.0622H-0.259766V17.708Z" fill="{{ wave_2 }}"/>
+        <path d="M-0.259766 46.4844C-0.259766 46.4844 54.9255 77.6042 91.5371 77.6042C128.149 77.6042 150.629 58.0729 187.24 58.0729C223.852 58.0729 268.337 81.5104 304.949 81.5104C341.56 81.5104 374.74 72.526 374.74 72.526V89.0625H-0.259766V46.4844Z" fill="{{ wave_3 }}"/>
+      </svg>
+
+      <svg
+        class="hidden w-full xl:block"
+        width="1439"
+        height="342"
+        viewBox="0 0 1439 342"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+      >
+        <path d="M-1 0C-1 0 210.911 179.963 351.5 179.963C492.089 179.963 578.411 93.0826 719 93.0826C859.589 93.0826 1030.41 211.339 1171 211.339C1311.59 211.339 1439 139.174 1439 139.174V342H-1V0Z" fill="{{ wave_1 }}"/>
+        <path d="M-1 68C-1 68 210.911 238.263 351.5 238.263C492.089 238.263 578.411 142.575 719 142.575C859.589 142.575 1030.41 263.401 1171 263.401C1311.59 263.401 1439 235.584 1439 235.584V342H-1V68Z" fill="{{ wave_2 }}"/>
+        <path d="M-1 178.5C-1 178.5 210.911 298 351.5 298C492.089 298 578.411 223 719 223C859.589 223 1030.41 313 1171 313C1311.59 313 1439 278.5 1439 278.5V342H-1V178.5Z" fill="{{ wave_3 }}"/>
+      </svg>
+
+      {% case float %}
+        {% when 'whirlpool' %}
+          {% render 'float-element',
+            type: float,
+            class: 'w-[8vw] h-[8vw] absolute z-1 bottom-[5vw] right-[15vw] lg:bottom-[1vw] 2k:bottom-[2vw] 2k:h-[6vw] 2k:w-[6vw] animate-spin eag-anim-custom-duration',
+            style: '--eag-custom-duration: 30s;'
+          %}
+          {% render 'float-element',
+            type: float,
+            class: 'w-[6vw] h-[6vw] absolute z-1 bottom-1/2 right-1/2 animate-spin opacity-80 eag-anim-reverse eag-anim-custom-duration',
+            style: '--eag-custom-duration: 50s;'
+          %}
+          {% render 'float-element',
+            type: float,
+            class: 'w-[2.5vw] h-[2.5vw] absolute z-1 bottom-[3vw] left-[15vw] 2k:bottom-[2vw] opacity-90 animate-spin eag-anim-custom-duration',
+            style: '--eag-custom-duration: 30s;'
+          %}
+          {% render 'float-element',
+            type: float,
+            class: 'w-[2vw] h-[2vw] absolute z-1 bottom-[10vw] left-[5vw] 2k:bottom-[6vw] animate-spin eag-anim-reverse eag-anim-custom-duration',
+            style: '--eag-custom-duration: 25s;'
+          %}
+
+        {% when 'quotes' %}
+          {% render 'float-element',
+            type: float,
+            class: 'w-[8vw] h-[8vw] absolute z-1 bottom-[2vw] right-[12vw] xl:w-[10vw] xl:h-[10vw] 2k:w-[8vw] 2k:h-[8vw] xl:bottom-0 animate-spin eag-anim-custom-duration',
+            style: '--eag-custom-duration: 30s;'
+          %}
+          {% render 'float-element',
+            type: float,
+            class: 'w-[5vw] h-[5vw] absolute z-1 bottom-1/2 right-1/3 animate-spin eag-anim-reverse 2k:bottom-[4vw] opacity-90 eag-anim-custom-duration',
+            style: '--eag-custom-duration: 50s;'
+          %}
+          {% render 'float-element',
+            type: float,
+            class: 'w-[5vw] h-[5vw] absolute z-1 bottom-[8vw] left-1/3 xl:bottom-[7vw] animate-spin 2k:bottom-[2vw] opacity-70 eag-anim-custom-duration',
+            style: '--eag-custom-duration: 30s;'
+          %}
+          {% render 'float-element',
+            type: float,
+            class: 'w-[8vw] h-[8vw] absolute z-1 bottom-[3vw] left-[8vw] xl:w-[8.5vw] xl:h-[8.5vw] animate-spin eag-anim-reverse eag-anim-custom-duration',
+            style: '--eag-custom-duration: 25s;'
+          %}
+      {% endcase %}
+    </div>
+
+  {% when 'waves_big' %}
+    <div class="relative">
+      <svg
+        class="w-full md:h-[186px] xl:hidden"
+        width="375"
+        height="89"
+        viewBox="0 0 375 89"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+      >
+        <path d="M375 -0.0625C375 -0.0625 319.815 46.8029 283.203 46.8029C246.591 46.8029 224.112 24.1777 187.5 24.1777C150.888 24.1777 106.403 54.9738 69.7917 54.9738C33.18 54.9738 0 36.1808 0 36.1808V89H375V-0.0625Z" fill="{{ wave_1 }}"/>
+        <path d="M375 17.646C375 17.646 319.815 61.9853 283.203 61.9853C246.591 61.9853 224.112 37.0665 187.5 37.0665C150.888 37.0665 106.403 68.5316 69.7917 68.5316C33.18 68.5316 0 61.2877 0 61.2877V89.0002H375V17.646Z" fill="{{ wave_2 }}"/>
+        <path d="M375 46.4219C375 46.4219 319.815 77.5417 283.203 77.5417C246.591 77.5417 224.112 58.0104 187.5 58.0104C150.888 58.0104 106.403 81.4479 69.7917 81.4479C33.18 81.4479 0 72.4635 0 72.4635V89H375V46.4219Z" fill="{{ wave_3 }}"/>
+      </svg>
+
+      <svg
+        class="hidden w-full xl:block"
+        width="1439"
+        height="342"
+        viewBox="0 0 1439 342"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+      >
+        <path d="M1439 0C1439 0 1227.09 179.963 1086.5 179.963C945.911 179.963 859.589 93.0825 719 93.0824C578.411 93.0824 407.589 211.339 267 211.339C126.411 211.339 -1.00002 139.174 -1.00002 139.174L-1.00006 342L1439 342L1439 0Z" fill="{{ wave_1 }}"/>
+        <path d="M1439 68C1439 68 1227.09 238.263 1086.5 238.263C945.911 238.263 859.589 142.575 719 142.575C578.411 142.575 407.589 263.4 267 263.4C126.411 263.4 -1.00003 235.584 -1.00003 235.584L-1.00005 342L1439 342L1439 68Z" fill="{{ wave_2 }}"/>
+        <path d="M1439 178.5C1439 178.5 1227.09 298 1086.5 298C945.911 298 859.589 223 719 223C578.411 223 407.589 313 267 313C126.411 313 -1.00002 278.5 -1.00002 278.5L-1.00003 342L1439 342L1439 178.5Z" fill="{{ wave_3 }}"/>
+      </svg>
+
+      {% case float %}
+        {% when 'whirlpool' %}
+          {% render 'float-element',
+            type: float,
+            class: 'w-[8vw] h-[8vw] absolute z-1 bottom-[5vw] right-[15vw] 2k:bottom-[2vw] animate-spin eag-anim-custom-duration',
+            style: '--eag-custom-duration: 30s;'
+          %}
+          {% render 'float-element',
+            type: float,
+            class: 'w-[6vw] h-[6vw] absolute z-1 bottom-1/2 right-1/2 animate-spin eag-anim-reverse opacity-90 eag-anim-custom-duration',
+            style: '--eag-custom-duration: 50s;'
+          %}
+          {% render 'float-element',
+            type: float,
+            class: 'w-[2.5vw] h-[2.5vw] absolute z-1 bottom-[3vw] left-[15vw] 2k:bottom-[2vw] animate-spin eag-anim-custom-duration',
+            style: '--eag-custom-duration: 30s;'
+          %}
+
+        {% when 'quotes' %}
+          {% render 'float-element',
+            type: float,
+            class: 'w-[8vw] h-[8vw] absolute z-1 bottom-[6vw] right-[5vw] xl:w-[10vw] xl:h-[10vw] 2k:w-[8vw] 2k:h-[8vw] xl:bottom-[4vw] animate-spin eag-anim-custom-duration',
+            style: '--eag-custom-duration: 30s;'
+          %}
+          {% render 'float-element',
+            type: float,
+            class: 'w-[5vw] h-[5vw] absolute z-1 bottom-[5vw] right-1/3 lg:hidden animate-spin lg:right-[50vw] lg:bottom-[8vw] eag-anim-reverse 2k:bottom-[4vw] eag-anim-custom-duration',
+            style: '--eag-custom-duration: 20s;'
+          %}
+          {% render 'float-element',
+            type: float,
+            class: 'w-[5vw] h-[5vw] absolute z-1 bottom-[8vw] left-1/3 lg:left-[45vw] xl:left-[62vw] xl:w-[4vw] opacity-70 xl:h-[4vw] xl:bottom-[6vw] lg:bottom-[8vw] animate-spin eag-anim-custom-duration',
+            style: '--eag-custom-duration: 30s;'
+          %}
+          {% render 'float-element',
+            type: float,
+            class: 'w-[6vw] h-[6vw] absolute z-1 bottom-[3vw] left-[8vw] lg:bottom-[1vw] animate-spin eag-anim-reverse opacity-90 eag-anim-custom-duration',
+            style: '--eag-custom-duration: 15s;'
+          %}
+      {% endcase %}
+    </div>
+{% endcase %}

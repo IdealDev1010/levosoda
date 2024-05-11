@@ -1,0 +1,29 @@
+<style>
+    [data-section-id='{{ section.id }}'] {
+        {% if section.settings.c-title %}
+            --c-title: {{ section.settings.c-title.rgb }};
+        {% endif %}
+        {% if section.settings.c-subtitle %}
+            --c-subtitle: {{ section.settings.c-subtitle.rgb }};
+        {% endif %}
+        {% if section.settings.c-body-primary %}
+            --c-body-primary: {{ section.settings.c-body-primary.rgb }};
+        {% endif %}
+        {% if section.settings.c-bg-primary %}
+            {% if section.settings.c-bg-primary.alpha == 0.0 or section.settings.c-bg-primary == blank %}
+                {% assign c-btn-primary-bg = 'transparent' %}
+            {% else %}
+                {% assign c-btn-primary-bg = section.settings.c-bg-primary.rgb %}
+            {% endif %}
+            --c-bg-primary: {{ c-btn-primary-bg }};
+        {% endif %}
+        {% if section.settings.c-bg-secondary %}
+            {% if section.settings.c-bg-secondary.alpha == 0.0 or section.settings.c-bg-secondary == blank %}
+                {% assign c-btn-secondary-bg = 'transparent' %}
+            {% else %}
+                {% assign c-btn-secondary-bg = section.settings.c-bg-secondary.rgb %}
+            {% endif %}
+            --c-bg-secondary: {{ c-btn-secondary-bg }};
+        {% endif %}
+    }
+</style>
