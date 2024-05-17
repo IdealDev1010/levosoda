@@ -72,7 +72,7 @@
 
   <!-- NAV LIST -->
   <ul
-    class="text-sc-title flex h-full flex-wrap items-center space-x-10 text-lg font-medium"
+    class="{% if template.name != 'product' %} text-sc-title {% endif %} flex h-full flex-wrap items-center space-x-10 text-lg font-medium"
   >
     {% for link in header_link_list.links %}
       {% assign link_title_handleize = link.title | handleize %}
@@ -104,7 +104,7 @@
     {% endfor %}
   </ul>
 
-  <div class="text-sc-title ml-5 flex items-center">
+  <div class="{% if template.name == 'index' %} text-sc-title {% endif %} ml-5 flex items-center">
     {% unless request.page_type contains 'customers/' %}
       <a
         class="block duration-200 hover:opacity-70"

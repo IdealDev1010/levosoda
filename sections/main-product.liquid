@@ -415,7 +415,7 @@
                     %}
                     <a
                       href="{{ meta_product.url }}"
-                      class="smD:flex-row smD:px-3 smD:py-3.5 flex flex-col items-center justify-between rounded-[10px] border-[2px] border-[var(--meta-brand-color)] p-2.5 {% if meta_product.handle == product.handle %}bg-[var(--meta-brand-color)]{% else %} bg-transparent{% endif %}"
+                      class="smD:flex-row smD:px-3 smD:py-3.5 flex flex-col items-center justify-between rounded-[10px] border-[2px] border-[var(--meta-brand-color)] p-2.5 {% if meta_product.handle == product.handle %}bg-[var(--meta-brand-color)]{% else %} bi-bg-white {% endif %}"
                       style="--meta-brand-color: {{ meta_product_bg }};"
                     >
                       <span class="font-secondary smD:text-left mb-1.5 text-center text-xs font-black tracking-wide md:text-sm {% if meta_product.handle == product.handle %}text-white{% else %}text-sc-title{% endif %}">

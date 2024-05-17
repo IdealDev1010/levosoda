@@ -206,7 +206,7 @@
   const $header = document.getElementById('shopify-section-{{ section.id }}');
 
   {% if sticky_header == true %}
-    $header.classList.add('sticky', 'top-0', 'z-full', 'bg-sc-bg-primary/80', 'header-backdrop')
+    $header.classList.add('sticky', 'top-0', 'z-full','bi-bg-transparent', 'header-backdrop','hover:bi-bg-transparent')
   {% endif %}
 
   document.documentElement.style.setProperty(

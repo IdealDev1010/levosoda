@@ -1,11 +1,5 @@
 {
   "sections": {
-    "section_h1_tag_Xzei8H": {
-      "type": "section-h1-tag",
-      "settings": {
-        "h1_title": "LEVEL UP YOUR SODA"
-      }
-    },
     "banner_with_title_4mFKyQ": {
       "type": "banner-with-title",
       "settings": {
@@ -332,7 +326,6 @@
     }
   },
   "order": [
-    "section_h1_tag_Xzei8H",
     "banner_with_title_4mFKyQ",
     "wave_divider_Vc7nEA",
     "image_blocks_xfqQci",

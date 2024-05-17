@@ -12,9 +12,10 @@
             "title_size_desk": "vw",
             "title_pt_mob": "1vw",
             "subtitle": "A MAGICAL DUO || OF FLAVOR || AND HEALTH",
-            "bg": "#000000",
+            "bg": "#262524",
             "color": "#ffffff",
-            "image": "shopify:\/\/shop_images\/voodoo_levo_soda.png",
+            "image": "shopify:\/\/shop_images\/Voodoo_Cola_with_DARKER_SHADOW_2_895cbd29-592b-41df-b83e-535fedb122ae.png",
+            "image_small": "shopify:\/\/shop_images\/voodoocolatransp.png",
             "flavor": "shopify:\/\/shop_images\/Voodoo_Doll_Icon_54x65_2eb6dd51-c721-41da-b214-a9ed51b0a8a0.svg",
             "product": "voodoo-cola",
             "link": "shopify:\/\/products\/voodoo-cola",
@@ -40,7 +41,8 @@
             "subtitle": "A MAGICAL DUO || OF FLAVOR || AND HEALTH",
             "bg": "#e63690",
             "color": "#ffffff",
-            "image": "shopify:\/\/shop_images\/cotton_candy_levo_soda.png",
+            "image": "shopify:\/\/shop_images\/Cotton_Candy_with_DARKER_SHADOW_bb7052b7-f4b2-4585-9a1a-b490c00ac82f.png",
+            "image_small": "shopify:\/\/shop_images\/cottoncandytransp_db00d464-487b-4a16-8631-d94692e5c38c.png",
             "flavor": "shopify:\/\/shop_images\/Cotton_Candy_Icon_3abbf7b8-14a0-45db-9183-cbca51640eaa.svg",
             "product": "cotton-candy",
             "link": "shopify:\/\/products\/cotton-candy",
@@ -66,7 +68,8 @@
             "subtitle": "A MAGICAL DUO || OF FLAVOR || AND HEALTH",
             "bg": "#3c2415",
             "color": "#ffffff",
-            "image": "shopify:\/\/shop_images\/flavor-beer-can-min.png",
+            "image": "shopify:\/\/shop_images\/Orange_Creamsicle_with_DARKER_SHADOW.png",
+            "image_small": "shopify:\/\/shop_images\/orangetransp.png",
             "flavor": "shopify:\/\/shop_images\/float-root-beer.svg",
             "product": "",
             "link": "shopify:\/\/products\/root-beer-float",
@@ -92,7 +95,8 @@
             "subtitle": "A MAGICAL DUO || OF FLAVOR || AND HEALTH",
             "bg": "#22beff",
             "color": "#ffffff",
-            "image": "shopify:\/\/shop_images\/cosmic_home_1031b6ae-ca74-4a3f-b6aa-b68848eeaeef.png",
+            "image": "shopify:\/\/shop_images\/Cosmic_Punch_with_DARKER_SHADOW.png",
+            "image_small": "shopify:\/\/shop_images\/cosmic_home_1031b6ae-ca74-4a3f-b6aa-b68848eeaeef.png",
             "flavor": "shopify:\/\/shop_images\/Cosmic_Punch_O.svg",
             "product": "",
             "link": "shopify:\/\/products\/cosmic-punch",
@@ -118,7 +122,8 @@
             "subtitle": "A MAGICAL DUO || OF FLAVOR || AND HEALTH",
             "bg": "#6fac46",
             "color": "#ffffff",
-            "image": "shopify:\/\/shop_images\/splice_levo_soda.png",
+            "image": "shopify:\/\/shop_images\/Splice_with_DARKER_SHADOW.png",
+            "image_small": "shopify:\/\/shop_images\/splicetransp.png",
             "flavor": "shopify:\/\/shop_images\/Splice_Emojis_54x65_cd14a00e-d688-4ffc-943a-590bdb2da963.svg",
             "product": "",
             "link": "shopify:\/\/products\/splice",
@@ -144,7 +149,8 @@
             "subtitle": "A MAGICAL DUO || OF FLAVOR || AND HEALTH",
             "bg": "#f15922",
             "color": "#ffffff",
-            "image": "shopify:\/\/shop_images\/orange_levo_soda.png",
+            "image": "shopify:\/\/shop_images\/Orange_Creamsicle_with_DARKER_SHADOW.png",
+            "image_small": "shopify:\/\/shop_images\/orangetransp.png",
             "flavor": "shopify:\/\/shop_images\/Orange_Creamsicle_Icon3.svg",
             "product": "orange-creamsicle",
             "link": "shopify:\/\/products\/orange-creamsicle",
@@ -172,20 +178,22 @@
         "section_anchor_id": "Banner clip path id"
       }
     },
-    "wave_divider_jrXEnG": {
+    "wave_divider_ihLJXq": {
       "type": "wave-divider",
+      "disabled": true,
       "settings": {
         "section_anchor_id": "Divider",
         "c-bg-primary": "#ffffff",
+        "flavor-cloud": false,
         "wave_1": "#9de0fb",
         "wave_2": "#6accf5",
         "wave_3": "#23aae1",
         "divider_type": "waves",
         "float_element": "whirlpool",
         "overflow_full": false,
-        "margin_mob": -20,
-        "margin_tab": -20,
-        "margin": -50
+        "margin_mob": 0,
+        "margin_tab": 0,
+        "margin": 0
       }
     },
     "elipse_text_TfKj7G": {
@@ -233,6 +241,7 @@
       "settings": {
         "section_anchor_id": "Divider",
         "c-bg-primary": "#ffffff",
+        "flavor-cloud": false,
         "wave_1": "#f3c6d8",
         "wave_2": "#ffe6d3",
         "wave_3": "#fff6ef",
@@ -309,6 +318,7 @@
       "settings": {
         "section_anchor_id": "Divider",
         "c-bg-primary": "#ffffff",
+        "flavor-cloud": false,
         "wave_1": "#a45825",
         "wave_2": "#f3c6d8",
         "wave_3": "#fff7fa",
@@ -410,6 +420,7 @@
       "settings": {
         "section_anchor_id": "Divider",
         "c-bg-primary": "#ffffff",
+        "flavor-cloud": false,
         "wave_1": "#f3c6d8",
         "wave_2": "#946ea9",
         "wave_3": "#ffffff",
@@ -447,7 +458,7 @@
   },
   "order": [
     "banner_clip_path_qcAKUq",
-    "wave_divider_jrXEnG",
+    "wave_divider_ihLJXq",
     "elipse_text_TfKj7G",
     "wave_divider_jttLfz",
     "products_list_nWwmiz",

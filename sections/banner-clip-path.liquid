@@ -16,21 +16,52 @@
 
 {% if section.index == 1 and settings.uniq_hp_header %}
   {% style %}
-    @media (min-width: 1024px) {
+    @media (min-width: 768px) {
       [data-section-id='{{ section.id }}'] [data-inner] {
-        min-height: calc(100vh + var(--header-height));
+        min-height: calc(128vh + var(--header-height));
       }
       [data-section-id='{{ section.id }}'] [data-flavor] {
         min-height: calc(100vh + var(--header-height));
       }
     }
-    [data-section-id='{{ section.id }}'] [data-flavor] {
-      padding-top: var(--header-height);
+    
+    @media (max-width:767px) {
+      [data-section-id='{{ section.id }}'] [data-inner] {
+        min-height: calc(103vh + var(--header-height));
+      }
     }
+    @media (min-width: 1024px) {
+      [data-section-id='{{ section.id }}'] [data-inner] {
+        min-height: calc(135vh + var(--header-height));
+      }
+    }
+
+    @media (min-width: 1280px) {
+      [data-section-id='{{ section.id }}'] [data-inner] {
+        min-height: calc(145vh + var(--header-height));
+      }
+    }
+
+    @media (min-width: 1536px) {
+      [data-section-id='{{ section.id }}'] [data-inner] {
+        min-height: calc(158vh + var(--header-height));
+      }
+    }
+
+    @media (min-width: 1920px) {
+      [data-section-id='{{ section.id }}'] [data-inner] {
+        min-height: calc(170vh + var(--header-height));
+      }
+    }
+   
+
   {% endstyle %}
 {% endif %}
 
 {% style %}
+.flavor-item {
+      padding-top: var(--header-height);
+    }
   .warning-overlay {
     display: none;
   }
@@ -39,6 +70,7 @@
       display: flex;
     }
   }
+
 {% endstyle %}
 
 <div
@@ -64,12 +96,12 @@
 <div
   id="{{ section_anchor_id }}"
   data-section-id="{{ section.id }}"
-  class="xsE:min-h-screen animate__animated relative min-h-[650px] overflow-hidden opacity-0"
+  class="xsE:min-h-screen animate__animated relative bi-min-h-[850px] overflow-hidden opacity-0"
   x-intersect="$el.classList.add('animate__fadeIn')"
   x-data="bannerClipPath('{{ blocks[0].id }}', {{ data_object }})"
   style="--flavor-color: {{ blocks[0].settings.bg }}; --flavor-color-lighter-30: {{ blocks[0].settings.bg | color_lighten: 30 }}; --flavor-text-color: {{ blocks[0].settings.color }}; background-color: var(--flavor-color);"
 >
-  <div data-inner class="xsE:min-h-screen relative min-h-[650px] overflow-hidden">
+  <div data-inner class=" relative bi-min-h-[1450px] overflow-hidden" style="">
     {% for block in blocks %}
       {% liquid
         assign title = block.settings.title
@@ -111,13 +143,13 @@
       <div
         x-ref="{{ block.id }}"
         data-flavor="{{ block.id }}"
-        class="xsE:min-h-screen absolute flex min-h-[650px] w-full flex-col items-center duration-1000 ease-in-out {% if forloop.first %}z-1{% endif %}"
+        class="flavor-item absolute bi-h-full flex min-h-[650px] w-full flex-col items-center duration-1000 ease-in-out {% if forloop.first %}z-1{% endif %}"
         style="background-color: {{ bg }}; color: {{ color }}; will-change: transform, clip-path; transform: translateZ(0);"
       >
         {% if title != blank %}
           <h2
             style="--title-pt-mob: {{ title_pt_mob }}"
-            class="font-primary px-7.5 4k:leading-[1] relative mx-auto w-max max-w-full pt-[var(--title-pt-mob)] text-center font-bold leading-[1.3] tracking-[1vw] duration-500 ease-in-out lg:pt-2.5 {% if forloop.first %}translate-y-[30px]{% endif %}"
+            class=" bi-pt-1 md:bi-pt-9 xl:bi-pt-0 bi-flex bi-flex-col font-primary px-7.5 4k:leading-[1] relative mx-auto w-max max-w-full pt-[var(--title-pt-mob)] text-center font-bold leading-[1.3] tracking-[1vw] duration-500 ease-in-out lg:pt-2.5 {% if forloop.first %}translate-y-[30px]{% endif %}"
             {% if forloop.first %}
               x-intersect="$el.classList.remove('translate-y-[30px]')"
             {% endif %}
@@ -126,42 +158,35 @@
 
             {% if subtitle != blank %}
               {% assign split_subtitle = subtitle | split: '||' %}
-              <div class="px-7.5 absolute left-0 top-full mx-auto flex w-full justify-between space-x-2 pt-2 tracking-wide">
+              <div class="px-7.5 left-0 top-full mx-auto flex w-full justify-between space-x-2 pt-2 tracking-wide max-md:bi-hidden">
                 {% for sp in split_subtitle %}
-                  <span class="font-primary text-xs md:text-sm lg:text-base 2xl:text-lg">{{ sp }}</span>
+                  <span class="font-primarys text-xs md:text-sm lg:text-base 2xl:text-lg">{{ sp }}</span>
                 {% endfor %}
               </div>
             {% endif %}
           </h2>
         {% endif %}
 
-        {% if flavor != blank %}
-          <a
-            href="{{ link }}"
-            class="2k:bottom-1/4 2k:h-[25vw] absolute bottom-[40%] right-1/2 h-[33vw] translate-x-1/2 md:right-1/4 md:translate-x-0 lg:h-[25vw] xl:bottom-1/3"
-          >
-            {{- flavor | image_url: width: flavor.width | image_tag: class: 'w-auto h-full animate__floating' -}}
-          </a>
-        {% endif %}
-
-        <div class="pointer-events-none absolute bottom-0 left-0 w-full">
-          <div
-            class="4k:h-[1000px] pointer-events-auto relative h-[56vw] w-max md:left-[2vw] md:max-h-[40vh] lg:h-[774px] lg:max-h-[50vh] xl:max-h-[60vh] 2xl:max-h-[70vh]"
-          >
+   
+        <div
+          class="4k:h-[1000px] bi-bottom-0 md:bi-bottom-[20%] xl:bi-bottom-[12%] 2xl:bi-bottom-[5%] bi-w-full pointer-events-auto h-[56vw] md:max-h-[40vh] lg:h-[774px] lg:max-h-[50vh] xl:max-h-[60vh] 2xl:max-h-[70vh] bi-flex bi-justify-center max-md:bi-relative"
+        >
+          {% if flavor != blank %}
             <a
               href="{{ link }}"
-              class="z-1 4k:h-[1000px] relative flex h-[56vw] rotate-[20deg] scale-75 delay-500 duration-1000 ease-in-out md:max-h-[40vh] lg:h-[774px] lg:max-h-[50vh] xl:max-h-[60vh] 2xl:max-h-[70vh]"
-              data-flavor-img
-              :class="active === '{{ block.id }}' && '!scale-100'"
+              class="2k:bottom-1/4 2k:h-[25vw] bottom-[40%] h-[33vw] translate-x-1/2 md:translate-x-0 bi-h-[18vw] xl:bottom-1/3 bi-absolute max-md:bi-top-0 max-md:bi-left-[-5%] bi-top-[22%] bi-left-[7%]"
             >
-              {{
-                image
-                | image_url: width: 640
-                | image_tag: widths: '65, 130, 260, 350', class: 'w-auto h-full object-contain'
-              }}
+              {{- flavor | image_url: width: flavor.width | image_tag: class: 'w-full h-full animate__floating' -}}
             </a>
-
-            <div class="4k:max-w-[800px] absolute right-0 top-0 w-[48vw] -translate-y-1/4 translate-x-3/4 md:w-[60vw] md:max-w-[370px] lg:max-w-[500px] xl:max-w-[610px] 2xl:top-[8vw]">
+          {% endif %}
+          
+          <a
+            href="{{ link }}"
+            class="z-1 4k:h-[1000px] flex h-[56vw] scale-75 delay-500 duration-1000 ease-in-out md:max-h-[40vh] lg:h-[774px] lg:max-h-[50vh] xl:max-h-[60vh] 2xl:max-h-[70vh] bi-relative bi-pr-[15%] md:bi-pr-[12%] md:bi-pr-[6%]"
+            data-flavor-img
+            :class="active === '{{ block.id }}' && '!scale-100'"
+          >
+            <div class="w-[48vw] md:w-[60vw] 2xl:top-[8vw] bi-max-w-48 2xl:bi-max-w-64 bi-absolute bi-top-[17%] max-md:bi-left-[13%] bi-left-[15%]  max-md:bi-top-[28%] max-md:bi-max-w-24">
               {% render 'flavor-bubbles',
                 class: 'w-full h-full',
                 link: link,
@@ -170,10 +195,16 @@
                 color: color
               %}
             </div>
-          </div>
+            {{
+              image
+              | image_url: width: 2000
+              | image_tag: widths: '65, 130, 260, 350, 640, 720', class: 'w-auto h-full object-contain'
+            }}
+          </a>
         </div>
+        
 
-        <div class="-z-1 2k:bottom-[15vw] absolute bottom-[30vw] left-0 w-full after:absolute after:top-[calc(100%-5px)] after:h-screen after:w-full after:bg-white after:content-[''] md:bottom-[15vw] xl:bottom-[10vw] 2xl:bottom-[3vw]">
+        {% comment %} <div class="-z-1 2k:bottom-[15vw] absolute bottom-[30vw] left-0 w-full after:absolute after:top-[calc(100%-5px)] after:h-screen after:w-full after:bg-white after:content-[''] md:bottom-[15vw] xl:bottom-[10vw] 2xl:bottom-[3vw]">
           <svg
             class="w-full md:h-[150px] lg:hidden"
             width="375"
@@ -200,13 +231,75 @@
             <path d="M887 428.885C684 428.885 725.5 428.885 534.444 428.885C337.32 428.885 386 428.885 188 428.885C188 231.508 337.32 96 534.444 96C731.567 96 887 231.508 887 428.885Z" fill="white"/>
             <path d="M1444 308C1283.11 308 1319 328 1167.58 328C1011.35 328 1049.93 328 893 328C893 170.874 929.268 147.5 1085.5 147.5C1241.73 147.5 1444 150.874 1444 308Z" fill="white"/>
           </svg>
+        </div> {% endcomment %}
+        {% liquid
+          assign ben_text_color = block.settings.ben_text_color
+        %}
+    
+        {% if block.settings.ben_icon_1 != blank or block.settings.ben_text_1 != blank %}
+          <div
+            class="relative"
+          >
+            <div
+              class="pb-7.5 md:pb-15 md:gap-x-15 xs:gap-6 2k:max-w-[1060px] 2k:justify-between mx-auto flex max-w-lg flex-wrap items-baseline justify-center gap-10 md:pt-10 lg:max-w-none lg:gap-8 xl:pt-0 max-md:bi-mt-[70px]"
+            >
+              {% for i in (1..4) %}
+                {% liquid
+                  assign ben_icon_key = 'ben_icon_' | append: i
+                  assign ben_text_key = 'ben_text_' | append: i
+    
+                  assign ben_icon = block.settings[ben_icon_key]
+                  assign ben_text = block.settings[ben_text_key]
+                %}
+    
+                {% if ben_icon != blank or ben_text != blank %}
+                  <div
+                    class="lg:eag-custom-delay xs:max-w-[150px] relative flex w-full max-w-[100px] flex-col items-center space-y-2 md:space-y-3 md:px-3 lg:max-w-[200px] xl:-mt-5"
+                    x-transition:enter="transition ease-in-out duration-500 lg:duration-300"
+                    x-transition:enter-start="opacity-0 scale-90"
+                    x-transition:enter-end="opacity-100 scale-100"
+                    style="--eag-custom-delay: {{- 4 | minus: forloop.index | append: '00ms' }}"
+                  >
+                    {% if ben_icon != blank %}
+                      <div class="md:max-w-30 max-w-20">
+                        {{
+                          ben_icon
+                          | image_url: width: 220
+                          | image_tag: alt: ben_text, class: 'w-full h-full object-contain'
+                        }}
+                      </div>
+                    {% endif %}
+    
+                    {% if ben_text != blank %}
+                      <span
+                        class="font-primary xs:text-sm text-center text-xs font-bold lg:text-lg bi-text-white"
+                      >
+                        {{- ben_text -}}
+                      </span>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %} 
+
+        <div class="cloud-field bi-w-full bi-absolute bi-bottom-0">
+          <div class="bi-bottom-[5%] bi-w-full bi-flex bi-justify-between bi-absolute bi-items-end max-md:bi-hidden">
+            {% render 'flavor-cloud-left',  bg_lighten: bg_lighten %}
+            {% render 'flavor-cloud-right' ,  bg_lighten: bg_lighten %}
+          </div>
+          <div class="bottom-full w-full bi-relative bi-w-full bi-bottom-0">
+            {% render 'custom-waves', bg: bg, bg_lighten: bg_lighten %}
+          </div>  
         </div>
+             
       </div>
-    {% endfor %}
+    {% endfor %} 
 
     <div
-      class="2k:w-[700px] 2k:right-[-350px] 2k:h-[700px] 4k:bottom-[150px] absolute -right-[35vw] bottom-10 z-[1000] h-[67vw] w-[67vw] rounded-full border-[4px] bg-white duration-500 md:right-[-225px] md:h-[450px] md:w-[450px] md:border-[11px] xl:right-[-295px] xl:h-[590px] xl:w-[590px]"
-      style="border-color: var(--flavor-color)"
+      class="2k:w-[700px] 2k:right-[-350px] 2k:h-[700px] 4k:bottom-[150px] absolute -right-[35vw] bottom-10 z-[1000] h-[67vw] rounded-full border-[4px] bg-white duration-500 md:right-[-225px] md:h-[450px] md:border-[11px] xl:right-[-295px] max-md:bi-w-56 max-md:bi-h-56 md:bi-h-[390px] md:bi-w-[390px] xl:bi-w-[481px] xl:bi-h-[481px] 2xl:bi-w-[560px] 2xl:bi-h-[560px] max-md:bi-top-[22%] md:bi-top-[23%] 2xl:bi-top-[20%]"
+      style="border-color: var(--flavor-color-lighter-30)"
     >
       {% for block in blocks %}
         {% liquid
@@ -215,12 +308,13 @@
           assign color = block.settings.color
           assign flavor = block.settings.flavor
           assign image = block.settings.image
+          assign image_small = block.settings.image_small
 
           assign product = block.settings.product
           assign link = block.settings.link | default: product.url
           assign btn_text = block.settings.btn_text
 
-          assign btn_size = 'h-[17vw] w-[17vw] md:h-[100px] md:w-[100px] xl:h-[135px] xl:w-[135px]'
+          assign btn_size = 'h-[15vw] w-[15vw] md:bi-h-[90px] md:bi-w-[90px] xl:bi-h-[126px] xl:bi-w-[126px]'
           assign btn_class = 'rotate-[-28deg]'
           assign btn_rev_class = 'rotate-[28deg]'
           case blocks.size
@@ -257,7 +351,7 @@
                 assign btn_rev_class = 'rotate-[105deg]'
               endif
             when 5
-              assign btn_size = 'h-[13vw] w-[13vw] md:h-[90px] md:w-[90px] xl:h-[110px] xl:w-[110px]'
+              assign btn_size = 'h-[13vw] w-[13vw] md:h-[110px] md:w-[110px] xl:h-[120px] xl:w-[120px]'
 
               if forloop.index == 1
                 assign btn_class = 'rotate-[20deg]'
@@ -276,7 +370,7 @@
                 assign btn_rev_class = 'rotate-[110deg]'
               endif
             when 6
-              assign btn_size = 'h-[13vw] w-[13vw] md:h-[80px] md:w-[80px] xl:h-[100px] xl:w-[100px] 2k:w-[120px] 2k:h-[120px]'
+              assign btn_size = 'bi-h-[11vw] bi-w-[11vw] md:bi-h-[80px] md:bi-w-[80px] xl:bi-h-[110px] xl:bi-w-[110px] 2k:bi-w-[120px] 2k:bi-h-[120px]'
 
               if forloop.index == 1
                 assign btn_class = 'rotate-[30deg]'
@@ -302,7 +396,7 @@
 
         {% comment %} FLAVOR CHANGE BUTTON {% endcomment %}
         <div
-          class="pointer-events-none absolute -m-0.5 h-full w-full p-1 {{ btn_class }} {% if blocks.size == 6 %}md:p-3 xl:p-6 2k:p-7.5 {% elsif blocks.size > 3 %}md:p-3 xl:p-4 2k:p-8 {% else %}2k:p-4{% endif %}"
+          class="pointer-events-none absolute -m-0.5 h-full w-full p-1 {{ btn_class }} {% if blocks.size == 6 %}md:bi-p-1 xl:bi-p-2 2k:p-7.5 {% elsif blocks.size > 3 %}md:p-3 xl:p-4 2k:p-8 {% else %}2k:p-4{% endif %}"
           style="--flavor-color-lighter-30: {{ bg_lighten }}; --eag-custom-duration: 240s;"
         >
           <div
@@ -311,17 +405,17 @@
           >
             <button
               data-flavor-btn="{{ block.id }}"
-              @click="changeFlavor({ flavor: '{{ block.id }}', bg: '{{ bg }}', bgLight: '{{ bg | color_lighten: 30 }}', color: '{{ color }}'})"
+              @click="changeFlavor({ flavor: '{{ block.id }}', bg: '{{ bg }}', bgLighten: '{{ bg | color_lighten: 30 }}', color: '{{ color }}'})"
               class="pointer-events-auto flex rounded-full bg-white {{ btn_rev_class }}"
             >
               <span
-                class="relative flex rotate-[-25deg] overflow-hidden rounded-full p-1 {{ btn_size }}"
+                class="relative flex overflow-hidden rounded-full p-1 {{ btn_size }}"
                 style="background-color: var(--flavor-color-lighter-30)"
               >
                 {{
-                  image
+                  image_small
                   | image_url: width: 260
-                  | image_tag: widths: '65, 130, 260', class: 'w-full h-full object-contain pointer-events-none'
+                  | image_tag: widths: '65, 130, 260', class: 'bi-w-full h-full object-contain pointer-events-none'
                 }}
               </span>
             </button>
@@ -340,69 +434,10 @@
             </a>
           </div>
         {% endif %}
+        
       {% endfor %}
     </div>
   </div>
-
-  {% for block in blocks %}
-    {% liquid
-      assign ben_text_color = block.settings.ben_text_color
-    %}
-
-    {% if block.settings.ben_icon_1 != blank or block.settings.ben_text_1 != blank %}
-      <div
-        class="relative bg-white"
-        :style="{zIndex: zIndex}"
-        x-cloak
-        x-show="oldActive === '{{ block.id }}'"
-      >
-        <div
-          class="pb-7.5 md:pb-15 md:gap-x-15 xs:gap-6 2k:max-w-[1060px] 2k:justify-between mx-auto flex max-w-lg flex-wrap items-baseline justify-center gap-10 md:pt-10 lg:max-w-none lg:gap-8 xl:pt-0"
-        >
-          {% for i in (1..4) %}
-            {% liquid
-              assign ben_icon_key = 'ben_icon_' | append: i
-              assign ben_text_key = 'ben_text_' | append: i
-
-              assign ben_icon = block.settings[ben_icon_key]
-              assign ben_text = block.settings[ben_text_key]
-            %}
-
-            {% if ben_icon != blank or ben_text != blank %}
-              <div
-                class="lg:eag-custom-delay xs:max-w-[150px] relative flex w-full max-w-[100px] flex-col items-center space-y-2 md:space-y-3 md:px-3 lg:max-w-[200px] xl:-mt-5"
-                x-cloak
-                x-show="oldActive === '{{ block.id }}'"
-                x-transition:enter="transition ease-in-out duration-500 lg:duration-300"
-                x-transition:enter-start="opacity-0 scale-90"
-                x-transition:enter-end="opacity-100 scale-100"
-                style="--eag-custom-delay: {{- 4 | minus: forloop.index | append: '00ms' }}"
-              >
-                {% if ben_icon != blank %}
-                  <div class="md:max-w-30 max-w-20">
-                    {{
-                      ben_icon
-                      | image_url: width: 220
-                      | image_tag: alt: ben_text, class: 'w-full h-full object-contain'
-                    }}
-                  </div>
-                {% endif %}
-
-                {% if ben_text != blank %}
-                  <span
-                    class="font-primary xs:text-sm text-center text-xs font-bold lg:text-lg"
-                    style="color: {{ ben_text_color }}"
-                  >
-                    {{- ben_text -}}
-                  </span>
-                {% endif %}
-              </div>
-            {% endif %}
-          {% endfor %}
-        </div>
-      </div>
-    {% endif %}
-  {% endfor %}
 </div>
 
 {% schema %}
@@ -480,6 +515,12 @@
           "type": "image_picker",
           "id": "image",
           "label": "Can image",
+          "info": "335x795 mandatory res!"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_small",
+          "label": "Can small image",
           "info": "335x795 mandatory res!"
         },
         {
